@@ -52,7 +52,7 @@ try{
         }catch(Exception $ex){
             DB::rollback();
 
-            return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحال');
+            return redirect()->back()->with('error', 'حةث خطأ يرجى اعادة المحال');
         }
     }
 

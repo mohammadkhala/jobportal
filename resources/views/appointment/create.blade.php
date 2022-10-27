@@ -38,6 +38,8 @@
                                     </div>
                                 </div>
 
+                                @include('include.errors')
+                                @include('include.success')
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form" action="{{ route('appointment.store') }}" method="POST"

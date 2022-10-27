@@ -43,7 +43,8 @@
                                         <form class="form" action="{{ route('customer.store') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
-
+@include('include.errors')
+@include('include.success')
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات المريض </h4>
 
