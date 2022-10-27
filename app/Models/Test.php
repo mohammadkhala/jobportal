@@ -1,0 +1,34 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+
+class Test extends Model
+{
+    use HasFactory;
+    protected $table = 'admin_tests';
+
+    protected $fillable = [
+        'id',
+        'p-id',
+        'description',
+        'info_mid',
+        'created_at',
+        'updated_at'
+    ];
+
+
+    public function p_test()
+    {
+        return $this->hasMany(PersonalTest::class, 'p_id');
+    }
+
+
+    public function user()
+    {
+        return $this->belongsTo(Customer::class, 'p_id', 'personal_id');
+    }
+}
