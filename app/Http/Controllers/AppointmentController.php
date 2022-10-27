@@ -39,18 +39,16 @@ class AppointmentController extends Controller
     public function store(AppointmentRequset $request)
     {
 try{
-            DB::beginTransaction();
 
             $appoin = Appointment::create([
                 'p_id'=>$request->p_id,
                 'date'=>$request->date,
                 'note'=>$request->note
             ]);
-            DB::commit();
 
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
         }catch(Exception $ex){
-            DB::rollback();
+
 
             return redirect()->back()->with('error', 'حةث خطأ يرجى اعادة المحال');
         }
