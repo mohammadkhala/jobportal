@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePTestTable extends Migration
+class CreateFinanceTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,15 @@ class CreatePTestTable extends Migration
      */
     public function up()
     {
-        Schema::create('p_test', function (Blueprint $table) {
+        Schema::create('finance', function (Blueprint $table) {
             $table->id();
-            $table->integer('p_id');
-            $table->text('distance');
-            $table->text('Right_eye_degree');
-            $table->text('left_eye_degree');
+            $table->foreign('p_id')->references('personal_id')->on('customers');
+            $table->foreign('test_id')->references('id')->on('test');
             $table->integer('year');
             $table->integer('month');
             $table->integer('day');
-             $table->text('report');
-             $table->integer('cost');
-
-
-            $table->string('attach');
-            $table->integer('test_id');
+            $table->integer('amount');
+            $table->text('note');
 
             $table->timestamps();
         });
@@ -40,6 +34,6 @@ class CreatePTestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('p_test');
+        Schema::dropIfExists('finance');
     }
 }

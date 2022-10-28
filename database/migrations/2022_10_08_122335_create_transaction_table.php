@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFinanceTable extends Migration
+class CreateTransactionTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateFinanceTable extends Migration
      */
     public function up()
     {
-        Schema::create('finance', function (Blueprint $table) {
+        Schema::create('transaction', function (Blueprint $table) {
             $table->id();
-            $table->integer('p_id');
-            $table->integer('test_id');
-            $table->integer('year');
-            $table->integer('month');
-            $table->integer('day');
-            $table->integer('amount');
+            $table->foreign('finance_id')->references('id')->on('finance');
+            $table->integer('payment');
+            $table->date('date');
             $table->text('note');
 
             $table->timestamps();
@@ -34,6 +31,6 @@ class CreateFinanceTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('finance');
+        Schema::dropIfExists('transaction');
     }
 }
