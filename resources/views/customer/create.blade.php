@@ -11,7 +11,6 @@
     لوحة التحكم
 @endsection
 @section('content')
-
     <div class="app-content ">
         <div class="content text-right">
             <div class="content-header row text-center">
@@ -37,17 +36,13 @@
                                         </ul>
                                     </div>
                                 </div>
-
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form" action="{{ route('customer.store') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
-@include('include.errors')
-@include('include.success')
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات المريض </h4>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -73,7 +68,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
@@ -86,7 +80,6 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">تاريخ بداية التعامل </label>
@@ -99,7 +92,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-6">
@@ -113,7 +105,6 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">الجنس </label>
@@ -138,18 +129,9 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-
-
                                             </div>
-
                                     </div>
-
-
-
-
                                 </div>
-
-
                                 <div class="form-actions">
 
                                     <button type="submit" class="btn btn-primary">
@@ -166,16 +148,9 @@
             </div>
         </div>
         </section>
-        <!-- // Basic form layout section end -->
     </div>
     </div>
     </div>
 @endsection
-
-
-
-
-
-
 @section('scripts')
 @endsection

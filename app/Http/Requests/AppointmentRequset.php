@@ -33,6 +33,7 @@ class AppointmentRequset extends FormRequest
 
         return [
             'required'  => 'هذا الحقل مطلوب ',
+            'p_id.exists'=>'هذا المريض غير موجود '
         ];
     }
 }

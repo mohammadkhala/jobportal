@@ -46,8 +46,7 @@
                                             @csrf
                                             @method('PUT')
 
-                                            @include('include.errors')
-                                            @include('include.success')
+
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات المريض </h4>
 

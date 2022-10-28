@@ -46,7 +46,7 @@ class CustomerController extends Controller
             DB::commit();
 
         } catch (Exception $ex) {
-            // return $ex;
+            return $ex;
             DB::rollback();
 
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
@@ -93,7 +93,7 @@ class CustomerController extends Controller
         if (!$customer)
         return redirect()->route('customer')->with(['error' => 'هذا المريض غير موجود ']);
         Customer::where('id', $id)
-        ->update($request->except('_token','_method','p_id'));
+        ->update($request->except('_token','_method'));
 
 
 
@@ -114,7 +114,6 @@ class CustomerController extends Controller
     {
         if (!$customer)
         return redirect()->route('customer')->with(['error' => 'هذا المريض غير موجود ']);
-
         $customer=Customer::findOrFail($personal_id);
         $customer->delete();
         return redirect()->route('customer')->with('message','تم الحذف بنجاح');

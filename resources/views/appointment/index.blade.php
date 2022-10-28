@@ -37,14 +37,14 @@
             <tbody>
                 @foreach ( $appoin as $key => $app)
                         <td>{{ $key = $key + 1 }}</td>
-
+{{-- <input type="hidden" value="{{$row->app->}}"> --}}
                         <td> {{ $app->p_id }}</td>
                         <td>{{ $app->date }} </td>
 
                         <td>{{ $app->note }}</td>
-                        <td><a href="{{ route('customer.edit', ['id' => $row->id]) }}"><button style="hight=12px;width=15px;"
+                        <td><a href="{{ route('appointment.edit', ['id' => $app->id]) }}"><button style="hight=12px;width=15px;"
                                     class="btn btn-primary editbtn">تعديل</button></a>
-                             <a href="{{ route('customer.delete', ['id' => $row->id]) }}" class="btn btn-danger"
+                             <a href="{{ route('appointment.delete', ['id' => $app->id]) }}" class="btn btn-danger"
                                 id="delete">حذف</a>
                         </td>
 

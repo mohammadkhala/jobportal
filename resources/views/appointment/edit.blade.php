@@ -1,12 +1,12 @@
 @extends('layouts.master')
 @section('title')
-    تعديل المرضى
+    تعديل المواعيد
 @endsection
 @section('css')
 
 @endsection
 @section('title_page1')
-    {{ $customer->name }}تعديل
+    {{ $appoin->p_id }}تعديل
 @endsection
 @section('title_page2')
     لوحة التحكم
@@ -40,22 +40,21 @@
 
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form"
-                                            action="{{ route('customer.update', ['id' => $customer->id]) }}" method="POST"
+                                        <form class="form" action="{{ route('appointment.update',['id'=>$appoin->id]) }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-body">
-                                                <h4 class="form-section"><i class="ft-home"></i> بيانات المريض </h4>
+                                                <h4 class="form-section"><i class="ft-home"></i> بيانات الموعد </h4>
 
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">الاسم </label>
-                                                            <input type="text" value="{{ $customer->name }}"
-                                                                id="name" class="form-control"
-                                                                placeholder="ادخل اسم المريض  " name="name">
-                                                            @error('name')
+                                                            <label for="projectinput1">رقم الهوية </label>
+                                                            <input type="text" value="{{$appoin->p_id}}" id="name"
+                                                                class="form-control"
+                                                                name="p_id">
+                                                            @error('p_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -63,73 +62,25 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="{{ $customer->personal_id }}"
-                                                                id="name" class="form-control"
-                                                                placeholder="ادخل رقم الهوية  " name="personal_id">
-                                                            @error('personal_id')
+                                                            <label for="projectinput1">التاريخ </label>
+                                                            <input type="date" value="{{$appoin->date}}" id="name"
+                                                                class="form-control"
+                                                                name="date">
+                                                            @error('date')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                 </div>
 
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">رقم الهاتف </label>
-                                                            <input type="texe" value="{{ $customer->phone }}"
-                                                                id="name" class="form-control"
-                                                                placeholder="ادخل رقم الهاتف" name="phone">
-                                                            @error('phone')
-                                                                <span class="text-danger">{{ $message }} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="projectinput1">تاريخ بداية التعامل </label>
-                                                            <input type="date" value="{{ $customer->start_date }}"
-                                                                id="name" class="form-control" name="start_date">
-                                                            @error('start_date')
-                                                                <span class="text-danger">{{ $message }} </span>
-                                                            @enderror
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">العنوان </label>
-                                                        <input type="text" value="{{ $customer->address }}"
-                                                            id="name" class="form-control"
-                                                            placeholder="ادخل عنوان المريض  " name="address">
-                                                        @error('address')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">الجنس </label>
-                                                        <input type="text" value="{{ $customer->gender }}"
-                                                            id="name" class="form-control" name="gender">
-                                                        @error('gender')
-                                                            <span class="text-danger">{{ $message }} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="{{ $customer->note }}"
-                                                            id="name" class="form-control" name="note">
+                                                        <input type="text" value="{{$appoin->note}}" id="name"
+                                                            class="form-control"
+                                                            name="note">
                                                         @error('note')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror

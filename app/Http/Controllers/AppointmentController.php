@@ -19,27 +19,13 @@ class AppointmentController extends Controller
         $appoin = Appointment::latest()->paginate(15);
         return view('appointment.index', compact('appoin'));
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('appointment.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(AppointmentRequset $request)
     {
 try{
-
             $appoin = Appointment::create([
                 'p_id'=>$request->p_id,
                 'date'=>$request->date,
@@ -48,7 +34,7 @@ try{
 
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
         }catch(Exception $ex){
-
+//return $ex;
 
             return redirect()->back()->with('error', 'حةث خطأ يرجى اعادة المحال');
         }
@@ -62,18 +48,15 @@ try{
      */
     public function show(Appointment $appointment)
     {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
+    }
+    public function edit(Appointment $appoin,$id)
     {
-        //
+        try{ $appoin = Appointment::find($id);
+            return view('appointment.edit', compact('appoin'));
+         }catch(Exception $ex){
+            return $this->$ex;
+         }
     }
 
     /**
@@ -83,9 +66,16 @@ try{
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(AppointmentRequset $request, Appointment $appoin,$id)
     {
-        //
+        $appoin = Appointment::find($id)->first();
+        if (!$appoin)
+        return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
+        $appoin =Appointment::where('id', $id)->update($request->except('_token'));
+
+        return redirect()->route('customer')->with(['success' => 'تم ألتحديث بنجاح']);
+
+
     }
 
     /**
