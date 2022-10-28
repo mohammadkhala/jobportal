@@ -15,13 +15,12 @@ class CreateCustomerTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-
             $table->string('name');
-            $table->string('personal_id')->unique();
+            $table->integer('personal_id')->unique();
             $table->date('start_date');
             $table->string('phone');
             $table->string('address');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->string('gender');
             $table->timestamps();
         });

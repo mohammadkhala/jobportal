@@ -75,12 +75,8 @@
                   <p>اضافة موعد</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="pages/forms/advanced.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Advanced Elements</p>
-                </a>
-              </li>
+              @include('layouts.navigation')
+
               <li class="nav-item">
                 <a href="pages/forms/editors.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -1146,7 +1142,7 @@
       </li>
     </ul>
   </nav>
-  @include('layouts.navigation')
+
   <!-- /.sidebar-menu -->
 </div>
 <!-- /.sidebar -->

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AppointmentRequset;
 use App\Models\Appointment;
+use App\Models\customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Exception;
@@ -25,13 +26,13 @@ class AppointmentController extends Controller
     }
     public function store(AppointmentRequset $request)
     {
-try{
+try{        if(customer::where('personal_id',$request->p_id  )!=null ){
             $appoin = Appointment::create([
                 'p_id'=>$request->p_id,
                 'date'=>$request->date,
                 'note'=>$request->note
             ]);
-
+        }
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
         }catch(Exception $ex){
 //return $ex;
