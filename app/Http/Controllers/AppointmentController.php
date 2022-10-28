@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AppointmentRequset;
-use App\Models\Appointment;
+use Exception;
 use App\Models\customer;
+use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Exception;
+use App\Http\Requests\AppointmentRequset;
+
 class AppointmentController extends Controller
 {
     /**
@@ -24,21 +25,21 @@ class AppointmentController extends Controller
     {
         return view('appointment.create');
     }
-    public function store(AppointmentRequset $request)
+    public function store(Request $request)
     {
-try{        if(customer::where('personal_id',$request->p_id  )!=null ){
-            $appoin = Appointment::create([
-                'p_id'=>$request->p_id,
-                'date'=>$request->date,
-                'note'=>$request->note
-            ]);
-        }
+        try{
+                $appoin = Appointment::create([
+                    'p_id'=>$request->p_id,
+                    'date'=>$request->date,
+                    'note'=>$request->note
+                ]);
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
         }catch(Exception $ex){
-//return $ex;
-
-            return redirect()->back()->with('error', 'حةث خطأ يرجى اعادة المحال');
+            return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحال');
         }
+        
+        
+
     }
 
     /**
