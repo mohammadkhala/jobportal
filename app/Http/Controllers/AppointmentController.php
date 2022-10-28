@@ -25,7 +25,7 @@ class AppointmentController extends Controller
     {
         return view('appointment.create');
     }
-    public function store(Request $request)
+    public function store(Request $request) //corrected
     {
         try{
                 $appoin = Appointment::create([
