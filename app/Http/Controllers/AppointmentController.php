@@ -54,7 +54,8 @@ class AppointmentController extends Controller
     }
     public function edit(Appointment $appoin,$id)
     {
-        try{ $appoin = Appointment::find($id);
+        try{ 
+            $appoin = Appointment::find($id);
             return view('appointment.edit', compact('appoin'));
          }catch(Exception $ex){
             return $this->$ex;
@@ -68,14 +69,23 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(AppointmentRequset $request, Appointment $appoin,$id)
+    public function update(Request $request, Appointment $appoin,$id)
     {
         $appoin = Appointment::find($id)->first();
-        if (!$appoin)
+        if(customer::where('personal_id', $request->p_id)->first()){
+            $appoin->update([
+                'p_id' => $request->p_id,
+                'date' => $request->date,
+                'note' => $request->note
+            ]);
+            return redirect()->route('customer')->with(['success' => 'تم ألتحديث بنجاح']);
+        }
         return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
-        $appoin =Appointment::where('id', $id)->update($request->except('_token'));
+        // if (!$appoin)
+        // return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
+        // $appoin =Appointment::where('id', $id)->update($request->except('_token'));
 
-        return redirect()->route('customer')->with(['success' => 'تم ألتحديث بنجاح']);
+        // return redirect()->route('customer')->with(['success' => 'تم ألتحديث بنجاح']);
 
 
     }
