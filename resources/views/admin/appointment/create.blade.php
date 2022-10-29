@@ -1,17 +1,17 @@
 @extends('layouts.master')
 @section('title')
-    تعديل المواعيد
+    اضافة موعد
 @endsection
 @section('css')
-
 @endsection
 @section('title_page1')
-    {{ $appoin->p_id }}تعديل
+    اضافة موعد
 @endsection
 @section('title_page2')
     لوحة التحكم
 @endsection
 @section('content')
+
     <div class="app-content ">
         <div class="content text-right">
             <div class="content-header row text-center">
@@ -25,8 +25,8 @@
                     <div class="row match-height">
                         <div class="col-md-12  ">
                             <div class="card ">
-                                <div class="card-header text-right">
-                                    <h4 class="card-title text-center" id="basic-layout-form"> تعديل المرضى</h4>
+                                <div class="card-header text-center">
+                                    <h4 class="card-title text-center" id="basic-layout-form"> إضافة مريض </h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -38,12 +38,13 @@
                                     </div>
                                 </div>
 
+
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{ route('appointment.update',['id'=>$appoin->id]) }}" method="POST"
+                                        <form class="form" action="{{ route('admin.appointment.store') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
-                                            @method('PUT')
+
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات الموعد </h4>
 
@@ -51,7 +52,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="{{$appoin->p_id}}" id="name"
+                                                            <input type="text" value="" id="p_id"
                                                                 class="form-control"
                                                                 name="p_id">
                                                             @error('p_id')
@@ -63,7 +64,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">التاريخ </label>
-                                                            <input type="date" value="{{$appoin->date}}" id="name"
+                                                            <input type="date" value="" id="date"
                                                                 class="form-control"
                                                                 name="date">
                                                             @error('date')
@@ -78,7 +79,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="{{$appoin->note}}" id="name"
+                                                        <input type="text" value="" id="note"
                                                             class="form-control"
                                                             name="note">
                                                         @error('note')
@@ -101,10 +102,10 @@
                                 <div class="form-actions">
 
                                     <button type="submit" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> تعديل
+                                        <i class="la la-check-square-o"></i> حفظ
                                     </button>
-                                    <a href="{{ route('customer') }}"> <button type="button" class="btn btn-warning ">
-                                            المرضى
+                                    <a href="{{route('admin.appointment')}}"> <button type="button" class="btn btn-warning " >
+                                        المواعيد
                                         </button></a>
                                 </div>
                                 </form>
@@ -126,5 +127,4 @@
 
 
 @section('scripts')
-
 @endsection

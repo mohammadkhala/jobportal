@@ -20,11 +20,11 @@ class AppointmentController extends Controller
     public function index()
     {
         $appoin = Appointment::latest()->paginate(15);
-        return view('appointment.index', compact('appoin'));
+        return view('admin.appointment.index', compact('appoin'));
     }
     public function create()
     {
-        return view('appointment.create');
+        return view('admin.appointment.create');
     }
     public function store(Request $request)
     {
@@ -62,9 +62,9 @@ class AppointmentController extends Controller
     public function edit(Appointment $appoin,$id)
     {
         try{ $appoin = Appointment::find($id);
-            return view('appointment.edit', compact('appoin'));
+            return view('admin.appointment.edit', compact('appoin'));
          }catch(Exception $ex){
-            return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
+            return redirect()->route('admin.appointment')->with(['error' => 'هذا الموعد غير موجود ']);
         }
     }
 
@@ -75,33 +75,21 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(AppointmentRequset $request, Appointment $appoin,$id,CustomerRequest $customer)
-    {try{
-        $appoin = Appointment::find($id);
-        if (!$appoin)
+    public function update(Request $request,$id)
+    {
+        $appoin = Appointment::find($id)->first();
+        if(customer::where('personal_id', $request->p_id)->first()){
+            $appoin->update([
+                'p_id' => $request->p_id,
+                'date' => $request->date,
+                'note' => $request->note
+            ]);
+            return redirect()->route('admin.appointment')->with(['success' => 'تم ألتحديث بنجاح']);
+        }
+        return redirect()->route('admin.appointment')->with(['error' => 'هذا الموعد غير موجود ']);
 
-        return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
-        $this->validate($request,[
-            "p_id"=>$request->p_id,
-            "date"=>$request->date,
-            "note"=>$request->note
-        ]
 
-        );
-        $appoin =Appointment::where('id',$customer->personal_id)->update($request,[
-            "p_id"=>$request->p_id,
-            "date"=>$request->date,
-            "note"=>$request->note
-        ]);
 
-        return redirect()->route('appointment')->with(['success' => 'تم ألتحديث بنجاح']);
-
-    }
-    catch(Exception $ex){
-return $ex;
-        return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
-
-    }
     }
 
     /**
@@ -110,8 +98,12 @@ return $ex;
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Appointment $appointment)
+    public function destroy(Appointment $appointment,$id)
     {
-        //
+        if (!$appointment)
+        return redirect()->route('admin.appointment')->with(['error' => 'هذا المريض غير موجود ']);
+        $appointment=Appointment::findOrFail($id);
+        $appointment->delete();
+        return redirect()->route('admin.appointment')->with('message','تم الحذف بنجاح');
     }
 }

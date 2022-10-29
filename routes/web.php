@@ -24,20 +24,20 @@ Route::group(['middleware' => ['is_admin']],function (){
 
     })->name('admin');
 
+////// customers routes
 
 });
-////// customers routes
-Route::get('/customer', [CustomerController::class, 'index'])->name('customer');
-Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
-Route::post('/customer/store', [CustomerController::class, 'store'])->name('customer.store');
-Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
-Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
-Route::get('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('customer.delete');
+Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer');
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
+Route::post('/customer/store', [CustomerController::class, 'store'])->name('admin.customer.store');
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
+Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
+Route::get('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('admin.customer.delete');
 //////
 //// appointment routes
-Route::get('/appointment', [AppointmentController::class, 'index'])->name('appointment');
-Route::get('/appointment/create', [AppointmentController::class, 'create'])->name('appointment.create');
-Route::post('/appointment/store', [AppointmentController::class, 'store'])->name('appointment.store');
-Route::get('/appointment/edit/{id}', [AppointmentController::class, 'edit'])->name('appointment.edit');
-Route::put('/appointment/update/{id}', [AppointmentController::class, 'update'])->name('appointment.update');
-Route::get('/appointment/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointment.delete');
+Route::get('/appointment', [AppointmentController::class, 'index'])->name('admin.appointment');
+Route::get('/appointment/create', [AppointmentController::class, 'create'])->name('admin.appointment.create');
+Route::post('/appointment/store', [AppointmentController::class, 'store'])->name('admin.appointment.store');
+Route::get('/appointment/edit/{id}', [AppointmentController::class, 'edit'])->name('admin.appointment.edit');
+Route::put('/appointment/update/{id}', [AppointmentController::class, 'update'])->name('admin.appointment.update');
+Route::get('/appointment/delete/{id}', [AppointmentController::class, 'destroy'])->name('admin.appointment.delete');

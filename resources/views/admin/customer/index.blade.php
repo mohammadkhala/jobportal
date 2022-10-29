@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    المواعيد
+    المرضى
 @endsection
 @section('css')
     <!-- DataTables -->
@@ -15,36 +15,46 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('title_page1')
-    المواعيد
+    المرضى
 @endsection
 @section('title_page2')
     لوحة التحكم
 @endsection
 @section('content')
     @method('PUT')
+    <input type="hidden" name="id">
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped" dir="rtl">
             <thead>
                 <tr>
                     <th>#</th>
+                    <th>الاسم</th>
                     <th>رقم الهوية</th>
-                    <th>تاريخ الموعد </th>
+                    <th>تاريخ بدء التعامل</th>
+                    <th>الهاتف</th>
+                    <th>العنوان</th>
+                    <th>الجنس</th>
                     <th>ملاحظات</th>
+                    <th>تاريخ الادخال</th>
                     <th>تعديل\حذف</th>
 
                 </tr>
             </thead>
             <tbody>
-                @foreach ( $appoin as $key => $app)
+                @foreach ($customer as $key => $row)
                         <td>{{ $key = $key + 1 }}</td>
-{{-- <input type="hidden" value="{{$row->app->}}"> --}}
-                        <td> {{ $app->p_id }}</td>
-                        <td>{{ $app->date }} </td>
 
-                        <td>{{ $app->note }}</td>
-                        <td><a href="{{ route('appointment.edit', ['id' => $app->id]) }}"><button style="hight=12px;width=15px;"
+                        <td>{{ $row->name }}</td>
+                        <td> {{ $row->personal_id }}</td>
+                        <td>{{ $row->start_date }} </td>
+                        <td>{{ $row->phone }}</td>
+                        <td>{{ $row->address }}</td>
+                        <td>{{ $row->gender }}</td>
+                        <td>{{ $row->note }}</td>
+                        <td>{{ $row->created_at }}</td>
+                        <td><a href="{{ route('admin.customer.edit', ['id' => $row->personal_id]) }}"><button style="hight=12px;width=15px;"
                                     class="btn btn-primary editbtn">تعديل</button></a>
-                             <a href="{{ route('appointment.delete', ['id' => $app->id]) }}" class="btn btn-danger"
+                             <a href="{{ route('admin.customer.delete', ['id' => $row->personal_id]) }}" class="btn btn-danger"
                                 id="delete">حذف</a>
                         </td>
 

@@ -1,12 +1,12 @@
 @extends('layouts.master')
 @section('title')
-    المرضى
+    المواعيد
 @endsection
 @section('css')
     <!-- DataTables -->
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('title_page1')
-    المرضى
+    المواعيد
 @endsection
 @section('title_page2')
     لوحة التحكم
@@ -27,34 +27,26 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>الاسم</th>
                     <th>رقم الهوية</th>
-                    <th>تاريخ بدء التعامل</th>
-                    <th>الهاتف</th>
-                    <th>العنوان</th>
-                    <th>الجنس</th>
+                    <th>تاريخ الموعد </th>
                     <th>ملاحظات</th>
-                    <th>تاريخ الادخال</th>
                     <th>تعديل\حذف</th>
 
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customer as $key => $row)
-                        <td>{{ $key = $key + 1 }}</td>
-                        <td>{{ $row->name }}</td>
-                        <td> {{ $row->personal_id }}</td>
-                        <td>{{ $row->start_date }} </td>
-                        <td>{{ $row->phone }}</td>
-                        <td>{{ $row->address }}</td>
-                        <td>{{ $row->gender }}</td>
-                        <td>{{ $row->note }}</td>
-                        <td>{{ $row->created_at }}</td>
-                        <td><a href="{{ route('customer.edit', ['id' => $row->id]) }}"><button style="hight=12px;width=15px;"
-                                    class="btn btn-primary editbtn">تعديل</button></a>
-                             <a href="{{ route('customer.delete', ['id' => $row->id]) }}" class="btn btn-danger"
-                                id="delete">حذف</a>
-                        </td>
+                @foreach ($appoin as $key => $app)
+                    <td>{{ $key = $key + 1 }}</td>
+                    {{-- <input type="hidden" value="{{$row->app->}}"> --}}
+                    <td> {{ $app->p_id }}</td>
+                    <td>{{ $app->date }} </td>
+
+                    <td>{{ $app->note }}</td>
+                    <td><a href="{{ route('admin.appointment.edit', ['id' => $app->id]) }}"><button style="hight=12px;width=15px;"
+                                class="btn btn-primary editbtn">تعديل</button></a>
+                        <a href="{{ route('admin.appointment.delete', ['id' => $app->id]) }}" class="btn btn-danger"
+                            id="delete">حذف</a>
+                    </td>
 
 
 
@@ -112,35 +104,34 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
 
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js') }}"></script>
 
-      <script>
-          $(document).on("click", "#delete", function(e) {
-              e.preventDefault();
-              var link = $(this).attr("href");
-              Swal.fire({
-                      title: 'هل تريد تأكيد الحذف
-                      icon: 'question',
-                      iconHtml: '؟',
-                      confirmButtonColor: '#3085d6',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: 'نعم',
-                      cancelButtonText: 'لا',
-                      showCancelButton: true,
-                      showCloseButton: true
+    <script>
+        $(document).on("click", "#delete", function(e) {
+            e.preventDefault();
+            var link = $(this).attr("href");
+            Swal.fire({
+                title: 'هل تريد تأكيد الحذف
+                icon: 'question',
+                iconHtml: '؟',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'نعم',
+                cancelButtonText: 'لا',
+                showCancelButton: true,
+                showCloseButton: true
 
-                      }).then((result) => {
-                                      if (result.isConfirmed) {
-                                          window.location.href = link;
-                                          Swal.fire(
-                                              'تم الحذف!',
-                                              'تم الحذف بنجاح.',
-                                              'نجاح'
-                                          )
-                                      }
-                                  });
-                              });
-                          </script>
-
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = link;
+                    Swal.fire(
+                        'تم الحذف!',
+                        'تم الحذف بنجاح.',
+                        'نجاح'
+                    )
+                }
+            });
+        });
+    </script>
 @endsection

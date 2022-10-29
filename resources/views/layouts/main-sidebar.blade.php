@@ -35,7 +35,7 @@
                with font-awesome or any other icon font library -->
 
           <li class="nav-item">
-            <a href="{{route('customer')}}" class="nav-link">
+            <a href="{{route('admin.customer')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 المرضى
@@ -44,7 +44,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('customer.create')}}" class="nav-link">
+            <a href="{{route('admin.customer.create')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 اضافة مريض
@@ -52,7 +52,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('appointment')}}" class="nav-link">
+            <a href="{{route('admin.appointment')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 المواعيد
@@ -61,7 +61,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('appointment.create')}}" class="nav-link">
+            <a href="{{route('admin.appointment.create')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 اضافة موعد
