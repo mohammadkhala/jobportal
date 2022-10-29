@@ -25,15 +25,15 @@ class PersonalTestRequest extends FormRequest
     {
         return [
         'p_id'=>'required|exists:customers,personal_id',
-        'distance'=>'required',
+        'distance'=>'required|string|',
         'Right_eye_degree'=>'required',
         'left_eye_degree'=>'required',
         'year'=>'required|integer|min:2000',
         'month'=>'required|integer|min:1|max:12',
         'day'=>'required|integer|min:1|max:31',
-        'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
+        'report' =>  'nullable|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
         'cost'=>'required|integer',
-        'attach'=>'required_without:aid|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
+        'attach'=>'nullable|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
         'test_id'=>'required|exists:test,id',
         ];
     }

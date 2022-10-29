@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Auth\Events\Validated;;
 class PersonalTestController extends Controller
 {
     /**
@@ -40,19 +40,19 @@ class PersonalTestController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
         try {
             $this->validate($request,[
                 'p_id'=>'required|exists:customers,personal_id',
-                'distance'=>'required',
+
                 'Right_eye_degree'=>'required',
                 'left_eye_degree'=>'required',
                 'year'=>'required|integer|min:2000',
                 'month'=>'required|integer|min:1|max:12',
                 'day'=>'required|integer|min:1|max:31',
-                'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'report' =>  'nulluble|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
                 'cost'=>'required|integer',
-                'attach'=>'required_without:aid|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'attach'=>'file||mimes:csv,txt,xlx,xls,pdf|max:2048',
                 'test_id'=>'required|exists:test,id',
             ]);
 
@@ -80,12 +80,13 @@ class PersonalTestController extends Controller
                 ]);
             }
 
-            $ptest = PersonalTest::create($request->except('_token') );
+            // $ptest = PersonalTest::create($request->except('_token') );
 
+            if(PersonalTest::create($request->validated())){
 
-            return redirect()->back()->with('success', 'تم اضافة فحص جديد');
+            return redirect()->back()->with('success', 'تم اضافة فحص جديد');}
         } catch (Exception $ex) {
-            return $ex;
+return $ex;
             return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
         }
     }

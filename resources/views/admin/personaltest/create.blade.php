@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{ route('admin.customer.store') }}" method="POST"
+                                        <form class="form" action="{{ route('admin.ptest.store') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">

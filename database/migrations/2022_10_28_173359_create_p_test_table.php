@@ -15,8 +15,6 @@ class CreatePTestTable extends Migration
     {
         Schema::create('p_test', function (Blueprint $table) {
             $table->id();
-
-
             $table->foreignId('p_id')->constrained('customers','personal_id');
             $table->text('distance');
             $table->text('Right_eye_degree');
