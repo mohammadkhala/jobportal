@@ -53,7 +53,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="{{$appoin->p_id}}" id="name"
+                                                            <input type="text" value="{{$appoin->p_id}}" id="p_id"
                                                                 class="form-control"
                                                                 name="p_id">
                                                             @error('p_id')
@@ -65,7 +65,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">التاريخ </label>
-                                                            <input type="date" value="{{$appoin->date}}" id="name"
+                                                            <input type="date" value="{{$appoin->date}}" id="date"
                                                                 class="form-control"
                                                                 name="date">
                                                             @error('date')
@@ -80,7 +80,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="{{$appoin->note}}" id="name"
+                                                        <input type="text" value="{{$appoin->note}}" id="note"
                                                             class="form-control"
                                                             name="note">
                                                         @error('note')
