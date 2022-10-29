@@ -38,10 +38,25 @@ class PersonalTestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PersonalTestRequest $request)
+    public function store(Request $request)
     {
+        dd($request);
         try {
-            if ($request->hasFile('report')) {
+            $this->validate($request,[
+                'p_id'=>'required|exists:customers,personal_id',
+                'distance'=>'required',
+                'Right_eye_degree'=>'required',
+                'left_eye_degree'=>'required',
+                'year'=>'required|integer|min:2000',
+                'month'=>'required|integer|min:1|max:12',
+                'day'=>'required|integer|min:1|max:31',
+                'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'cost'=>'required|integer',
+                'attach'=>'required_without:aid|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'test_id'=>'required|exists:test,id',
+            ]);
+
+            if ($request->file('report')) {
                 $file = $request->file('report');
                 $time = Carbon::now();
                 $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
@@ -53,7 +68,7 @@ class PersonalTestController extends Controller
                 ]);
             }
 
-            if ($request->hasFile('attach')) {
+            if ($request->file('attach')) {
                 $file = $request->file('attach');
                 $time = Carbon::now();
                 $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
@@ -65,21 +80,12 @@ class PersonalTestController extends Controller
                 ]);
             }
 
-            $ptest = PersonalTest::create($request, [
-                'p_id' => $request->p_id,
-                'distance' => $request->distance,
-                'Right_eye_degree' => $request->Right_eye_degree,
-                'left_eye_degree' => $request->left_eye_degree,
-                'year' => $request->year,
-                'month' => $request->month,
-                'day' => $request->day,
+            $ptest = PersonalTest::create($request->except('_token') );
 
-                'cost' => $request->cost,
 
-                'test_id' => $request->test_id,
-            ]);
             return redirect()->back()->with('success', 'تم اضافة فحص جديد');
         } catch (Exception $ex) {
+            return $ex;
             return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
         }
     }
