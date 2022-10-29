@@ -15,9 +15,9 @@ class CreateTestTable extends Migration
     {
         Schema::create('test', function (Blueprint $table) {
             $table->id();
-            $table->foreign('p_id')->references('personal_id')->on('customers');
-            $table->text('description');
-            $table->text('info_mid');
+            $table->foreignId('p_id')->constrained('customers','personal_id');
+            $table->text('description')->nullable();
+            $table->text('info_mid')->nullable();
 
             $table->timestamps();
         });

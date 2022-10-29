@@ -15,13 +15,14 @@ class CreateFinanceTable extends Migration
     {
         Schema::create('finance', function (Blueprint $table) {
             $table->id();
-            $table->foreign('p_id')->references('personal_id')->on('customers');
-            $table->foreign('test_id')->references('id')->on('test');
+
+            $table->foreignId('p_id')->constrained('customers','personal_id');
+            $table->foreignId('test_id')->constrained('test');
             $table->integer('year');
             $table->integer('month');
             $table->integer('day');
             $table->integer('amount');
-            $table->text('note');
+            $table->text('note')->nullable();
 
             $table->timestamps();
         });

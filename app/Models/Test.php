@@ -9,8 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Test extends Model
 {
     use HasFactory;
-    protected $table = 'admin_tests';
-
+    protected $table='test';
     protected $fillable = [
         'id',
         'p-id',
@@ -27,7 +26,7 @@ class Test extends Model
     }
 
 
-    public function user()
+    public function customer()
     {
         return $this->belongsTo(Customer::class, 'p_id', 'personal_id');
     }

@@ -15,9 +15,10 @@ class CreateAppointmentTable extends Migration
     {
         Schema::create('appointment', function (Blueprint $table) {
             $table->id();
-            $table->foreign('p_id')->references('personal_id')->on('customers');
+
+            $table->foreignId('p_id')->constrained('customers','personal_id');
             $table->date('date');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }

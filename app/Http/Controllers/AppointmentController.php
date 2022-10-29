@@ -8,6 +8,7 @@ use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\AppointmentRequset;
+use App\Http\Requests\CustomerRequest;
 
 class AppointmentController extends Controller
 {
@@ -28,6 +29,12 @@ class AppointmentController extends Controller
     public function store(Request $request)
     {
         try{
+            $request->validate([
+                'p_id'=>'required|exists:customers,personal_id',
+                'date'=>'required|date'
+
+            ]);
+
                 $appoin = Appointment::create([
                     'p_id'=>$request->p_id,
                     'date'=>$request->date,
@@ -35,10 +42,10 @@ class AppointmentController extends Controller
                 ]);
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
         }catch(Exception $ex){
-            return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحال');
+            return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
         }
-        
-        
+
+
 
     }
 
@@ -57,8 +64,8 @@ class AppointmentController extends Controller
         try{ $appoin = Appointment::find($id);
             return view('appointment.edit', compact('appoin'));
          }catch(Exception $ex){
-            return $this->$ex;
-         }
+            return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
+        }
     }
 
     /**
@@ -68,16 +75,33 @@ class AppointmentController extends Controller
      * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(AppointmentRequset $request, Appointment $appoin,$id)
-    {
-        $appoin = Appointment::find($id)->first();
+    public function update(AppointmentRequset $request, Appointment $appoin,$id,CustomerRequest $customer)
+    {try{
+        $appoin = Appointment::find($id);
         if (!$appoin)
+
         return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
-        $appoin =Appointment::where('id', $id)->update($request->except('_token'));
+        $this->validate($request,[
+            "p_id"=>$request->p_id,
+            "date"=>$request->date,
+            "note"=>$request->note
+        ]
 
-        return redirect()->route('customer')->with(['success' => 'تم ألتحديث بنجاح']);
+        );
+        $appoin =Appointment::where('id',$customer->personal_id)->update($request,[
+            "p_id"=>$request->p_id,
+            "date"=>$request->date,
+            "note"=>$request->note
+        ]);
 
+        return redirect()->route('appointment')->with(['success' => 'تم ألتحديث بنجاح']);
 
+    }
+    catch(Exception $ex){
+return $ex;
+        return redirect()->route('appointment')->with(['error' => 'هذا الموعد غير موجود ']);
+
+    }
     }
 
     /**

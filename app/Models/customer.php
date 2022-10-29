@@ -9,8 +9,9 @@ class customer extends Model
 {
 
     use HasFactory;
+    protected $primaryKey='personal_id';
     protected $fillable = [
-        'id',
+
         'name',
         'personal_id',
         'start_date',
@@ -24,15 +25,15 @@ class customer extends Model
 
     public function appointment()
     {
-        return $this->hasMany(Appointment::class, 'p_id');
+        return $this->hasMany(Appointment::class, 'personal_id');
     }
     public function test()
     {
-        return $this->hasOne(Test::class, 'p_id');
+        return $this->hasOne(Test::class, 'id');
     }
 
     public function finance()
     {
-        return $this->hasOne(CustomerTest::class, 'p_id');
+        return $this->hasOne(Finance::class, 'id');
     }
 }
