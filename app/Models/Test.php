@@ -12,7 +12,7 @@ class Test extends Model
     protected $table='test';
     protected $fillable = [
         'id',
-        'p-id',
+        'p_id',
         'description',
         'info_mid',
         'created_at',

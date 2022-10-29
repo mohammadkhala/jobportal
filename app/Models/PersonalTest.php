@@ -33,4 +33,20 @@ class PersonalTest extends Model
     {
         return $this->belongsTo(customer::class, 'p_id', 'personal_id');
     }
+    public function scopeSelection($query)
+    {
+        return $query->select(
+            'p_id',
+            'distance',
+            'Right_eye_degree',
+            'left_eye_degree',
+            'year',
+            'month',
+            'day',
+            'report',
+            'cost',
+            'attach',
+            'test_id',
+        );
+    }
 }
