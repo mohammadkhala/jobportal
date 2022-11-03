@@ -31,9 +31,9 @@ class PersonalTestRequest extends FormRequest
         'year'=>'required|integer|min:2000',
         'month'=>'required|integer|min:1|max:12',
         'day'=>'required|integer|min:1|max:31',
-        'report' =>  'nullable|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
+        'report' =>  'nullable|file',
         'cost'=>'required|integer',
-        'attach'=>'nullable|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
+        'attach'=>'nullable|file',
         'test_id'=>'required|exists:test,id',
         ];
     }

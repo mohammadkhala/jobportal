@@ -41,21 +41,21 @@ class PersonalTestController extends Controller
     public function store(Request $request)
     {
 
-        try {
-            $this->validate($request,[
-                'p_id'=>'required|exists:customers,personal_id',
+         try {
+            // $this->validate($request,[
+            //     'p_id'=>'required|exists:customers,personal_id',
 
-                'Right_eye_degree'=>'required',
-                'left_eye_degree'=>'required',
-                'year'=>'required|integer|min:2000',
-                'month'=>'required|integer|min:1|max:12',
-                'day'=>'required|integer|min:1|max:31',
-                'report' =>  'nulluble|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
-                'cost'=>'required|integer',
-                'attach'=>'file||mimes:csv,txt,xlx,xls,pdf|max:2048',
-                'test_id'=>'required|exists:test,id',
-            ]);
-
+            //     'Right_eye_degree'=>'required|string',
+            //     'left_eye_degree'=>'required|string',
+            //     'year'=>'required|integer|min:2000',
+            //     'month'=>'required|integer|min:1|max:12',
+            //     'day'=>'required|integer|min:1|max:31',
+            //     'report' =>  'file',
+            //     'cost'=>'required|integer',
+            //     'attach'=>'file',
+            //     'test_id'=>'required|exists:test,id',
+            // ]);
+           $ptest=$request->all();
             if ($request->file('report')) {
                 $file = $request->file('report');
                 $time = Carbon::now();
@@ -86,7 +86,7 @@ class PersonalTestController extends Controller
 
             return redirect()->back()->with('success', 'تم اضافة فحص جديد');}
         } catch (Exception $ex) {
-return $ex;
+//return $ex;
             return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
         }
     }
