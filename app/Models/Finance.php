@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Finance extends Model
 {
     use HasFactory;
-    protected $table = 'finance';
+    //protected $table = 'finance';
     protected $fillable = [
         'id',
-        'p_id',
+        'customer_id',
         'test_id',
         'year',
         'month',
@@ -22,13 +22,13 @@ class Finance extends Model
         'updated_at'
     ];
 
-    public function user()
+    public function customer()
     {
-        return $this->belongsTo(customer::class, 'p_id', 'personal_id');
+        return $this->belongsTo(customer::class);
     }
 
     public function transaction()
     {
-        return $this->hasMany(Transaction::class, 'finance_id');
+        return $this->hasMany(Transaction::class);
     }
 }

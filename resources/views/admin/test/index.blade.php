@@ -28,7 +28,6 @@
                 <tr>
                     <th>#</th>
                     <th>رقم الفحص</th>
-
                     <th>رقم الهوية</th>
                     <th> الوصف </th>
                     <th>معلومات طبية</th>
@@ -37,25 +36,22 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($test as $key => $app)
+                @foreach ($tests as $key => $test)
+                <tr>
                     <td>{{ $key = $key + 1 }}</td>
-                    <th>{{ $app->id }}</th>
-
-                    <td> {{ $app->p_id }}</td>
-                    <td>{{ $app->description }} </td>
-                    <td>{{ $app->info_mid  }} </td>
-
-
-                    <td><a href="{{ route('admin.test.edit', ['id' => $app->id]) }}"><button style="hight=12px;width=15px;"
-                                class="btn btn-primary editbtn">تعديل</button></a>
-                        <a href="{{ route('admin.test.delete', ['id' => $app->id]) }}" class="btn btn-danger"
-                            id="delete">حذف</a>
+                    <td>{{ $test->id }}</td>
+                    <td>{{ $test->customer->personal_id }}</td>
+                    <td>{{ $test->description }} </td>
+                    <td>{{ $test->info_mid  }} </td>
+                    <td>
+                        <a href="{{ route('admin.test.edit', ['id' => $test->id]) }}" class="btn btn-primary btn-sm"
+                            id="edit"><i class="fa fa-edit"></i></a>
+                     <a href="{{ route('admin.test.delete', ['id' => $test->id]) }}" class="btn btn-danger btn-sm"
+                        id="delete"><i class="fa fa-trash"></i></a>
                     </td>
-
-
-
-                    </tr>
+                </tr>
                 @endforeach
+            </tbody>
         </table>
     </div>
 @endsection

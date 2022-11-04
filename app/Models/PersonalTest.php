@@ -8,16 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class PersonalTest extends Model
 {
     use HasFactory;
-    protected $table = 'p_test';
+    protected $table = 'p_tests';
     protected $fillable = [
         'id',
-        'p_id',
+        'customer_id',
         'distance',
-        'Right_eye_degree',
+        'right_eye_degree',
         'left_eye_degree',
-        'year',
-        'month',
-        'day',
+        'date',
+        // 'month',
+        // 'day',
         'report',
         'cost',
         'attach',
@@ -27,22 +27,22 @@ class PersonalTest extends Model
     ];
     public function test()
     {
-        return $this->belongsTo(Test::class, 'test_id', 'id');
+        return $this->belongsTo(Test::class);
     }
-    public function person()
+    public function customer()
     {
-        return $this->belongsTo(customer::class, 'p_id', 'personal_id');
+        return $this->belongsTo(customer::class);
     }
     public function scopeSelection($query)
     {
         return $query->select(
-            'p_id',
+            'customer_id',
             'distance',
-            'Right_eye_degree',
+            'right_eye_degree',
             'left_eye_degree',
-            'year',
-            'month',
-            'day',
+            'date',
+            // 'month',
+            // 'day',
             'report',
             'cost',
             'attach',

@@ -53,10 +53,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="{{$test->p_id}}" id="name"
+                                                            <input type="text" value="{{$test->customer->personal_id}}" id="personal_id"
                                                                 class="form-control"
-                                                                name="p_id">
-                                                            @error('p_id')
+                                                                name="personal_id">
+                                                            @error('personal_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -65,10 +65,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الوصف </label>
-                                                            <input type="text" value="{{$test->description}}" id="name"
+                                                            <input type="text" value="{{$test->description}}" id="desc"
                                                                 class="form-control"
-                                                                name="description">
-                                                            @error('description')
+                                                                name="desc">
+                                                            @error('desc')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
@@ -80,10 +80,10 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">معلومات طبية </label>
-                                                        <input type="text" value="{{$test->mid_info}}" id="name"
+                                                        <input type="text" value="{{$test->info_mid}}" id="info_mid"
                                                             class="form-control"
-                                                            name="mid_info">
-                                                        @error('mid_info')
+                                                            name="info_mid">
+                                                        @error('info_mid')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>

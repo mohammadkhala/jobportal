@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{ route('admin.customer.store') }}" method="POST"
+                                        <form class="form" action="{{ route('admin.ptest.store') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
@@ -47,10 +47,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية  </label>
-                                                            <input type="text" value="" id="name"
+                                                            <input type="text" value="" id="personal_id"
                                                                 class="form-control"
-                                                                name="p_id">
-                                                            @error('p_id')
+                                                                name="personal_id">
+                                                            @error('personal_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -59,37 +59,35 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الفحص</label>
-                                                            <input type="text" value="" id="name"
+                                                            <input type="text" value="" id="test_id"
                                                                 class="form-control"
                                                                 name="test_id">
                                                             @error('test_id')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
-
                                                         </div>
-
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">المسافة</label>
-                                                            <input type="text" value="" id="name"
+                                                            <label for="projectinput1">المسافة </label>
+                                                            <input type="text" value="" id="distance"
                                                                 class="form-control"
-                                                                name="distance ">
-                                                            @error('distance ')
-                                                                <span class="text-danger">{{ $message }} </span>
+                                                                name="distance">
+                                                            @error('distance')
+                                                                <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">درجة العين اليمنى</label>
-                                                            <input type="text" value="" id="name"
+                                                            <input type="text" value="" id="right_eye_degree"
                                                                 class="form-control"
-                                                                name="right_eye_degree ">
+                                                                name="right_eye_degree">
                                                             @error('right_eye_degree')
-                                                                <span class="text-danger">{{ $message }} </span>
+                                                                <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
@@ -99,7 +97,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">درجة العين اليسرى</label>
-                                                        <input type="text" value="" id="name"
+                                                        <input type="text" value="" id="left_eye_degree"
                                                             class="form-control"
                                                             name="left_eye_degree">
                                                         @error('left_eye_degree')
@@ -109,45 +107,22 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">السنة </label>
-                                                        <input type="text" value="" id="name"
+                                                        <label for="projectinput1">التاريخ </label>
+                                                        <input type="date" value="" id="date"
                                                             class="form-control"
-                                                            name="year">
-                                                        @error('year')
+                                                            name="date">
+                                                        @error('date')
                                                             <span class="text-danger">{{ $message }} </span>
                                                         @enderror
                                                     </div>
                                                 </div>
                                             </div>
+                                            
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">الشهر </label>
-                                                        <input type="text" value="" id="name"
-                                                            class="form-control"
-                                                            name="month">
-                                                        @error('month')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">اليوم </label>
-                                                        <input type="text" value="" id="name"
-                                                            class="form-control"
-                                                            name="day">
-                                                        @error('day')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">تقرير </label>
-                                                        <input type="file" value="" id="name"
+                                                        <label for="report">تقرير </label>
+                                                        <input type="file" value="" id="report"
                                                             class="form-control"
                                                             name="report">
                                                         @error('report')
@@ -158,7 +133,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="projectinput1">التكلفة </label>
-                                                        <input type="text" value="" id="name"
+                                                        <input type="text" value="" id="cost"
                                                             class="form-control"
                                                             name="cost">
                                                         @error('cost')
@@ -168,8 +143,8 @@
                                                 </div>
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">مرفقات </label>
-                                                        <input type="file" value="" id="name"
+                                                        <label for="attach">مرفقات </label>
+                                                        <input type="file" value="" id="attach"
                                                             class="form-control"
                                                             name="attach">
                                                         @error('attach')
@@ -180,15 +155,15 @@
                                             </div>
                                     </div>
                                 </div>
-                                <div class="form-actions">
+                                    <div class="form-actions">
 
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> حفظ
-                                    </button>
-                                    <a href="{{route('admin.customer')}}"> <button type="button" class="btn btn-warning " >
-                                        المرضى
-                                        </button></a>
-                                </div>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="la la-check-square-o"></i> حفظ
+                                        </button>
+                                        <a href="{{route('admin.customer')}}"> <button type="button" class="btn btn-warning " >
+                                            المرضى
+                                            </button></a>
+                                    </div>
                                 </form>
                             </div>
                         </div>

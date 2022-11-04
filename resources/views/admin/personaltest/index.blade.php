@@ -33,44 +33,37 @@
                     <th>المسافة</th>
                     <th>درجة العين اليمنى </th>
                     <th>درجة العين اليسرى</th>
-                    <th>السنة</th>
-                    <th>الشهر</th>
-                    <th>اليوم</th>
-                    <th>تقرير </th>
+                    <th>التاريخ</th>
+                    {{-- <th>تقرير </th> --}}
                     <th>التكلفة </th>
-                    <th>مرفقات </th>
-
+                    {{-- <th>مرفقات </th> --}}
 
                     <th>تعديل\حذف</th>
 
                 </tr>
             </thead>
             <tbody>
-                @foreach ($ptest as $key => $row)
+                @foreach ($ptests as $key => $ptest)
+                <tr>
                     <td>{{ $key = $key + 1 }}</td>
-
-                    <td>{{ $row->p_id }}</td>
-                    <td> {{ $row->test_id }}</td>
-                    <td> {{ $row->distance }}</td>
-                    <td>{{ $row->Right_eye_degree  }} </td>
-                    <td>{{ $row->left_eye_degree  }}</td>
-                    <td>{{ $row->year }}</td>
-                    <td>{{ $row->month }}</td>
-                    <td>{{ $row->day }}</td>
-                    <td>{{ $row->report }}</td>
-                     <td>{{ $row->cost }}</td>
-                     <td>{{ $row->attach }}</td>
-                    <td>{{ $row->created_at }}</td>
-                    <td><a href="{{ route('admin.ptest.edit', ['id' => $row->id]) }}"><button
-                                style="hight=12px;width=15px;" class="btn btn-primary editbtn">تعديل</button></a>
-                        <a href="{{ route('admin.ptest.delete', ['id' => $row->id]) }}" class="btn btn-danger"
-                            id="delete">حذف</a>
+                    <td>{{ $ptest->customer->personal_id }}</td>
+                    <td> {{ $ptest->test_id }}</td>
+                    <td> {{ $ptest->distance }}</td>
+                    <td>{{ $ptest->right_eye_degree  }} </td>
+                    <td>{{ $ptest->left_eye_degree  }}</td>
+                    <td>{{ $ptest->date }}</td>
+                    {{-- <td>{{ $ptest->report }}</td> --}}
+                     <td>{{ $ptest->cost }}</td>
+                     {{-- <td>{{ $ptest->attach }}</td> --}}
+                    <td>
+                        <a href="{{ route('admin.ptest.edit', ['id' => $ptest->id]) }}" class="btn btn-primary btn-sm"
+                            id="edit"><i class="fa fa-edit"></i></a>
+                     <a href="{{ route('admin.ptest.delete', ['id' => $ptest->id]) }}" class="btn btn-danger btn-sm"
+                        id="delete"><i class="fa fa-trash"></i></a>
                     </td>
-
-
-
-                    </tr>
+                </tr>
                 @endforeach
+            </tbody>
         </table>
     </div>
 @endsection
