@@ -8,12 +8,8 @@ use App\Models\Customer;
 use App\Models\PersonalTest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-<<<<<<< HEAD
 use App\Http\Requests\PersonalTestRequest;
-
-=======
 use Illuminate\Auth\Events\Validated;;
->>>>>>> a0f113ead2e4cceef4a9b1c4e7cb3a35d66bbc8c
 class PersonalTestController extends Controller
 {
     /**
@@ -45,7 +41,6 @@ class PersonalTestController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
         $this->validate($request,[
             'personal_id'=>'required|exists:customers,personal_id',
             'distance'=>'required|integer',
@@ -76,7 +71,6 @@ class PersonalTestController extends Controller
                 date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
                 'public'
             );
-=======
 
          try {
             // $this->validate($request,[
@@ -124,7 +118,6 @@ class PersonalTestController extends Controller
             return redirect()->back()->with('success', 'تم اضافة فحص جديد');}
         } catch (Exception $ex) {
             return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
->>>>>>> a0f113ead2e4cceef4a9b1c4e7cb3a35d66bbc8c
         }
 
         $ptest = PersonalTest::create([
@@ -154,6 +147,7 @@ class PersonalTestController extends Controller
      * @param  \App\Models\CustomerTest  $customerTest
      * @return \Illuminate\Http\Response
      */
+
     public function show(PersonalTest $customerTest)
     {
         //
