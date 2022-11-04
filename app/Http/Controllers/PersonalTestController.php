@@ -8,8 +8,12 @@ use App\Models\Customer;
 use App\Models\PersonalTest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+<<<<<<< HEAD
 use App\Http\Requests\PersonalTestRequest;
 
+=======
+use Illuminate\Auth\Events\Validated;;
+>>>>>>> a0f113ead2e4cceef4a9b1c4e7cb3a35d66bbc8c
 class PersonalTestController extends Controller
 {
     /**
@@ -41,6 +45,7 @@ class PersonalTestController extends Controller
      */
     public function store(Request $request)
     {
+<<<<<<< HEAD
         $this->validate($request,[
             'personal_id'=>'required|exists:customers,personal_id',
             'distance'=>'required|integer',
@@ -71,6 +76,55 @@ class PersonalTestController extends Controller
                 date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
                 'public'
             );
+=======
+
+         try {
+            // $this->validate($request,[
+            //     'p_id'=>'required|exists:customers,personal_id',
+
+            //     'Right_eye_degree'=>'required|string',
+            //     'left_eye_degree'=>'required|string',
+            //     'year'=>'required|integer|min:2000',
+            //     'month'=>'required|integer|min:1|max:12',
+            //     'day'=>'required|integer|min:1|max:31',
+            //     'report' =>  'file',
+            //     'cost'=>'required|integer',
+            //     'attach'=>'file',
+            //     'test_id'=>'required|exists:test,id',
+            // ]);
+           $ptest=$request->all();
+            if ($request->file('report')) {
+                $file = $request->file('report');
+                $time = Carbon::now();
+                $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
+                $fileName = date_format($time, 'h') . rand(1, 9) . date_format($time, 's') . '.' . $file->extension();
+                Storage::disk('public')->putFileAs($directory, $file, $fileName);
+                $report = PersonalTest::create([
+
+                    'report' => $directory . '/' . $fileName,
+                ]);
+            }
+
+            if ($request->file('attach')) {
+                $file = $request->file('attach');
+                $time = Carbon::now();
+                $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
+                $fileName = date_format($time, 'h') . rand(1, 9) . date_format($time, 's') . '.' . $file->extension();
+                Storage::disk('public')->putFileAs($directory, $file, $fileName);
+                $report = PersonalTest::create([
+
+                    'attach' => $directory . '/' . $fileName,
+                ]);
+            }
+
+            // $ptest = PersonalTest::create($request->except('_token') );
+
+            if(PersonalTest::create($request->validated())){
+
+            return redirect()->back()->with('success', 'تم اضافة فحص جديد');}
+        } catch (Exception $ex) {
+            return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
+>>>>>>> a0f113ead2e4cceef4a9b1c4e7cb3a35d66bbc8c
         }
 
         $ptest = PersonalTest::create([
