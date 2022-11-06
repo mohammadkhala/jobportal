@@ -23,6 +23,7 @@ return new class extends Migration
             // $table->integer('month');
             // $table->integer('day');
             $table->integer('amount');
+            $table->integer('remaining');
             $table->date('date');
             $table->text('note')->nullable();
 

@@ -17,6 +17,7 @@ class Finance extends Model
         'month',
         'day',
         'amount',
+        'remaining',
         'note',
         'created_at',
         'updated_at'

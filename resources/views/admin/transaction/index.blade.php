@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    فحص المريض
+    المالية
 @endsection
 @section('css')
     <!-- DataTables -->
@@ -15,49 +15,39 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('title_page1')
-    فحص المريض
+    المالية
 @endsection
 @section('title_page2')
     لوحة التحكم
 @endsection
 @section('content')
-    @method('PUT')
-    <input type="hidden" name="id">
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped" dir="rtl">
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم الهوية</th>
-                    <th>رقم الفحص </th>
-                    <th>المسافة</th>
-                    <th>درجة العين اليمنى </th>
-                    <th>درجة العين اليسرى</th>
-                    <th>التاريخ</th>
-                    <th>تقرير </th>
-                    <th>التكلفة </th>
-                     <th>مرفقات </th>
+                    <th>رقم المالية</th>
+                    <th>الدفعة المالية </th>
+                    <th>التاريخ  </th>
+
+                    <th>ملاحظات</th>
                     <th>تعديل\حذف</th>
 
                 </tr>
             </thead>
             <tbody>
-                @foreach ($ptests as $key => $ptest)
+                @foreach ($transactions as $key => $transaction)
                 <tr>
                     <td>{{ $key = $key + 1 }}</td>
-                    <td>{{ $ptest->customer->personal_id }}</td>
-                    <td> {{ $ptest->test_id }}</td>
-                    <td> {{ $ptest->distance }}</td>
-                    <td>{{ $ptest->right_eye_degree  }} </td>
-                    <td>{{ $ptest->left_eye_degree  }}</td>
-                    <td>{{ $ptest->date }}</td>
-                    <td>{{ $ptest->report }}</td>
-                     <td>{{ $ptest->cost }}</td>
-                      <td>{{ $ptest->attach }}</td>
+
+                    <td>{{ $transaction->finance_id }} </td>
+                    <td>{{ $transaction->payment }} </td>
+                    <td>{{ $transaction->note }} </td>
+                    <td></td>
                     <td>
-                        <a href="{{ route('admin.ptest.edit', ['id' => $ptest->id]) }}" class="btn btn-primary btn-sm"
+                        <a href="{{ route('admin.transaction.edit', ['id' => $transaction->id]) }}" class="btn btn-primary btn-sm"
                             id="edit"><i class="fa fa-edit"></i></a>
-                     <a href="{{ route('admin.ptest.delete', ['id' => $ptest->id]) }}" class="btn btn-danger btn-sm"
+                     <a href="{{ route('admin.tranasction.delete', ['id' => $transaction->id]) }}" class="btn btn-danger btn-sm"
                         id="delete"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>

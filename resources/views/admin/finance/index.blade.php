@@ -28,8 +28,10 @@
                     <th>#</th>
                     <th>رقم الهوية</th>
                     <th>رقم الفحص</th>
-                    <th>تاريخ الموعد </th>
+                    <th>التاريخ  </th>
                     <th>المبلغ الكلي</th>
+                    <th>المتبقي</th>
+
                     <th>ملاحظات</th>
                     <th>تعديل\حذف</th>
 
@@ -41,7 +43,9 @@
                     <td>{{ $key = $key + 1 }}</td>
                     <td> {{ $finance->customer->personal_id }}</td>
                     <td>{{ $finance->test_id }} </td>
+                    <td>{{ $finance->date }} </td>
                     <td>{{ $finance->amount }} </td>
+                    <td>{{ $finance->remaining }} </td>
                     <td>{{ $finance->note }} </td>
                     <td></td>
                     <td>

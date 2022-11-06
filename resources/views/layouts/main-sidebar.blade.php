@@ -126,6 +126,23 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.transaction') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                الدفعات المالية
+                                <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
+
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.transaction.create') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                            اضافة دفعات مالية</p>
+                        </a>
+                    </li>
                     @include('layouts.navigation')
 
                     <!-- /.sidebar-menu -->

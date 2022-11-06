@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Finance;
+
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        //
+        $transactions = Transaction::all();
+        return view('admin.transaction.index', compact('transactions'));
     }
 
     /**
@@ -24,7 +27,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.transaction.create');
     }
 
     /**
@@ -35,26 +38,27 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'finance_id' => "required|exists:finances,id",
+            'payment' => "required|integer",
+            'date' => "required|date",
+
+        ]);
+        $transactions = Transaction::create([
+            'finance_id' => Finance::where('id', $request->id)->first()->id,
+            'payment' => $request->payment,
+            'date' => $request->date,
+            'note' => $request->note
+        ]);
+        return redirect()->back()->with('success', 'تم اضافة دفعة جديدة بنجاح');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\FinanceTransition  $financeTransition
-     * @return \Illuminate\Http\Response
-     */
     public function show(Transaction $financeTransition)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\FinanceTransition  $financeTransition
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Transaction $financeTransition)
     {
         //

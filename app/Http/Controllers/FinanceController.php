@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Transaction;
+use App\Models\Test;
 
 use App\Models\Finance;
 use Illuminate\Http\Request;
-
+use App\Models\customer;
 class FinanceController extends Controller
 {
     /**
@@ -43,10 +45,11 @@ class FinanceController extends Controller
               'date'=>'required|date'
         ]);
         $ptest = Finance::create([
-            'customer_id' => Customer::where('personal_id', $request->personal_id)->first()->id,
-            'test_id' =>Test::where('test_id', $request->test_id)->first()->id,
+            'customer_id' => customer::where('personal_id', $request->personal_id)->first()->id,
+            'test_id' => Test::where('test_id', $request->test_id)->first()->id,
             'date' => $request->date,
            'amount'=>$request->amount,
+           'remaining'=>$request->amount-$request->payment,
            'note'=>$request->note
         ]);
 
