@@ -19,10 +19,11 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers');
             $table->unsignedBigInteger('test_id');
             $table->foreign('test_id')->references('id')->on('tests');
-            $table->integer('year');
-            $table->integer('month');
-            $table->integer('day');
+            // $table->integer('year');
+            // $table->integer('month');
+            // $table->integer('day');
             $table->integer('amount');
+            $table->date('date');
             $table->text('note')->nullable();
 
             $table->timestamps();

@@ -7,7 +7,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\TestController;
 use App\Models\PersonalTest;
 use App\Http\Controllers\PersonalTestController;
-
+use App\Http\Controllers\FinanceController;
 Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
@@ -58,3 +58,10 @@ Route::post('/ptest/store', [PersonalTestController::class, 'store'])->name('adm
 Route::get('/ptest/edit/{id}', [PersonalTestController::class, 'edit'])->name('admin.ptest.edit');
 Route::put('/ptest/update/{id}', [PersonalTestController::class, 'update'])->name('admin.ptest.update');
 Route::get('/ptest/delete/{id}', [PersonalTestController::class, 'destroy'])->name('admin.ptest.delete');
+// finance routes
+Route::get('/finance', [FinanceController::class, 'index'])->name('admin.finance');
+Route::get('/finance/create', [FinanceController::class, 'create'])->name('admin.finance.create');
+Route::post('/finance/store', [FinanceController::class, 'store'])->name('admin.finance.store');
+Route::get('/finance/edit/{id}', [FinanceController::class, 'edit'])->name('admin.finance.edit');
+Route::put('/finance/update/{id}', [FinanceController::class, 'update'])->name('admin.finance.update');
+Route::get('/finance/delete/{id}', [FinanceController::class, 'destroy'])->name('admin.finance.delete');

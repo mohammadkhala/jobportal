@@ -18,7 +18,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = customer::first()->paginate(15);
+        $customers = customer::latest()->paginate(15);
         return view('admin.customer.index', compact('customers'));
     }
 
@@ -58,7 +58,7 @@ class CustomerController extends Controller
                 'gender'=>$request->gender,
             ]);
             return redirect()->back()->with('success', 'تم اضافة مريض جديد');
-        } 
+        }
         catch (\Throwable $th) {
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
         }
@@ -84,14 +84,14 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        try{ 
+        try{
             $customer = customer::find($id);
             return view('admin.customer.edit', compact('customer'));
         }catch(Exception $ex){
 
             return $this->$ex;
         }
-        
+
     }
 
     /**

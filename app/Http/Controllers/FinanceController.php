@@ -14,7 +14,8 @@ class FinanceController extends Controller
      */
     public function index()
     {
-        //
+        $finances = Finance::all();
+        return view('admin.finance.index', compact('finances'));
     }
 
     /**
@@ -24,7 +25,7 @@ class FinanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.finance.create');
     }
 
     /**
@@ -35,7 +36,21 @@ class FinanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'personal_id'=>'required|exists:customers,personal_id',
+            'test_id'=>'required|exists:tests,id',
+              'amount'=>'required|integer',
+              'date'=>'required|date'
+        ]);
+        $ptest = Finance::create([
+            'customer_id' => Customer::where('personal_id', $request->personal_id)->first()->id,
+            'test_id' =>Test::where('test_id', $request->test_id)->first()->id,
+            'date' => $request->date,
+           'amount'=>$request->amount,
+           'note'=>$request->note
+        ]);
+
+        return redirect()->back()->with('success', 'تم اضافة معلومات مالية جديدة');
     }
 
     /**

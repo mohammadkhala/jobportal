@@ -117,7 +117,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -160,7 +160,7 @@
                                         <button type="submit" class="btn btn-primary">
                                             <i class="la la-check-square-o"></i> حفظ
                                         </button>
-                                        <a href="{{route('admin.customer')}}"> <button type="button" class="btn btn-warning " >
+                                        <a href="{{route('admin.ptest')}}"> <button type="button" class="btn btn-warning " >
                                             المرضى
                                             </button></a>
                                     </div>

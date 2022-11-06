@@ -43,9 +43,9 @@ class PersonalTestController extends Controller
     {
         $this->validate($request,[
             'personal_id'=>'required|exists:customers,personal_id',
-            'distance'=>'required|integer',
-            'right_eye_degree'=>'required',
-            'left_eye_degree'=>'required',
+            'distance'=>'required|string',
+            'right_eye_degree'=>'required|string',
+            'left_eye_degree'=>'required|string',
             'date'=>'required|date',
             // 'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
             'cost'=>'required|integer',
@@ -56,7 +56,7 @@ class PersonalTestController extends Controller
         $reportPath = null;
         if($request->hasFile('report')) {
             $reportPath = $request->file('report')->storeAs(
-                'reports', 
+                'reports',
                 date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('report')->getClientOriginalExtension(),
                 'public'
             );
@@ -67,58 +67,13 @@ class PersonalTestController extends Controller
         $attachPath = null;
         if($request->hasFile('attach')) {
             $attachPath = $request->file('attach')->storeAs(
-                'attachs', 
+                'attachs',
                 date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
                 'public'
             );
 
-         try {
-            // $this->validate($request,[
-            //     'p_id'=>'required|exists:customers,personal_id',
 
-            //     'Right_eye_degree'=>'required|string',
-            //     'left_eye_degree'=>'required|string',
-            //     'year'=>'required|integer|min:2000',
-            //     'month'=>'required|integer|min:1|max:12',
-            //     'day'=>'required|integer|min:1|max:31',
-            //     'report' =>  'file',
-            //     'cost'=>'required|integer',
-            //     'attach'=>'file',
-            //     'test_id'=>'required|exists:test,id',
-            // ]);
-           $ptest=$request->all();
-            if ($request->file('report')) {
-                $file = $request->file('report');
-                $time = Carbon::now();
-                $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
-                $fileName = date_format($time, 'h') . rand(1, 9) . date_format($time, 's') . '.' . $file->extension();
-                Storage::disk('public')->putFileAs($directory, $file, $fileName);
-                $report = PersonalTest::create([
 
-                    'report' => $directory . '/' . $fileName,
-                ]);
-            }
-
-            if ($request->file('attach')) {
-                $file = $request->file('attach');
-                $time = Carbon::now();
-                $directory = date_format($time, 'Y') . '/' . date_format($time, 'm');
-                $fileName = date_format($time, 'h') . rand(1, 9) . date_format($time, 's') . '.' . $file->extension();
-                Storage::disk('public')->putFileAs($directory, $file, $fileName);
-                $report = PersonalTest::create([
-
-                    'attach' => $directory . '/' . $fileName,
-                ]);
-            }
-
-            // $ptest = PersonalTest::create($request->except('_token') );
-
-            if(PersonalTest::create($request->validated())){
-
-            return redirect()->back()->with('success', 'تم اضافة فحص جديد');}
-        } catch (Exception $ex) {
-            return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
-        }
 
         $ptest = PersonalTest::create([
             'customer_id' => Customer::where('personal_id', $request->personal_id)->first()->id,
@@ -132,15 +87,11 @@ class PersonalTestController extends Controller
             'test_id' => $request->test_id,
         ]);
 
-        return redirect()->back()->with('success', 'تم اضافة فحص جديد');        
-        
-        // try {
+        return redirect()->back()->with('success', 'تم اضافة فحص جديد');
 
-        // } catch (Exception $ex) {
-        //     return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
-        // }
-    }
 
+
+    }}
     /**
      * Display the specified resource.
      *

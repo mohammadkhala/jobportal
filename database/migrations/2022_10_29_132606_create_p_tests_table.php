@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('p_tests', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('customers');            
-            $table->integer('distance');
-            $table->integer('right_eye_degree');
-            $table->integer('left_eye_degree');
+            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->string('distance');
+            $table->string('right_eye_degree');
+            $table->string('left_eye_degree');
             $table->date('date');
             // $table->integer('month');
             // $table->integer('day');
