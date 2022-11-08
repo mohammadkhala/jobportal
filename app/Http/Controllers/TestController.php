@@ -51,7 +51,7 @@ class TestController extends Controller
                 'info_mid'=>$request->info_mid
             ]);
             return redirect()->back()->with('success', 'تم اضافة فحص جديد');
-                
+
         }catch(Exception $ex){
             return redirect()->back()->with('error', 'حدث خطأ');
     }

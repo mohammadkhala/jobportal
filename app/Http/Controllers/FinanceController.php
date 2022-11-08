@@ -1,12 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Transaction;
 use App\Models\Test;
 
 use App\Models\Finance;
 use Illuminate\Http\Request;
 use App\Models\customer;
+
 class FinanceController extends Controller
 {
     /**
@@ -30,64 +32,58 @@ class FinanceController extends Controller
         return view('admin.finance.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'personal_id'=>'required|exists:customers,personal_id',
-            'test_id'=>'required|exists:tests,id',
-              'amount'=>'required|integer',
-              'date'=>'required'
+        $this->validate($request, [
+            'personal_id' => 'required|exists:customers,personal_id',
+            'test_id' => 'required|exists:tests,id',
+            'amount' => 'required|integer',
+            'date' => 'required'
         ]);
         $finances = Finance::create([
             'customer_id' => customer::where('personal_id', $request->personal_id)->first()->id,
-            'test_id' => Test::findOrFail($request->id)->id,
+            'test_id' => $request->test_id,
             'date' => $request->date,
-           'amount'=>$request->amount,
-           'remaining'=>$request->amount-$request->test->payment,
-           'note'=>$request->note
+            'amount' => $request->amount,
+            'remaining' =>  $request->id ,
+            'note' => $request->note ,
+            $test = Test::findOrFail($request->id)->id,
+              $payment = $test->payment
         ]);
-
         return redirect()->back()->with('success', 'تم اضافة معلومات مالية جديدة');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Finance  $finance
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Finance $finance)
+
+
+
+    public function edit(Finance $finance,$id)
     {
-        //
+        $finance = Finance::find($id);
+        return view('admin.finance.edit',compact('finance'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Finance  $finance
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Finance $finance)
-    {
-        return view('admin.finance.edit');
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Finance  $finance
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Finance $finance)
+    public function update(Request $request,Finance $finances,$id)
     {
+        $this->validate($request, [
+            'personal_id' => 'required|exists:customers,personal_id',
+            'test_id' => 'required|exists:tests,id',
+            'amount' => 'required|integer',
+            'date' => 'required'
+        ]);
+        $test = Test::findOrFail($request->id);
 
+        $finances = Finance::create([
+                'customer_id' => Customer::where('personal_id', $request->personal_id)->first()->id,
+                'test_id' =>$test->id,
+                'date' => $request->date,
+               'amount'=>$request->amount,
+               'remaining'=>$request->amount-$test->payment,
+               'note'=>$request->note
+            ]);
+        return redirect()->back()->with('success', 'تم تحديث معلومات مالية جديدة');
     }
 
     /**
@@ -98,8 +94,8 @@ class FinanceController extends Controller
      */
     public function destroy($id)
     {
-        $finance=Finance::findOrFail($id);
+        $finance = Finance::findOrFail($id);
         $finance->delete();
-        return redirect()->route('admin.finance')->with('message','تم الحذف بنجاح');
+        return redirect()->route('admin.finance')->with('message', 'تم الحذف بنجاح');
     }
 }

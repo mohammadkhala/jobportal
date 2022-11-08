@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                
+
                 @foreach ($customers as $customer)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
@@ -55,7 +55,7 @@
                      <a href="{{ route('admin.customer.delete', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm"
                         id="delete"><i class="fa fa-trash"></i></a>
                     </td>
-                </tr>    
+                </tr>
                 @endforeach
             </tbody>
         </table>
@@ -85,7 +85,6 @@
     <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ URL::asset('assets/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
 
     <!-- Page specific script -->

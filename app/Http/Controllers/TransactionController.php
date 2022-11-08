@@ -82,8 +82,10 @@ class TransactionController extends Controller
      * @param  \App\Models\FinanceTransition  $financeTransition
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $financeTransition)
+    public function destroy($id)
     {
-        //
+        $transaction = Finance::findOrFail($id);
+        $transaction->delete();
+        return redirect()->route('admin.finance')->with('message', 'تم الحذف بنجاح');
     }
 }
