@@ -36,7 +36,7 @@ class FinanceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'personal_id' => 'required|exists:customers,personal_id',
+            'customer_id' => 'required|exists:customers,personal_id',
             'test_id' => 'required|exists:tests,id',
             'amount' => 'required|integer',
             'date' => 'required'
@@ -68,22 +68,23 @@ class FinanceController extends Controller
     public function update(Request $request,Finance $finances,$id)
     {
         $this->validate($request, [
-            'personal_id' => 'required|exists:customers,personal_id',
+            'customer_id' => 'required|exists:customers,personal_id',
             'test_id' => 'required|exists:tests,id',
             'amount' => 'required|integer',
             'date' => 'required'
         ]);
         $test = Test::findOrFail($request->id);
 
-        $finances = Finance::create([
-                'customer_id' => Customer::where('personal_id', $request->personal_id)->first()->id,
-                'test_id' =>$test->id,
-                'date' => $request->date,
-               'amount'=>$request->amount,
-               'remaining'=>$request->amount-$test->payment,
-               'note'=>$request->note
-            ]);
-        return redirect()->back()->with('success', 'تم تحديث معلومات مالية جديدة');
+        $finances ->update([
+                    'customer_id' => $finances->customer->id,
+                    'test_id' => $test->id,
+                    'date' => $request->date,
+                   'amount'=>$request->amount,
+                   'remaining'=>$request->amount-$test->payment,
+                   'note'=>$request->note
+                ]);
+
+        return redirect()->route('admin.finance')->with('success', 'تم تحديث معلومات مالية جديدة');
     }
 
     /**
