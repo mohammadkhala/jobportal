@@ -42,14 +42,14 @@ class FinanceController extends Controller
             'personal_id'=>'required|exists:customers,personal_id',
             'test_id'=>'required|exists:tests,id',
               'amount'=>'required|integer',
-              'date'=>'required|date'
+              'date'=>'required'
         ]);
-        $ptest = Finance::create([
+        $finances = Finance::create([
             'customer_id' => customer::where('personal_id', $request->personal_id)->first()->id,
-            'test_id' => Test::where('test_id', $request->test_id)->first()->id,
+            'test_id' => Test::findOrFail($request->id)->id,
             'date' => $request->date,
            'amount'=>$request->amount,
-           'remaining'=>$request->amount-$request->payment,
+           'remaining'=>$request->amount-$request->test->payment,
            'note'=>$request->note
         ]);
 
@@ -75,7 +75,7 @@ class FinanceController extends Controller
      */
     public function edit(Finance $finance)
     {
-        //
+        return view('admin.finance.edit');
     }
 
     /**
@@ -87,7 +87,7 @@ class FinanceController extends Controller
      */
     public function update(Request $request, Finance $finance)
     {
-        //
+
     }
 
     /**
@@ -96,8 +96,10 @@ class FinanceController extends Controller
      * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Finance $finance)
+    public function destroy($id)
     {
-        //
+        $finance=Finance::findOrFail($id);
+        $finance->delete();
+        return redirect()->route('admin.finance')->with('message','تم الحذف بنجاح');
     }
 }

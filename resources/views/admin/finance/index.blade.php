@@ -25,7 +25,7 @@
         <table id="example1" class="table table-bordered table-striped" dir="rtl">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th>رقم المالية</th>
                     <th>رقم الهوية</th>
                     <th>رقم الفحص</th>
                     <th>التاريخ  </th>
@@ -40,8 +40,9 @@
             <tbody>
                 @foreach ($finances as $key => $finance)
                 <tr>
-                    <td>{{ $key = $key + 1 }}</td>
-                    <td> {{ $finance->customer->personal_id }}</td>
+
+                    <td>{{ $finance->id }} </td>
+                    <td>{{ $finance->customer->personal_id }}</td>
                     <td>{{ $finance->test_id }} </td>
                     <td>{{ $finance->date }} </td>
                     <td>{{ $finance->amount }} </td>

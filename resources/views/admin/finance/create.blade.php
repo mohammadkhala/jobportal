@@ -84,7 +84,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">التاريخ </label>
-                                                            <input type="date" value="" id=""
+                                                            <input type="date" value="" id="date"
                                                                 class="form-control"
                                                                 name="date">
                                                             @error('date')

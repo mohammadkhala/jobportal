@@ -1,12 +1,11 @@
 @extends('layouts.master')
 @section('title')
-    تعديل فحص المرضى
+    اضافة فحص مريض
 @endsection
 @section('css')
-
 @endsection
 @section('title_page1')
-    تعديل فحص المريض
+    اضافة فحص مريض
 @endsection
 @section('title_page2')
     لوحة التحكم
@@ -25,8 +24,8 @@
                     <div class="row match-height">
                         <div class="col-md-12  ">
                             <div class="card ">
-                                <div class="card-header text-right">
-                                    <h4 class="card-title text-center" id="basic-layout-form"> تعديل فحص المريض </h4>
+                                <div class="card-header text-center">
+                                    <h4 class="card-title text-center" id="basic-layout-form"> إضافة فحص مريض </h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -37,20 +36,20 @@
                                         </ul>
                                     </div>
                                 </div>
-
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form" action="{{ route('admin.ptest.update',['id'=>$ptest->id]) }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')
+
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات الفحص </h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية  </label>
-                                                            <input type="text" value="{{ $ptest->customer->personal_id }}" id="personal_id"
+                                                            <input type="text" value="{{$ptest->customer->personal_id}}" id="personal_id"
                                                                 class="form-control"
                                                                 name="personal_id">
                                                             @error('personal_id')
@@ -62,7 +61,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الفحص</label>
-                                                            <input type="text" value="{{ $ptest->test_id }}" id="test_id"
+                                                            <input type="text" value="{{$ptest->test_id}}" id="test_id"
                                                                 class="form-control"
                                                                 name="test_id">
                                                             @error('test_id')
@@ -75,7 +74,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">المسافة </label>
-                                                            <input type="text" value="{{ $ptest->distance }}" id="distance"
+                                                            <input type="text" value="{{$ptest->distance}}" id="distance"
                                                                 class="form-control"
                                                                 name="distance">
                                                             @error('distance')
@@ -86,7 +85,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">درجة العين اليمنى</label>
-                                                            <input type="text" value="{{ $ptest->right_eye_degree }}" id="right_eye_degree"
+                                                            <input type="text" value="{{$ptest->right_eye_degree}}" id="right_eye_degree"
                                                                 class="form-control"
                                                                 name="right_eye_degree">
                                                             @error('right_eye_degree')
@@ -100,7 +99,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">درجة العين اليسرى</label>
-                                                        <input type="text" value="{{ $ptest->left_eye_degree }}" id="left_eye_degree"
+                                                        <input type="text" value="{{$ptest->left_eye_degree}}" id="left_eye_degree"
                                                             class="form-control"
                                                             name="left_eye_degree">
                                                         @error('left_eye_degree')
@@ -111,7 +110,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">التاريخ </label>
-                                                        <input type="date" value="{{ $ptest->date }}" id="date"
+                                                        <input type="date" value="{{$ptest->date}}" id="date"
                                                             class="form-control"
                                                             name="date">
                                                         @error('date')
@@ -120,12 +119,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="report">تقرير </label>
-                                                        <input type="file" value="{{ $ptest->report }}" id="report"
+                                                        <input type="file" value="{{$ptest->report}}" id="report"
                                                             class="form-control"
                                                             name="report">
                                                         @error('report')
@@ -136,7 +135,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="projectinput1">التكلفة </label>
-                                                        <input type="text" value="{{ $ptest->cost }}" id="cost"
+                                                        <input type="text" value="{{$ptest->cost}}" id="cost"
                                                             class="form-control"
                                                             name="cost">
                                                         @error('cost')
@@ -147,7 +146,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="attach">مرفقات </label>
-                                                        <input type="file" value="{{ $ptest->attach }}" id="attach"
+                                                        <input type="file" value="{{$ptest->attach}}" id="attach"
                                                             class="form-control"
                                                             name="attach">
                                                         @error('attach')
@@ -159,10 +158,12 @@
                                     </div>
                                 </div>
                                     <div class="form-actions">
+
                                         <button type="submit" class="btn btn-primary">
                                             <i class="la la-check-square-o"></i> حفظ
                                         </button>
-                                        <a href="{{route('admin.customer')}}"> <button type="button" class="btn btn-warning"> المرضى </button></a>
+                                        <a href="{{route('admin.ptest')}}"> <button type="button" class="btn btn-warning " >
+الفحوصات                                            </button></a>
                                     </div>
                                 </form>
                             </div>
@@ -171,17 +172,9 @@
             </div>
         </div>
         </section>
-        <!-- // Basic form layout section end -->
     </div>
     </div>
     </div>
 @endsection
-
-
-
-
-
-
 @section('scripts')
-
 @endsection

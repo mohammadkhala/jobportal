@@ -45,7 +45,7 @@ class TransactionController extends Controller
 
         ]);
         $transactions = Transaction::create([
-            'finance_id' => Finance::where('id', $request->id)->first()->id,
+            'finance_id' => Finance::findOrFail($request->id)->id,
             'payment' => $request->payment,
             'date' => $request->date,
             'note' => $request->note
