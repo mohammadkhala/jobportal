@@ -35,23 +35,21 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($appoin as $key => $app)
+                @foreach ($appointments as $key => $appointment)
+                <tr>
                     <td>{{ $key = $key + 1 }}</td>
-                    {{-- <input type="hidden" value="{{$row->app->}}"> --}}
-                    <td> {{ $app->p_id }}</td>
-                    <td>{{ $app->date }} </td>
-
-                    <td>{{ $app->note }}</td>
-                    <td><a href="{{ route('admin.appointment.edit', ['id' => $app->id]) }}"><button style="hight=12px;width=15px;"
-                                class="btn btn-primary editbtn">تعديل</button></a>
-                        <a href="{{ route('admin.appointment.delete', ['id' => $app->id]) }}" class="btn btn-danger"
-                            id="delete">حذف</a>
+                    <td> {{ $appointment->customer->personal_id }}</td>
+                    <td>{{ $appointment->date }} </td>
+                    <td>{{ $appointment->note }}</td>
+                    <td>
+                        <a href="{{ route('admin.appointment.edit', ['id' => $appointment->id]) }}" class="btn btn-primary btn-sm"
+                            id="edit"><i class="fa fa-edit"></i></a>
+                     <a href="{{ route('admin.appointment.delete', ['id' => $appointment->id]) }}" class="btn btn-danger btn-sm"
+                        id="delete"><i class="fa fa-trash"></i></a>
                     </td>
-
-
-
-                    </tr>
+                </tr>
                 @endforeach
+            </tbody>
         </table>
     </div>
 @endsection

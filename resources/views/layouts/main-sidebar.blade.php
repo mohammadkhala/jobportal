@@ -94,8 +94,8 @@
                         <a href="{{ route('admin.ptest') }}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
-                              فحص المريض
-                              <span class="right badge badge-danger">{{ App\Models\PersonalTest::count() }}</span>
+                                فحص المريض
+                                <span class="right badge badge-danger">{{ App\Models\PersonalTest::count() }}</span>
 
                             </p>
                         </a>
@@ -106,6 +106,41 @@
                             <p>
                                 اضافة فحص مريض
                             </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.finance') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                المالية
+                                <span class="right badge badge-danger">{{ App\Models\Finance::count() }}</span>
+
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.finance.create') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                            اضافة معلومات مالية
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.transaction') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                                الدفعات المالية
+                                <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
+
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('admin.transaction.create') }}" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                            اضافة دفعات مالية</p>
                         </a>
                     </li>
                     @include('layouts.navigation')

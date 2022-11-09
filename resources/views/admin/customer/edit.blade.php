@@ -41,7 +41,7 @@
                                 <div class="card-content collapse show">
                                     <div class="card-body">
                                         <form class="form"
-                                            action="{{ route('admin.customer.update', ['id' => $customer->personal_id]) }}" method="POST"
+                                            action="{{ route('admin.customer.update', ['id' => $customer->id]) }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('PUT')

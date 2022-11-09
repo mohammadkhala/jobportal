@@ -22,7 +22,6 @@
 @endsection
 @section('content')
     @method('PUT')
-    <input type="hidden" name="id">
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped" dir="rtl">
             <thead>
@@ -35,33 +34,30 @@
                     <th>العنوان</th>
                     <th>الجنس</th>
                     <th>ملاحظات</th>
-                    <th>تاريخ الادخال</th>
                     <th>تعديل\حذف</th>
-
                 </tr>
             </thead>
             <tbody>
-                @foreach ($customer as $key => $row)
-                        <td>{{ $key = $key + 1 }}</td>
 
-                        <td>{{ $row->name }}</td>
-                        <td> {{ $row->personal_id }}</td>
-                        <td>{{ $row->start_date }} </td>
-                        <td>{{ $row->phone }}</td>
-                        <td>{{ $row->address }}</td>
-                        <td>{{ $row->gender }}</td>
-                        <td>{{ $row->note }}</td>
-                        <td>{{ $row->created_at }}</td>
-                        <td><a href="{{ route('admin.customer.edit', ['id' => $row->personal_id]) }}"><button style="hight=12px;width=15px;"
-                                    class="btn btn-primary editbtn">تعديل</button></a>
-                             <a href="{{ route('admin.customer.delete', ['id' => $row->personal_id]) }}" class="btn btn-danger"
-                                id="delete">حذف</a>
-                        </td>
-
-
-
-                    </tr>
+                @foreach ($customers as $customer)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $customer->name }}</td>
+                    <td>{{ $customer->personal_id }}</td>
+                    <td>{{ $customer->start_date }}</td>
+                    <td>{{ $customer->phone }}</td>
+                    <td>{{ $customer->address }}</td>
+                    <td>{{ $customer->gender }}</td>
+                    <td>{{ $customer->note }}</td>
+                    <td>
+                        <a href="{{ route('admin.customer.edit', ['id' => $customer->id]) }}" class="btn btn-primary btn-sm"
+                            id="edit"><i class="fa fa-edit"></i></a>
+                     <a href="{{ route('admin.customer.delete', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm"
+                        id="delete"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
                 @endforeach
+            </tbody>
         </table>
     </div>
 @endsection
@@ -89,7 +85,6 @@
     <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
     <script src="{{ URL::asset('assets/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ URL::asset('assets/dist/js/adminlte.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
 
     <!-- Page specific script -->

@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class customer extends Model
+class Customer extends Model
 {
 
     use HasFactory;
-    protected $primaryKey='personal_id';
+    //protected $primaryKey='personal_id';
     protected $fillable = [
   'personal_id',
         'name',
@@ -23,17 +23,21 @@ class customer extends Model
         'updated_at'
     ];
 
-    public function appointment()
+    public function appointments()
     {
-        return $this->hasMany(Appointment::class, 'personal_id');
+        return $this->hasMany(Appointment::class);
+    }
+    public function personalTests()
+    {
+        return $this->hasMany(PersonalTest::class);
     }
     public function test()
     {
-        return $this->hasOne(Test::class, 'id');
+        return $this->hasOne(Test::class);
     }
 
     public function finance()
     {
-        return $this->hasOne(Finance::class, 'id');
+        return $this->hasOne(Finance::class);
     }
 }

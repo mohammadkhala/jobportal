@@ -18,8 +18,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customer = customer::latest()->paginate(15);
-        return view('admin.customer.index', compact('customer'));
+        $customers = customer::latest()->paginate(15);
+        return view('admin.customer.index', compact('customers'));
     }
 
     /**
@@ -41,16 +41,28 @@ class CustomerController extends Controller
     public function store(CustomerRequest $request)
     {
         try {
-            $customer = customer::create($request->all());
+            $request->validate([
+                'personal_id'=>'required',
+                'name'=>'required',
+                'start_date'=>'required|date',
+                'gender'=>'required'
+
+            ]);
+            $customer = Customer::create([
+                'personal_id'=>$request->personal_id,
+                'name'=>$request->name,
+                'start_date'=>$request->start_date,
+                'phone'=>$request->phone,
+                'address'=>$request->address,
+                'note'=>$request->note,
+                'gender'=>$request->gender,
+            ]);
             return redirect()->back()->with('success', 'تم اضافة مريض جديد');
-            DB::commit();
-
-        } catch (Exception $ex) {
-            return $ex;
-            DB::rollback();
-
+        }
+        catch (\Throwable $th) {
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
         }
+
     }
 
     /**
@@ -72,12 +84,14 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-     try{ $customer = customer::find($id);
-        return view('admin.customer.edit', compact('customer'));
-     }catch(Exception $ex){
+        try{
+            $customer = customer::find($id);
+            return view('admin.customer.edit', compact('customer'));
+        }catch(Exception $ex){
 
-        return $this->$ex;
-     }
+            return $this->$ex;
+        }
+
     }
 
     /**
@@ -89,19 +103,8 @@ class CustomerController extends Controller
      */
     public function update(CustomerRequest $request, customer $customer,$id)
     {
-        $customer = customer::find($id)->first();
-        if (!$customer)
-        return redirect()->route('admin.customer')->with(['error' => 'هذا المريض غير موجود ']);
-        customer::where('id', $id)
-        ->update($request->except('_token','_method'));
-
-
-
-
-
+        customer::find($id)->update($request->except('_token','_method'));
         return redirect()->route('admin.customer')->with(['success' => 'تم ألتحديث بنجاح']);
-
-
     }
 
     /**
@@ -110,12 +113,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function destroy($personal_id,customer $customer)
+    public function destroy($id,customer $customer)
     {
-        if (!$customer)
-        return redirect()->route('admin.customer')->with(['error' => 'هذا المريض غير موجود ']);
-        $customer=customer::findOrFail($personal_id);
-        $customer->delete();
+        $customer=customer::findOrFail($id)->delete();
         return redirect()->route('admin.customer')->with('message','تم الحذف بنجاح');
     }
 }

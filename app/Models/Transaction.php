@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $table='transaction';
+    //protected $table='transaction';
     protected $fillable = [
         'id',
         'finance_id',
@@ -21,7 +21,7 @@ class Transaction extends Model
 
 
     public function finance(){
-        return $this->belongsToMany(Finance::class,'finance_id','id');
+        return $this->belongsToMany(Finance::class);
     }
 
 }
