@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Finance;
 
 use App\Models\Transaction;
+use DB;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -28,12 +29,17 @@ class TransactionController extends Controller
             'date' => "required",
 
         ]);
-        $transaction = Transaction::create([
-            'finance_id'=> $request->finance_id,
-            'payment' => $request->payment,
-            'date' => $request->date,
-            'note' => $request->note
-        ]);
+        DB::transaction(function () use ($request) {
+            $transaction = Transaction::create([
+                'finance_id'=> $request->finance_id,
+                'payment' => $request->payment,
+                'date' => $request->date,
+                'note' => $request->note
+            ]);
+            Finance::where('id', $request->finance_id)
+                ->decrement('remaining', $request->payment);
+        });
+
         return redirect()->route('admin.transaction')->with('success', 'تم اضافة دفعة جديدة بنجاح');
     }
 

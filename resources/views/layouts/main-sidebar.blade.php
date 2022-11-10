@@ -143,6 +143,13 @@
                             اضافة دفعات مالية</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link">
+                            <i class="nav-icon fas fa-th"></i>
+                            <p>
+                    اضافة موظفين</p>
+                        </a>
+                    </li>
                     @include('layouts.navigation')
 
                     <!-- /.sidebar-menu -->

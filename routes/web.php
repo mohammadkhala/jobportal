@@ -10,6 +10,7 @@ use App\Http\Controllers\PersonalTestController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
@@ -33,6 +34,7 @@ Route::group(['middleware' => ['is_admin']],function (){
 
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
 
 Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
