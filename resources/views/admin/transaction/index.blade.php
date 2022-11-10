@@ -42,12 +42,12 @@
 
                     <td>{{ $transaction->finance_id }} </td>
                     <td>{{ $transaction->payment }} </td>
+                    <td>{{ $transaction->date }} </td>
                     <td>{{ $transaction->note }} </td>
-                    <td></td>
                     <td>
-                        <a href="{{ route('admin.transaction.edit', ['id' => $transaction->id]) }}" class="btn btn-primary btn-sm"
+                        <a href="{{ route('admin.transaction.edit', $transaction->id) }}" class="btn btn-primary btn-sm"
                             id="edit"><i class="fa fa-edit"></i></a>
-                     <a href="{{ route('admin.tranasction.delete', ['id' => $transaction->id]) }}" class="btn btn-danger btn-sm"
+                     <a href="" class="btn btn-danger btn-sm"
                         id="delete"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>

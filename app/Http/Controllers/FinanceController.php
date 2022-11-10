@@ -36,11 +36,13 @@ class FinanceController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+
             'customer_id' => 'required|exists:customers,personal_id',
             'test_id' => 'required|exists:tests,id',
             'amount' => 'required|integer',
             'date' => 'required'
         ]);
+
         $finances = Finance::create([
             'customer_id' => customer::where('personal_id', $request->personal_id)->first()->id,
             'test_id' => $request->test_id,
@@ -48,9 +50,9 @@ class FinanceController extends Controller
             'amount' => $request->amount,
             'remaining' =>  $request->id ,
             'note' => $request->note ,
-            $test = Test::findOrFail($request->id)->id,
-              $payment = $test->payment
+
         ]);
+
         return redirect()->back()->with('success', 'تم اضافة معلومات مالية جديدة');
 
     }
@@ -82,17 +84,12 @@ class FinanceController extends Controller
                    'amount'=>$request->amount,
                    'remaining'=>$request->amount-$test->payment,
                    'note'=>$request->note
-                ]);
-
+                ]); dd($request);
         return redirect()->route('admin.finance')->with('success', 'تم تحديث معلومات مالية جديدة');
+
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Finance  $finance
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $finance = Finance::findOrFail($id);

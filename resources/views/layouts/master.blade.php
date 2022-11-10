@@ -57,6 +57,5 @@
 </div>
 <!-- ./wrapper -->
 @include('layouts.footer-scripts')
-@extends('layouts.footer-scripts')
 </body>
 </html>

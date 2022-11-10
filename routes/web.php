@@ -9,7 +9,7 @@ use App\Models\PersonalTest;
 use App\Http\Controllers\PersonalTestController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\TransactionController;
-
+use App\Http\Controllers\HomeController;
 Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
@@ -32,6 +32,8 @@ Route::group(['middleware' => ['is_admin']],function (){
 ////// customers routes
 
 });
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
 Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
 Route::post('/customer/store', [CustomerController::class, 'store'])->name('admin.customer.store');
@@ -71,6 +73,6 @@ Route::get('/finance/delete/{id}', [FinanceController::class, 'destroy'])->name(
 Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction');
 Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create');
 Route::post('/transaction/store', [TransactionController::class, 'store'])->name('admin.transaction.store');
-Route::get('/transaction/edit/{id}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
-Route::put('/transaction/update/{id}', [TransactionController::class, 'update'])->name('admin.transaction.update');
+Route::get('/transaction/edit/{transaction}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
+Route::put('/transaction/update/{transaction}', [TransactionController::class, 'update'])->name('admin.transaction.update');
 Route::get('/transaction/delete/{id}', [TransactionController::class, 'destroy'])->name('admin.transaction.delete');

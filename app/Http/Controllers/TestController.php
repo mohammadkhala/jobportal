@@ -42,8 +42,8 @@ class TestController extends Controller
     {
         try{
             $request->validate([
-                'personal_id'=>'required|exists:customers,personal_id',
-                'desc'=>'required'
+                'customer_id'=>'required|exists:customers,personal_id',
+                'description'=>'required'
             ]);
             $test = Test::create([
                 'customer_id'=>Customer::where('personal_id', $request->personal_id)->first()->id,
