@@ -6,6 +6,15 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <style>
+            .body {
+                background: url('https://ak2.picdn.net/shutterstock/videos/9057502/thumb/12.jpg');
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: cover;
+                height: 100vh;
+                width: 100%;
+            }</style>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -19,12 +28,3 @@
         </div>
     </body>
 </html>
-<style>
-.main-img {
-    background: url('https://ak2.picdn.net/shutterstock/videos/9057502/thumb/12.jpg');
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100vh;
-    width: 100%;
-}</style>

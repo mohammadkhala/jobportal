@@ -4,7 +4,16 @@
 الرئيسية
 @endsection
 @section('css')
-@include('calendar-style')
+ <link rel="stylesheet" href="style.css" />
+
+<link
+href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+rel="stylesheet"
+/>
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+    />
 @endsection
 @section('title_page1')
 الرئيسية
@@ -87,8 +96,31 @@
 
           <!-- /.card -->
 
-
+          <script src="script.js"></script>
           <!-- Calendar -->
+          <div class="container">
+            <div class="calendar">
+              <div class="month">
+                <i class="fas fa-angle-left prev"></i>
+                <div class="date">
+                  <h1></h1>
+                  <p></p>
+                </div>
+                <i class="fas fa-angle-right next"></i>
+              </div>
+              <div class="weekdays">
+                <div>Sun</div>
+                <div>Mon</div>
+                <div>Tue</div>
+                <div>Wed</div>
+                <div>Thu</div>
+                <div>Fri</div>
+                <div>Sat</div>
+              </div>
+              <div class="days"></div>
+            </div>
+          </div>
+
 
 
           <!-- /.card -->
@@ -98,7 +130,7 @@
       <!-- /.row (main row) -->
     </div><!-- /.container-fluid -->
   </section>
-  @include('calendar-js')
+
 @endsection
 
 
