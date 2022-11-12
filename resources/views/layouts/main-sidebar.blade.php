@@ -144,7 +144,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="" class="nav-link">
+                        <a href="{{route('register')}}" class="nav-link">
                             <i class="nav-icon fas fa-th"></i>
                             <p>
                     اضافة موظفين</p>
@@ -218,7 +218,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('admin.finance') }}" class="nav-link">
+            <a href="{{ route('emp.finance') }}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                     المالية
@@ -229,7 +229,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="{{ route('admin.transaction') }}" class="nav-link">
+            <a href="{{ route('emp.transaction') }}" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
                     الدفعات المالية

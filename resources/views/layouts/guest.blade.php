@@ -13,9 +13,18 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
+    <body class="main-img">
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
     </body>
 </html>
+<style>
+.main-img {
+    background: url('https://ak2.picdn.net/shutterstock/videos/9057502/thumb/12.jpg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}</style>

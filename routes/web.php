@@ -9,7 +9,10 @@ use App\Models\PersonalTest;
 use App\Http\Controllers\PersonalTestController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\emp\EmpFinanceController;
+use App\Http\Controllers\emp\EmpTransactionController;
 use App\Http\Controllers\HomeController;
+
 use App\Http\Controllers\Auth\RegisteredUserController;
 Auth::routes();
 Route::get('/', function () {
@@ -78,3 +81,6 @@ Route::post('/transaction/store', [TransactionController::class, 'store'])->name
 Route::get('/transaction/edit/{transaction}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
 Route::put('/transaction/update/{transaction}', [TransactionController::class, 'update'])->name('admin.transaction.update');
 Route::get('/transaction/delete/{id}', [TransactionController::class, 'destroy'])->name('admin.transaction.delete');
+/// emp controller
+Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
+Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
