@@ -76,7 +76,7 @@ Route::put('/finance/update/{id}', [FinanceController::class, 'update'])->name('
 Route::get('/finance/delete/{id}', [FinanceController::class, 'destroy'])->name('admin.finance.delete');
 // transaction routes
 ///
-Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
 ///
 Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction');
 Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create');

@@ -39,7 +39,16 @@
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
+            <div class="mt-4">
+                <x-input-label for="is_admin" :value="__('is_admin')" />
 
+                <x-text-input id="is_admin" class="block mt-1 w-full"
+                                type="checkbox"
+                                name="is_admin"
+                                required autocomplete="new-password" />
+
+
+            </div>
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
