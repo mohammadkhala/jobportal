@@ -12,7 +12,6 @@ use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\emp\EmpFinanceController;
 use App\Http\Controllers\emp\EmpTransactionController;
 use App\Http\Controllers\HomeController;
-
 use App\Http\Controllers\Auth\RegisteredUserController;
 Auth::routes();
 Route::get('/', function () {
@@ -21,21 +20,21 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-
+    Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
+    Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-Route::group(['middleware' => ['is_admin']],function (){
+Route::group(['isAdminMiddleware' => ['is_admin']],function (){
     Route::get('/admin', function () {
 
 
         return view('admin');
 
+
     })->name('admin');
 
 ////// customers routes
-
-});
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 
@@ -84,6 +83,6 @@ Route::post('/transaction/store', [TransactionController::class, 'store'])->name
 Route::get('/transaction/edit/{transaction}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
 Route::put('/transaction/update/{transaction}', [TransactionController::class, 'update'])->name('admin.transaction.update');
 Route::get('/transaction/delete/{id}', [TransactionController::class, 'destroy'])->name('admin.transaction.delete');
+});
+
 /// emp controller
-Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
-Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
