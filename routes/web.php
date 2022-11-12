@@ -37,7 +37,7 @@ Route::group(['middleware' => ['is_admin']],function (){
 
 });
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
+
 
 Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
@@ -75,6 +75,9 @@ Route::get('/finance/edit/{id}', [FinanceController::class, 'edit'])->name('admi
 Route::put('/finance/update/{id}', [FinanceController::class, 'update'])->name('admin.finance.update');
 Route::get('/finance/delete/{id}', [FinanceController::class, 'destroy'])->name('admin.finance.delete');
 // transaction routes
+///
+Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
+///
 Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction');
 Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create');
 Route::post('/transaction/store', [TransactionController::class, 'store'])->name('admin.transaction.store');
