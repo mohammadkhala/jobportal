@@ -20,11 +20,12 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-    Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
-    Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+ Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
+    Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
 Route::group(['isAdminMiddleware' => ['is_admin']],function (){
     Route::get('/admin', function () {
 
