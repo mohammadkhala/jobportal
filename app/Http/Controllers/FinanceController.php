@@ -7,7 +7,7 @@ use App\Models\Test;
 
 use App\Models\Finance;
 use Illuminate\Http\Request;
-use App\Models\customer;
+use App\Models\Customer;
 
 class FinanceController extends Controller
 {
@@ -44,7 +44,7 @@ class FinanceController extends Controller
         ]);
 
         $finances = Finance::create([
-            'customer_id' => customer::where('personal_id', $request->personal_id)->first()->id,
+            'customer_id' => Customer::where('personal_id', $request->customer_id)->first()->id,
             'test_id' => $request->test_id,
             'date' => $request->date,
             'amount' => $request->amount,

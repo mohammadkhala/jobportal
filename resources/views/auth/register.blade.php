@@ -39,16 +39,7 @@
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
-            <div class="mt-4">
-                <x-input-label for="is_admin" :value="__('is_admin')" />
 
-                <x-text-input id="is_admin" class="block mt-1 w-full"
-                                type="checkbox"
-                                name="is_admin"
-                                required autocomplete="new-password" />
-
-
-            </div>
             <!-- Confirm Password -->
             <div class="mt-4">
                 <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
@@ -59,11 +50,18 @@
 
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
             </div>
+<div class="mt-4">
+                    <x-input-label for="is_admin" :value="__('is_admin')" />
 
+                    <x-text-input id="is_admin" class="block "
+                                    type="checkbox"
+                                    name="is_admin"
+                                />
+
+
+                </div>
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
+
 
                 <x-primary-button class="ml-4">
                     {{ __('Register') }}

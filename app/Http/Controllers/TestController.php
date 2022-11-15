@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TestRequest;
 use App\Models\Customer;
 use App\Models\Test;
 use Illuminate\Http\Request;
 use Exception;
-use PhpParser\Node\Expr\New_;
 
 class TestController extends Controller
 {
@@ -46,14 +44,15 @@ class TestController extends Controller
                 'description'=>'required'
             ]);
             $test = Test::create([
-                'customer_id'=>Customer::where('personal_id', $request->personal_id)->first()->id,
-                'description'=>$request->desc,
+                'customer_id'=> Customer::where('personal_id', $request->customer_id)->first()->id,
+
+                'description'=>$request->description,
                 'info_mid'=>$request->info_mid
             ]);
             return redirect()->back()->with('success', 'تم اضافة فحص جديد');
 
         }catch(Exception $ex){
-            return redirect()->back()->with('error', 'حدث خطأ');
+      return redirect()->back()->with('error', 'حدث خطأ');
     }
     }
 

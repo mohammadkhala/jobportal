@@ -38,61 +38,49 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
+               <li class="nav-item">
+                <a href="{{ route('home') }}" class="nav-link">
+                    <i class="ion ion-home"></i>
+                    <p>
+                        الرئيسية
+
+                    </p>
+                </a>
+            </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.customer') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="ion ion-person"></i>
                             <p>
                                 المرضى
                                 <span class="right badge badge-danger">{{ App\Models\customer::count() }}</span>
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.customer.create') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                اضافة مريض
-                            </p>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('admin.appointment') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="ion ion-calendar"></i>
                             <p>
                                 المواعيد
                                 <span class="right badge badge-danger">{{ App\Models\Appointment::count() }}</span>
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.appointment.create') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                اضافة موعد
-                            </p>
-                        </a>
-                    </li>
+
 
                     <li class="nav-item">
                         <a href="{{ route('admin.test') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
+                            <i class="fa fa-file-invoice"></i>                            <p>
                                 الفحص الاساسي
                                 <span class="right badge badge-danger">{{ App\Models\Test::count() }}</span>
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.test.create') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                اضافة فحص اساسي
-                            </p>
-                        </a>
+
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.ptest') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="fa fa-hospital-user"></i>
                             <p>
                                 فحص المريض
                                 <span class="right badge badge-danger">{{ App\Models\PersonalTest::count() }}</span>
@@ -100,17 +88,10 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.ptest.create') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                اضافة فحص مريض
-                            </p>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('admin.finance') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="fa fa-file-invoice-dollar"></i>
                             <p>
                                 المالية
                                 <span class="right badge badge-danger">{{ App\Models\Finance::count() }}</span>
@@ -118,34 +99,20 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.finance.create') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                            اضافة معلومات مالية
-                            </p>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{ route('admin.transaction') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                                الدفعات المالية
+                            <i class="fa fa-file-invoice-dollar"></i>
+                            <p>   الدفعات المالية
                                 <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
 
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('admin.transaction.create') }}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
-                            <p>
-                            اضافة دفعات مالية</p>
-                        </a>
-                    </li>
+
                     <li class="nav-item">
                         <a href="{{route('register')}}" class="nav-link">
-                            <i class="nav-icon fas fa-th"></i>
+                            <i class="ion ion-person-add"></i>
                             <p>
                     اضافة موظفين</p>
                         </a>
@@ -165,7 +132,7 @@
 
         <li class="nav-item">
             <a href="{{ route('admin.customer') }}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="ion ion-person"></i>
                 <p>
                     المرضى
                     <span class="right badge badge-danger">{{ App\Models\customer::count() }}</span>
@@ -182,7 +149,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.appointment') }}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="ion ion-calendar"></i>
                 <p>
                     المواعيد
                     <span class="right badge badge-danger">{{ App\Models\Appointment::count() }}</span>
@@ -201,7 +168,7 @@
 
         <li class="nav-item">
             <a href="{{ route('admin.ptest') }}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="fa fa-hospital-user"></i>
                 <p>
                     فحص المريض
                     <span class="right badge badge-danger">{{ App\Models\PersonalTest::count() }}</span>
@@ -219,7 +186,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('emp.finance') }}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="fa fa-file-invoice-dollar"></i>
                 <p>
                     المالية
                     <span class="right badge badge-danger">{{ App\Models\Finance::count() }}</span>
@@ -230,7 +197,8 @@
 
         <li class="nav-item">
             <a href="{{ route('emp.transaction') }}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="fa fa-file-invoice-dollar"></i>
+
                 <p>
                     الدفعات المالية
                     <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
