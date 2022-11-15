@@ -52,10 +52,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="" id="personal_id"
+                                                            <input type="text" value=""
                                                                 class="form-control"
-                                                                name="personal_id">
-                                                            @error('personal_id')
+                                                                name="customer_id">
+                                                            @error('customer_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -64,10 +64,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الوصف </label>
-                                                            <input type="text" value="" id="desc"
+                                                            <input type="text" value="" id="description"
                                                                 class="form-control"
-                                                                name="desc">
-                                                            @error('desc')
+                                                                name="description">
+                                                            @error('description')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>

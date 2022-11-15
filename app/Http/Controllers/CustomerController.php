@@ -18,7 +18,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        $customers = customer::latest()->paginate(15);
+        $customers = Customer::latest()->paginate(15);
         return view('admin.customer.index', compact('customers'));
     }
 
@@ -85,7 +85,7 @@ class CustomerController extends Controller
     public function edit($id)
     {
         try{
-            $customer = customer::find($id);
+            $customer = Customer::find($id);
             return view('admin.customer.edit', compact('customer'));
         }catch(Exception $ex){
 

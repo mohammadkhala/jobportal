@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+use App\Models\Test;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Helper\Table;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-       $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -23,9 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $customers = Customer::latest()->get();
+        $tests=Test::latest()->get();
+        return view('dashboard', compact('customers','tests'));
     }
-
-
-
 }

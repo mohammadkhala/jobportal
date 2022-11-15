@@ -44,6 +44,7 @@
 
     <!-- Main content -->
 @yield('content')
+
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -57,6 +58,5 @@
 </div>
 <!-- ./wrapper -->
 @include('layouts.footer-scripts')
-@extends('layouts.footer-scripts')
 </body>
 </html>

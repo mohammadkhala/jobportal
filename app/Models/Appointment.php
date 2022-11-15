@@ -18,7 +18,7 @@ class Appointment extends Model
         'updated_at'
     ];
     public function customer(){
-        return $this->belongsTo(customer::class);
+        return $this->belongsTo(Customer::class);
     }
 
 }

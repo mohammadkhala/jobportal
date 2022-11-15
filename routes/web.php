@@ -9,7 +9,10 @@ use App\Models\PersonalTest;
 use App\Http\Controllers\PersonalTestController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\TransactionController;
-
+use App\Http\Controllers\emp\EmpFinanceController;
+use App\Http\Controllers\emp\EmpTransactionController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
@@ -19,19 +22,24 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
-Route::group(['middleware' => ['is_admin']],function (){
+ Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
+    Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
+Route::group(['isAdminMiddleware' => ['is_admin']],function (){
     Route::get('/admin', function () {
 
 
         return view('admin');
 
+
     })->name('admin');
 
 ////// customers routes
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-});
+
 Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
 Route::post('/customer/store', [CustomerController::class, 'store'])->name('admin.customer.store');
@@ -68,9 +76,15 @@ Route::get('/finance/edit/{id}', [FinanceController::class, 'edit'])->name('admi
 Route::put('/finance/update/{id}', [FinanceController::class, 'update'])->name('admin.finance.update');
 Route::get('/finance/delete/{id}', [FinanceController::class, 'destroy'])->name('admin.finance.delete');
 // transaction routes
+///
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+///
 Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction');
 Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create');
 Route::post('/transaction/store', [TransactionController::class, 'store'])->name('admin.transaction.store');
-Route::get('/transaction/edit/{id}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
-Route::put('/transaction/update/{id}', [TransactionController::class, 'update'])->name('admin.transaction.update');
+Route::get('/transaction/edit/{transaction}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
+Route::put('/transaction/update/{transaction}', [TransactionController::class, 'update'])->name('admin.transaction.update');
 Route::get('/transaction/delete/{id}', [TransactionController::class, 'destroy'])->name('admin.transaction.delete');
+});
+
+/// emp controller
