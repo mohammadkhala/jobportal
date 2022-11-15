@@ -22,6 +22,7 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 
 })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
  Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');

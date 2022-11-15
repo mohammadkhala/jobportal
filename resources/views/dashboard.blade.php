@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="sweetalert2.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" >
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css" />
 @endsection
@@ -114,30 +115,81 @@
 
                     <!-- /.card -->
                 </div>
-<div class="column">
+
+                <div class="col-6" >
+
+                    <table id="example1" class="table table-bordered table-striped">
+                        <h3>اخر المرضى</h3>
+
+                        <thead >
+
+                            <tr >
+                                <th>#</th>
+                                <th>الاسم</th>
+                                <th>رقم الهوية</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($customers as $customer)
+                                <tr>
+                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $customer->name }}</td>
+                                    <td>{{ $customer->personal_id }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <table id="example1" class="table table-bordered table-striped" >
+                        <h3>اخر الفحوصات</h3>
+
+                        <thead >
+
+                            <tr >
+
+                                <th>رقم الفحص</th>
+                                <th>رقم الهوية</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach ($tests as $key => $test)
+                                <tr>
+                                    <td dir="rtl">{{ $test->id }}</td>
+                                    <td>{{ $test->customer->personal_id }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+                 <div class="row ">
+                <div class="column" dir="rtl">
 
 
-</div>
-
+                </div>
+                </div>
                 <!-- right col -->
             </div>
             <!-- /.row (main row) -->
         </div><!-- /.container-fluid -->
     </section>
-<style>
-    .column {
-        display: flex;
-        float: left;
-        width: 50%;
+    <style>
+        .column {
+            display: flex;
+            float: left;
+            width: 50%;
 
-      }
-      .row:after {
-        flex: 50%;
-  content: "";
-  display: table;
-  clear: both;
-}
-</style>
+        }
+
+        .row:after {
+            flex: 50%;
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
 
 
 

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Test;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Helper\Table;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $customers = Customer::latest()->paginate(15);
-        return view('dashboard', compact('customers'));
+        $customers = Customer::latest()->get();
+        $tests=Test::latest()->get();
+        return view('dashboard', compact('customers','tests'));
     }
 }
