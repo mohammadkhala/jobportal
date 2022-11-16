@@ -15,15 +15,27 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('title_page1')
-    المالية
+
+
+المالية
+
 @endsection
 @section('title_page2')
-    لوحة التحكم
+
+
+
+لوحة التحكم
+
+
+
 @endsection
 @section('content')
     <div class="card-body">
+
         <table id="example1" class="table table-bordered table-striped" dir="rtl">
+
             <thead>
+
                 <tr>
                     <th>رقم المالية</th>
                     <th>رقم الهوية</th>
@@ -37,6 +49,10 @@
 
                 </tr>
             </thead>
+            <a href="{{ route('admin.transaction.create') }}" >
+                <button type="button" class="btn btn-info">اضافة دفعات مالية
+                </button>
+            </a>
             <tbody>
                 @foreach ($finances as $key => $finance)
                 <tr>

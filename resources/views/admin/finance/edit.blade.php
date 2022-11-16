@@ -11,13 +11,7 @@
     لوحة التحكم
 @endsection
 @section('content')
-    <div class="app-content ">
-        <div class="content text-right">
-            <div class="content-header row text-center">
-                <div class="content-header-left col-md-6 col-12 mb-2">
 
-                </div>
-            </div>
             <div class="content-body">
                 <!-- Basic form layout section start -->
                 <section id="basic-form-layouts" dir="rtl">

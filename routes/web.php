@@ -13,6 +13,8 @@ use App\Http\Controllers\emp\EmpFinanceController;
 use App\Http\Controllers\emp\EmpTransactionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\EmployeeController;
+
 Auth::routes();
 Route::get('/', function () {
     return view('auth.login');
@@ -23,6 +25,7 @@ Route::get('/dashboard', function () {
 
 })->middleware(['auth', 'verified'])->name('dashboard');
 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard')->middleware(['auth', 'verified']);
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 require __DIR__.'/auth.php';
  Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
@@ -39,6 +42,7 @@ Route::group(['isAdminMiddleware' => ['is_admin']],function (){
 ////// customers routes
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+Route::get('/employee', [EmployeeController::class, 'index'])->name('admin.employee');
 
 Route::get('/customer', [CustomerController::class, 'index'])->name('admin.customer');
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');

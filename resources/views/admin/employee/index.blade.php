@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    المالية
+    الموظفين
 @endsection
 @section('css')
     <!-- DataTables -->
@@ -15,45 +15,47 @@
     <link rel="stylesheet" href="{{ asset('assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
 @endsection
 @section('title_page1')
-    المالية
+<div class="column">
+    <a href="{{route('register')}}"> <button type="button" class="btn btn-warning " >
+        اضافة موظفين
+        </button></a> -  الموظفين
 @endsection
 @section('title_page2')
     لوحة التحكم
 @endsection
 @section('content')
-    <div class="card-body">
-        <table id="example1" class="table table-bordered table-striped" >
+    <div class="card-body" >
+
+        <table id="example1" class="table table-bordered table-striped" dir="rtl">
+
             <thead>
+
                 <tr>
-                    <th>#</th>
-                    <th>رقم المالية</th>
-                    <th>الدفعة المالية </th>
-                    <th>التاريخ  </th>
-                    <th>ملاحظات</th>
-                    <th>تعديل\حذف</th>
+
+
+                    <th>الاسم</th>
+                    <th>البريد الالكتروني </th>
 
                 </tr>
             </thead>
-            <tbody>
-                @foreach ($transactions as $key => $transaction)
-                <tr>
-                    <td>{{ $key = $key + 1 }}</td>
 
-                    <td>{{ $transaction->finance_id }} </td>
-                    <td>{{ $transaction->payment }} </td>
-                    <td>{{ $transaction->date }} </td>
-                    <td>{{ $transaction->note }} </td>
-                    <td>
-                        <a href="{{ route('admin.transaction.edit', $transaction->id) }}" class="btn btn-primary btn-sm"
-                            id="edit"><i class="fa fa-edit"></i></a>
-                     <a href="" class="btn btn-danger btn-sm"
-                        id="delete"><i class="fa fa-trash"></i></a>
-                    </td>
+            <tbody>
+                @foreach ($employees as $key => $employee)
+                <tr>
+
+                    <td>{{ $employee->name }} </td>
+                    <td>{{ $employee->email }} </td>
+
+
                 </tr>
                 @endforeach
             </tbody>
+
         </table>
+
     </div>
+    <div class="row">
+    </div></div>
 @endsection
 
 

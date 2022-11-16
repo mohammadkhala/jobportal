@@ -116,17 +116,20 @@
                     <!-- /.card -->
                 </div>
 
-                <div class="col-6" >
+                <div class="col-6">
 
                     <table id="example1" class="table table-bordered table-striped">
                         <h3>اخر المرضى</h3>
 
-                        <thead >
+                        <thead>
 
-                            <tr >
+                            <tr>
                                 <th>#</th>
                                 <th>الاسم</th>
                                 <th>رقم الهوية</th>
+
+
+
                             </tr>
                         </thead>
                         <tbody>
@@ -134,18 +137,20 @@
                             @foreach ($customers as $customer)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $customer->name }}</td>
                                     <td>{{ $customer->personal_id }}</td>
+                                    <td>{{ $customer->name }}</td>
+
+
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
-                    <table id="example1" class="table table-bordered table-striped" >
+                    <table id="example1" class="table table-bordered table-striped">
                         <h3>اخر الفحوصات</h3>
 
-                        <thead >
+                        <thead>
 
-                            <tr >
+                            <tr>
 
                                 <th>رقم الفحص</th>
                                 <th>رقم الهوية</th>
@@ -164,11 +169,11 @@
                     </table>
 
                 </div>
-                 <div class="row ">
-                <div class="column" dir="rtl">
+                <div class="row ">
+                    <div class="column" dir="rtl">
 
 
-                </div>
+                    </div>
                 </div>
                 <!-- right col -->
             </div>

@@ -10,12 +10,7 @@
 
 
     </ul>
-    <form id="form" role="search">
-        <input type="search" id="query" name="q"
-         placeholder="Search..."
-         aria-label="Search through site content">
-        <button>Search</button>
-      </form>
+
       <style>
         form {
   background-color: #4654e1;

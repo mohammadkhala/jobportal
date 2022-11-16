@@ -110,17 +110,23 @@
                         </a>
                     </li>
 
+
                     <li class="nav-item">
-                        <a href="{{route('register')}}" class="nav-link">
-                            <i class="ion ion-person-add"></i>
-                            <p>
-                    اضافة موظفين</p>
+                        <a href="{{ route('admin.employee') }}" class="nav-link">
+                            <i class="fa fa-file-invoice-dollar"></i>
+                            <p> الموظفين
+                                <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
+
+                            </p>
                         </a>
                     </li>
-                    @include('layouts.navigation')
+                    {{-- @include('layouts.navigation') --}}
+                    <a href="{{ url('/logout') }}">
+                        <i class="ion ion-leave"></i>                        تسجيل الخروج </a>
 
                     <!-- /.sidebar-menu -->
     </div>
+
     <!-- /.sidebar -->
 </aside>
 @else
@@ -207,7 +213,10 @@
             </a>
         </li>
 
-        @include('layouts.navigation')
+        <a href="{{ url('/logout') }}">
+            <i class="fa-sharp fa-solid fa-house-person-leave"></i>              تسجيل الخروج
+
+        </a>
 
         <!-- /.sidebar-menu -->
 </div>
