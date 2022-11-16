@@ -49,9 +49,14 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                     </div>
 
+                    <div>
+                        <x-input-label for="is_admin" :value="__('Admin Or Employee')" />
 
+                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="is_admin" :value="old('is_admin')"
+                      placeholder="1 for admin 0 for employee"      required autofocus />
 
-
+                        <x-input-error :messages="$errors->get('is_admin')" class="mt-2" />
+                    </div>
             <div class="flex items-center justify-end mt-4">
 
 

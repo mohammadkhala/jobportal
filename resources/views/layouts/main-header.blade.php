@@ -73,6 +73,7 @@ f.addEventListener('submit', submitted);
         <li class="nav-item" >
 
             <li class="nav-item">
+
                 <a href="{{ route('admin.transaction.create') }}" >
                     <button type="button" class="btn btn-info">اضافة دفعات مالية
                     </button>

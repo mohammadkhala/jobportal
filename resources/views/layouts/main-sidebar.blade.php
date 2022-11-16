@@ -115,7 +115,7 @@
                         <a href="{{ route('admin.employee') }}" class="nav-link">
                             <i class="fa fa-file-invoice-dollar"></i>
                             <p> الموظفين
-                                <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
+                                <span class="right badge badge-danger">{{ App\Models\User::count() }}</span>
 
                             </p>
                         </a>

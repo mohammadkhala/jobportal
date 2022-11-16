@@ -74,19 +74,19 @@ Route::put('/ptest/update/{id}', [PersonalTestController::class, 'update'])->nam
 Route::get('/ptest/delete/{id}', [PersonalTestController::class, 'destroy'])->name('admin.ptest.delete');
 // finance routes
 Route::get('/finance', [FinanceController::class, 'index'])->name('admin.finance');
-Route::get('/finance/create', [FinanceController::class, 'create'])->name('admin.finance.create');
+Route::get('/finance/create', [FinanceController::class, 'create'])->name('admin.finance.create')->middleware('password.confirm');
 Route::post('/finance/store', [FinanceController::class, 'store'])->name('admin.finance.store');
-Route::get('/finance/edit/{id}', [FinanceController::class, 'edit'])->name('admin.finance.edit');
+Route::get('/finance/edit/{id}', [FinanceController::class, 'edit'])->name('admin.finance.edit')->middleware('password.confirm');;
 Route::put('/finance/update/{id}', [FinanceController::class, 'update'])->name('admin.finance.update');
 Route::get('/finance/delete/{id}', [FinanceController::class, 'destroy'])->name('admin.finance.delete');
 // transaction routes
 ///
-Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register')->middleware('password.confirm');
 ///
 Route::get('/transaction', [TransactionController::class, 'index'])->name('admin.transaction');
-Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create');
+Route::get('/transaction/create', [TransactionController::class, 'create'])->name('admin.transaction.create')->middleware('password.confirm');;
 Route::post('/transaction/store', [TransactionController::class, 'store'])->name('admin.transaction.store');
-Route::get('/transaction/edit/{transaction}', [TransactionController::class, 'edit'])->name('admin.transaction.edit');
+Route::get('/transaction/edit/{transaction}', [TransactionController::class, 'edit'])->name('admin.transaction.edit')->middleware('password.confirm');;
 Route::put('/transaction/update/{transaction}', [TransactionController::class, 'update'])->name('admin.transaction.update');
 Route::get('/transaction/delete/{id}', [TransactionController::class, 'destroy'])->name('admin.transaction.delete');
 });
