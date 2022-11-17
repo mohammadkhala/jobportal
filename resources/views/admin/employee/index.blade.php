@@ -16,7 +16,7 @@
 @endsection
 @section('title_page1')
 <div class="column">
-    <a href="{{route('register')}}"> <button type="button" class="btn btn-warning " >
+    <a href="{{route('registertraion')}}"> <button type="button" class="btn btn-warning " >
         اضافة موظفين
         </button></a> -  الموظفين
 @endsection
