@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{ route('admin.customer.store') }}" method="POST"
+                                        <form action="{{ route('admin.customer.store') }}" method="POST"
                                             enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-body">
@@ -84,64 +84,68 @@
                                                         <div class="form-group">
                                                             <label for="projectinput1">تاريخ بداية التعامل </label>
                                                             <input type="date" value="" id="name"
-                                                                class="form-control"
-                                                                name="start_date">
+                                                                class="form-control" name="start_date">
                                                             @error('start_date')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">العنوان </label>
+                                                            <input type="text" value="" id="name"
+                                                                class="form-control" placeholder="ادخل عنوان المريض  "
+                                                                name="address">
+                                                            @error('address')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">الجنس </label>
+                                                            <input type="text" value="" id="name"
+                                                                class="form-control" name="gender">
+                                                            @error('gender')
+                                                                <span class="text-danger">{{ $message }} </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">ملاحظات </label>
+                                                            <input type="text" value="" id="name"
+                                                                class="form-control" name="note">
+                                                            @error('note')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">العنوان </label>
-                                                        <input type="text" value="" id="name"
-                                                            class="form-control" placeholder="ادخل عنوان المريض  "
-                                                            name="address">
-                                                        @error('address')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">الجنس </label>
-                                                        <input type="text" value="" id="name"
-                                                            class="form-control"
-                                                            name="gender">
-                                                        @error('gender')
-                                                            <span class="text-danger">{{ $message }} </span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="" id="name"
-                                                            class="form-control"
-                                                            name="note">
-                                                        @error('note')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
+
+
+
+                                    </div>
+                                    <div class="card-footer">
+                                         <div class="form-actions">
+
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="la la-check-square-o"></i> حفظ
+                                                </button>
+                                                <a href="{{ route('admin.customer') }}"> <button type="button"
+                                                        class="btn btn-warning ">
+                                                        المرضى
+                                                    </button></a>
                                             </div>
                                     </div>
-                                </div>
-                                <div class="form-actions">
-
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> حفظ
-                                    </button>
-                                    <a href="{{route('admin.customer')}}"> <button type="button" class="btn btn-warning " >
-                                        المرضى
-                                        </button></a>
-                                </div>
                                 </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>

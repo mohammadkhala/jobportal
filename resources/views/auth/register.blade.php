@@ -6,7 +6,7 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="{{ route('register') }}">
+        <form method="POST" action="{{ route('register.store') }}">
             @csrf
 
             <!-- Name -->
@@ -50,10 +50,12 @@
                     </div>
 
                     <div>
+                        <input type="checkbox" name="is_admin" value="1" checked>
+
                         <x-input-label for="is_admin" :value="__('Admin Or Employee')" />
 
-                        <x-text-input id="name" class="block mt-1 w-full" type="text" name="is_admin" :value="old('is_admin')"
-                      placeholder="1 for admin 0 for employee"      required autofocus />
+                        <!--<x-text-input id="name" class="block mt-1 w-full" type="text" name="is_admin" :value="old('is_admin')"
+                      placeholder="1 for admin 0 for employee"      required autofocus />-->
 
                         <x-input-error :messages="$errors->get('is_admin')" class="mt-2" />
                     </div>

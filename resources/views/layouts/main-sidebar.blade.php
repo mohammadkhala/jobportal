@@ -129,7 +129,7 @@
 
     <!-- /.sidebar -->
 </aside>
-@else
+@elseif (auth()->user()->is_admin==0)
 <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
         data-accordion="false">
@@ -184,7 +184,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('admin.ptest.create') }}" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="fa fa-hospital-user"></i>
                 <p>
                     اضافة فحص مريض
                 </p>

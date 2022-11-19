@@ -1,3 +1,4 @@
+@if (auth()->user()->is_admin == 1)
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -11,57 +12,6 @@
 
     </ul>
 
-      <style>
-        form {
-  background-color: #4654e1;
-  width: 300px;
-  height: 44px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-input {
-  all: unset;
-  font: 16px system-ui;
-  color: #fff;
-  height: 100%;
-  width: 100%;
-  padding: 6px 10px;
-}
-::placeholder {
-  color: #fff;
-  opacity: 0.7;
-}
-      </style>
-    <script>
-        const f = document.getElementById('form');
-const q = document.getElementById('query');
-const google = 'https://www.google.com/search?q=site%3A+';
-const site = 'pagedart.com';
-
-function submitted(event) {
-  event.preventDefault();
-  const url = google + site + '+' + q.value;
-  const win = window.open(url, '_blank');
-  win.focus();
-}
-
-f.addEventListener('submit', submitted);
-const f = document.getElementById('example1');
-const q = document.getElementById('query');
-const google = 'https://www.google.com/search?q=site%3A+';
-const site = 'pagedart.com';
-function submitted(event) {
-  event.preventDefault();
-  const url = google + site + '+' + q.value;
-  const win = window.open(url, '_blank');
-  win.focus();
-}
-f.addEventListener('submit', submitted);
-
-    </script>
- @if (auth()->user()->is_admin == 1)
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
         <!-- Navbar Search -->
@@ -123,9 +73,29 @@ f.addEventListener('submit', submitted);
     </ul>
 </nav>
 </div>
-@else
+
+@elseif (auth()->user()->is_admin==0)
+
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+            <a href="{{ route('home') }}" class="nav-link">الرئيسية</a>
+        </li>
 
 
+    </ul>
+
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+        <!-- Navbar Search -->
+
+
+
+<div class="container"  style="display:flex; margin: 2px" >
 <li class="nav-item">
     <a href="{{ route('admin.ptest.create') }}" >
         <button type="button" class="btn btn-info"> اضافة فحص مريض
@@ -160,5 +130,6 @@ f.addEventListener('submit', submitted);
         </div>
     </div>
 </div>
-
+</nav>
+</div>
 @endif
