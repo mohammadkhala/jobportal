@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('customer_id');
-            $table->foreign('customer_id')->references('id')->on('customers');
+            $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->unsignedBigInteger('test_id');
-            $table->foreign('test_id')->references('id')->on('tests');
+            $table->foreign('test_id')->references('id')->on('tests')->onUpdate('cascade')
+            ->onDelete('cascade');
             // $table->integer('year');
             // $table->integer('month');
             // $table->integer('day');

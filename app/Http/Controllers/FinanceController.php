@@ -48,7 +48,7 @@ class FinanceController extends Controller
             'test_id' => $request->test_id,
             'date' => $request->date,
             'amount' => $request->amount,
-            'remaining' =>  $request->id ,
+           // 'remaining' =>  $request->id ,
             'note' => $request->note ,
 
         ]);
@@ -82,9 +82,9 @@ class FinanceController extends Controller
                     'test_id' => $test->id,
                     'date' => $request->date,
                    'amount'=>$request->amount,
-                   'remaining'=>$request->amount-$test->payment,
+
                    'note'=>$request->note
-                ]); dd($request);
+                ]);
         return redirect()->route('admin.finance')->with('success', 'تم تحديث معلومات مالية جديدة');
 
 

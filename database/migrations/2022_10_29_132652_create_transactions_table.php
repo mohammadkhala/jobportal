@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('finance_id');
-            $table->foreign('finance_id')->references('id')->on('finances');
+            $table->foreign('finance_id')->references('id')->on('finances')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->integer('payment');
             $table->date('date');
             $table->text('note')->nullable();

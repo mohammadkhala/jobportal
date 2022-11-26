@@ -1,4 +1,7 @@
-<x-guest-layout style="background-image: url('{{ asset('https://www.taaqup.com/wp-content/uploads/2022/02/%D8%AA%D9%81%D8%B3%D9%8A%D8%B1-%D8%A7%D9%84%D9%86%D8%B8%D8%A7%D8%B1%D8%A9-%D9%81%D9%8A-%D8%A7%D9%84%D8%A3%D8%AD%D9%84%D8%A7%D9%85.webp')}}');" >
+@extends('layouts.app')
+@section('content')
+
+<x-guest-layout  >
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
@@ -55,3 +58,5 @@
         </form>
     </x-auth-card>
 </x-guest-layout>
+@endsection
+

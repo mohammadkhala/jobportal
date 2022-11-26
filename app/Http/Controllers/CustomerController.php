@@ -114,8 +114,14 @@ class CustomerController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id,customer $customer)
-    {
-        $customer=customer::findOrFail($id)->delete();
+    {try{
+         $customer=Customer::findOrFail($id);
+        $customer  ->delete();
         return redirect()->route('admin.customer')->with('message','تم الحذف بنجاح');
     }
+    catch(Exception $ex){
+        return redirect()->route('admin.customer')->with('error','يحب حذف باقي المعلومات اولا');
+    }
+    }
+
 }

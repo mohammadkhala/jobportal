@@ -35,6 +35,7 @@
 
                     <th>الاسم</th>
                     <th>البريد الالكتروني </th>
+                    <th>الدور</th>
 
                 </tr>
             </thead>
@@ -45,7 +46,10 @@
 
                     <td>{{ $employee->name }} </td>
                     <td>{{ $employee->email }} </td>
-
+                    <td>@if( $employee->is_admin==1 )
+                        مسؤول
+                   @else
+                   موظف  @endif</td>
 
                 </tr>
                 @endforeach

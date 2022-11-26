@@ -62,9 +62,9 @@
                     <td>{{ $finance->test_id }} </td>
                     <td>{{ $finance->date }} </td>
                     <td>{{ $finance->amount }} </td>
-                    <td>{{ $finance->remaining }} </td>
+                    <td>   {{ $finance->remaining}} </td>
                     <td>{{ $finance->note }} </td>
-                    <td></td>
+
                     <td>
                         <a href="{{ route('admin.finance.edit', ['id' => $finance->id]) }}" class="btn btn-primary btn-sm"
                             id="edit"><i class="fa fa-edit"></i></a>

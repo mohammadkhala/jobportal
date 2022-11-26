@@ -33,11 +33,11 @@ class Customer extends Model
     }
     public function test()
     {
-        return $this->hasOne(Test::class);
+        return $this->hasMany(Test::class);
     }
 
     public function finance()
     {
-        return $this->hasOne(Finance::class);
+        return $this->hasMany(Finance::class);
     }
 }
