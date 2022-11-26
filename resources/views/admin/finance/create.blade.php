@@ -106,6 +106,17 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6" hidden>
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">ملاحظات </label>
+                                                        <input type="text" value="" id="note"
+                                                            class="form-control"
+                                                            name="remaining">
+                                                        @error('note')
+                                                            <span class="text-danger">{{ $message }} </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
                                             </div>
 
 

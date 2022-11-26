@@ -48,8 +48,8 @@ class FinanceController extends Controller
             'test_id' => $request->test_id,
             'date' => $request->date,
             'amount' => $request->amount,
-           // 'remaining' =>  $request->id ,
-            'note' => $request->note ,
+            'remaining' =>  $request->amount,
+            'note' => $request->note
 
         ]);
 

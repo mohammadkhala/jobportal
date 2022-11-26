@@ -36,8 +36,8 @@ class TransactionController extends Controller
                 'date' => $request->date,
                 'note' => $request->note
             ]);
-            Finance::where('id', $request->finance_id)
-                ->decrement('remaining', $request->payment);
+          $remaining=  Finance::where('id', $request->finance_id)
+                ->decrement('amount', $request->payment);
         });
 
         return redirect()->route('admin.transaction')->with('success', 'تم اضافة دفعة جديدة بنجاح');
