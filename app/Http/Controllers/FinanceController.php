@@ -49,15 +49,11 @@ class FinanceController extends Controller
             'date' => $request->date,
             'amount' => $request->amount,
             'remaining' =>  $request->amount,
-            'note' => $request->note
+            'note' => $request->note ,
 
         ]);
 
-        return redirect()->back()->with('success', 'تم اضافة معلومات مالية جديدة');
-
     }
-
-
 
 
     public function edit(Finance $finance,$id)

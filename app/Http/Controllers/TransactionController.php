@@ -7,6 +7,7 @@ use App\Models\Finance;
 use App\Models\Transaction;
 use DB;
 use Illuminate\Http\Request;
+use Psy\Readline\Transient;
 
 class TransactionController extends Controller
 {
@@ -27,18 +28,31 @@ class TransactionController extends Controller
             'finance_id' => "required|exists:finances,id",
             'payment' => "required|integer",
             'date' => "required",
-
         ]);
-        DB::transaction(function () use ($request) {
-            $transaction = Transaction::create([
-                'finance_id'=> $request->finance_id,
-                'payment' => $request->payment,
-                'date' => $request->date,
-                'note' => $request->note
-            ]);
-          $remaining=  Finance::where('id', $request->finance_id)
-                ->decrement('amount', $request->payment);
-        });
+
+
+
+
+$allFinance= Finance::find($request->finance_id)->amount; //10.000
+$allTransaction=Transaction::where('finance_id',$request->finance_id)->sum('payment'); //9900
+$newTotalTransaction=$allTransaction + $request->payment;
+$remining=$allFinance - $newTotalTransaction; //100
+
+
+//create
+$create=new Transaction();
+$create->finance_id = $request->finance_id;
+$create->payment = $request->payment;
+$create->date = $request->date;
+$create->note = $request->note;
+$create->save();
+
+//update remining
+$finances=Finance::find($request->finance_id); //2
+$finances->remaining = $remining;
+$finances->save();
+
+
 
         return redirect()->route('admin.transaction')->with('success', 'تم اضافة دفعة جديدة بنجاح');
     }
