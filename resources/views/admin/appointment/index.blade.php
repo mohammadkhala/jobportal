@@ -29,6 +29,7 @@
                     <th>#</th>
                     <th>رقم الهوية</th>
                     <th>تاريخ الموعد </th>
+                    <th>الساعة</th>
                     <th>ملاحظات</th>
                     <th>تعديل\حذف</th>
 
@@ -40,6 +41,7 @@
                     <td>{{ $key = $key + 1 }}</td>
                     <td> {{ $appointment->customer->personal_id }}</td>
                     <td>{{ $appointment->date }} </td>
+                    <td>{{ $appointment->hour }}</td>
                     <td>{{ $appointment->note }}</td>
                     <td>
                         <a href="{{ route('admin.appointment.edit', ['id' => $appointment->id]) }}" class="btn btn-primary btn-sm"

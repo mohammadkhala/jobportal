@@ -14,6 +14,10 @@ class Appointment extends Model
         'customer_id',
         'date',
         'note',
+        'hour',
+        'clinic',
+        'name',
+        'physician',
         'created_at',
         'updated_at'
     ];

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Finance;
 
 use App\Models\Transaction;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Psy\Readline\Transient;
@@ -43,7 +44,7 @@ $remining=$allFinance - $newTotalTransaction; //100
 $create=new Transaction();
 $create->finance_id = $request->finance_id;
 $create->payment = $request->payment;
-$create->date = $request->date;
+$create->date = Carbon::now();
 $create->note = $request->note;
 $create->save();
 

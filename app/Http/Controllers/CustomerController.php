@@ -45,7 +45,8 @@ class CustomerController extends Controller
                 'personal_id'=>'required',
                 'name'=>'required',
                 'start_date'=>'required|date',
-                'gender'=>'required'
+                'gender'=>'required',
+                'clinic'=>'required|string'
 
             ]);
             $customer = Customer::create([
@@ -55,11 +56,13 @@ class CustomerController extends Controller
                 'phone'=>$request->phone,
                 'address'=>$request->address,
                 'note'=>$request->note,
+                'clinic'=>$request->clinic,
                 'gender'=>$request->gender,
             ]);
             return redirect()->back()->with('success', 'تم اضافة مريض جديد');
         }
         catch (\Throwable $th) {
+            return $th;
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
         }
 
@@ -84,13 +87,10 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        try{
+
             $customer = Customer::find($id);
             return view('admin.customer.edit', compact('customer'));
-        }catch(Exception $ex){
 
-            return $this->$ex;
-        }
 
     }
 
@@ -101,9 +101,9 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(CustomerRequest $request, customer $customer,$id)
+    public function update(CustomerRequest $request, Customer $customer,$id)
     {
-        customer::find($id)->update($request->except('_token','_method'));
+        Customer::find($id)->update($request->except('_token','_method'));
         return redirect()->route('admin.customer')->with(['success' => 'تم ألتحديث بنجاح']);
     }
 

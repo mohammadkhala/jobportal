@@ -85,9 +85,9 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">ملاحظات </label>
-                                                            <input type="text" value="{{$transaction->note}}" id="note"
+                                                            <textarea type="text" value="{{$transaction->note}}" id="note"
                                                                 class="form-control"
-                                                                name="note">
+                                                                name="note"></textarea>
                                                             @error('note')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
@@ -104,8 +104,7 @@
                                             <i class="la la-check-square-o"></i> حفظ
                                         </button>
                                         <a href="{{route('admin.transaction')}}"> <button type="button" class="btn btn-warning " >
-                                            المالية
-                                            </button></a>
+الدفعات                                            </button></a>
                                     </div>
                                 </form>
                             </div>

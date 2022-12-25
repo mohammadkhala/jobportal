@@ -18,8 +18,13 @@ return new class extends Migration
             $table->unsignedBigInteger('customer_id');
             $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->string('name')->references('name')->on('customers')->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->date('date');
+            $table->string('clinic');
+            $table->string('physician');
             $table->text('note')->nullable();
+            $table->time('hour')->unique();
             $table->timestamps();
         });
     }

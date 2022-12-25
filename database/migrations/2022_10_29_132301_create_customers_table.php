@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->Integer('personal_id');
             $table->string('name');
+            $table->string('clinic');
             $table->date('start_date');
             $table->string('phone');
             $table->string('address');

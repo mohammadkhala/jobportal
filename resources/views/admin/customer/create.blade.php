@@ -10,6 +10,11 @@
 @section('title_page2')
     لوحة التحكم
 @endsection
+@php
+
+    $genderArray = ['ذكر', 'انثى'];
+
+@endphp
 @section('content')
     <div class="app-content ">
         <div class="content text-right">
@@ -44,7 +49,7 @@
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات المريض </h4>
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الاسم </label>
                                                             <input type="text" value="" id="name"
@@ -56,13 +61,24 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
                                                             <input type="text" value="" id="name"
                                                                 class="form-control" placeholder="ادخل رقم الهوية  "
                                                                 name="personal_id">
                                                             @error('personal_id')
+                                                                <span class="text-danger">{{ $message }} </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">العيادة </label>
+                                                            <input type="text" value="" id="clinic"
+                                                                class="form-control" placeholder="  ادخل اسم العيادة  "
+                                                                name="clinic">
+                                                            @error('clinic')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
@@ -105,54 +121,66 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">الجنس </label>
-                                                            <input type="text" value="" id="name"
-                                                                class="form-control" name="gender">
+                                                            <label for="exampleFormControlSelect1">الجنس</label>
+                                                            <select class="form-control" name="gender">
+                                                                @foreach ($genderArray as $item)
+                                                                    <option value="{{ $item }}"
+                                                                        {{ $item ? 'selected' : '' }}>{{ $item }}
+                                                                    </option>
+                                                                @endforeach
+
+
+                                                            </select>
                                                             @error('gender')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+
+
+
+
                                                 </div>
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">ملاحظات </label>
-                                                            <input type="text" value="" id="name"
-                                                                class="form-control" name="note">
+                                                            <textarea type="text" value="" id="note" class="form-control" name="note"></textarea>
                                                             @error('note')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+
+
+
+                                                </div>
+
+                                            </div>
+                                            <div class="card-footer">
+                                                <div class="form-actions">
+
+                                                    <button type="submit" class="btn btn-primary">
+                                                        <i class="la la-check-square-o"></i> حفظ
+                                                    </button>
+                                                    <a href="{{ route('admin.customer') }}"> <button type="button"
+                                                            class="btn btn-warning ">
+                                                            المرضى
+                                                        </button></a>
                                                 </div>
                                             </div>
-
-
-
+                                        </form>
                                     </div>
-                                    <div class="card-footer">
-                                         <div class="form-actions">
 
-                                                <button type="submit" class="btn btn-primary">
-                                                    <i class="la la-check-square-o"></i> حفظ
-                                                </button>
-                                                <a href="{{ route('admin.customer') }}"> <button type="button"
-                                                        class="btn btn-warning ">
-                                                        المرضى
-                                                    </button></a>
-                                            </div>
-                                    </div>
-                                </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
             </div>
+            </section>
         </div>
-        </section>
-    </div>
     </div>
     </div>
 @endsection

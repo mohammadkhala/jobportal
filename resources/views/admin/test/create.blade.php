@@ -64,9 +64,9 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الوصف </label>
-                                                            <input type="text" value="" id="description"
+                                                            <textarea type="text" value="" id="description"
                                                                 class="form-control"
-                                                                name="description">
+                                                                name="description"></textarea>
                                                             @error('description')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
@@ -79,9 +79,9 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">معلومات طبية </label>
-                                                        <input type="text" value="" id="info_mid"
+                                                        <textarea type="text" value="" id="info_mid"
                                                             class="form-control"
-                                                            name="info_mid">
+                                                            name="info_mid"></textarea>
                                                         @error('info_mid')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror

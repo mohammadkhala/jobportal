@@ -29,6 +29,8 @@
                     <th>#</th>
                     <th>الاسم</th>
                     <th>رقم الهوية</th>
+                    <th>العيادة </th>
+
                     <th>تاريخ بدء التعامل</th>
                     <th>الهاتف</th>
                     <th>العنوان</th>
@@ -44,6 +46,7 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $customer->name }}</td>
                     <td>{{ $customer->personal_id }}</td>
+                    <td>{{ $customer->clinic }}</td>
                     <td>{{ $customer->start_date }}</td>
                     <td>{{ $customer->phone }}</td>
                     <td>{{ $customer->address }}</td>

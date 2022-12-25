@@ -98,23 +98,29 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="" id="note"
+                                                        <textarea type="text" value="" id="note"
                                                             class="form-control"
-                                                            name="note">
+                                                            name="note"></textarea>
                                                         @error('note')
                                                             <span class="text-danger">{{ $message }} </span>
                                                         @enderror
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6" hidden>
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="" id="note"
-                                                            class="form-control"
-                                                            name="remaining">
-                                                        @error('note')
-                                                            <span class="text-danger">{{ $message }} </span>
-                                                        @enderror
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="form-group">
+                                                                <label for="projectinput1">ملاحظات </label>
+                                                                <textarea type="text" value="" id="note"
+                                                                    class="form-control"
+                                                                    name="note"></textarea>
+                                                                @error('note')
+                                                                    <span class="text-danger">{{ $message }}</span>
+                                                                @enderror
+                                                            </div>
+                                                        </div>
+
+
                                                     </div>
                                                 </div>
                                             </div>

@@ -11,9 +11,9 @@ class Customer extends Model
     use HasFactory;
     //protected $primaryKey='personal_id';
     protected $fillable = [
-  'personal_id',
+        'personal_id',
         'name',
-
+        'clinic',
         'start_date',
         'phone',
         'address',

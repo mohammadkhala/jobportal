@@ -38,57 +38,71 @@ class PersonalTestController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'personal_id'=>'required|exists:customers,personal_id',
-            'distance'=>'required|string',
-            'right_eye_degree'=>'required|string',
-            'left_eye_degree'=>'required|string',
-            'date'=>'required|date',
-            // 'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
-            'cost'=>'required|integer',
-            // 'attach'=>'required_without:aid|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
-            'test_id'=>'required|exists:tests,id',
-        ]);
+        try {
+            $this->validate($request, [
+                'customer_id' => 'required|exists:customers,personal_id',
+                'distance' => 'required|string',
+                'right_eye_without_corr' => 'required|string',
+                'left_eye_without_corr' => 'required|string',
+                'right_eye_with_corr' => 'required|string',
+                'left_eye_with_corr' => 'required|string',
+                'vision_act_test' => 'required|string',
+                'date' => 'required|date',
+                // 'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'cost' => 'required|integer',
+                'addedBy' => 'required|string',
+                'correctedBy' => 'required|string',
+                // 'attach'=>'required_without:aid|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
+                'test_id' => 'required|exists:tests,id',
+            ]);
 
-        $reportPath = null;
-        if($request->hasFile('report')) {
-            $reportPath = $request->file('report')->storeAs(
-                'reports',
-                date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('report')->getClientOriginalExtension(),
-                'public'
-            );
+            $reportPath = null;
+            if ($request->hasFile('report')) {
+                $reportPath = $request->file('report')->storeAs(
+                    'reports',
+                    date_format(Carbon::now(), 'Ymd') . '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('report')->getClientOriginalExtension(),
+                    'public'
+                );
+            }
+
+            // return $reportPath;
+
+            $attachPath = null;
+            if ($request->hasFile('attach')) {
+                $attachPath = $request->file('attach')->storeAs(
+                    'attachs',
+                    date_format(Carbon::now(), 'Ymd') . '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
+                    'public'
+                );
+}
+
+                // dd($request->all());
+
+                $ptest = PersonalTest::create([
+                    'customer_id' => Customer::where('personal_id', $request->customer_id)->first(),
+                    'distance' => $request->distance,
+                    'right_eye_without_corr' => $request->right_eye_without_corr,
+                    'left_eye_without_corr' => $request->left_eye_without_corr,
+                    'right_eye_with_corr' => $request->right_eye_with_corr,
+                    'left_eye_with_corr' => $request->left_eye_with_corr,
+                    'date' =>$request->date,
+                    'report' => $reportPath,
+                    'cost' => $request->cost,
+
+                    'vision_act_test' => $request->vision_act_test,
+                    'addedBy' => $request->addedBy,
+                    'correctedBy' => $request->correctedBy,
+                    'attach' => $attachPath,
+                    'test_id' => $request->test_id,
+                ]);
+            dd($request);
+                return redirect()->route('admin.ptest')->with('success', 'تم اضافة فحص جديد');
+
+        } catch (Exception $ex) {
+            return $ex;
+            return redirect()->route('admin.ptest')->with('error', '   حدث خطأ');
         }
-
-        // return $reportPath;
-
-        $attachPath = null;
-        if($request->hasFile('attach')) {
-            $attachPath = $request->file('attach')->storeAs(
-                'attachs',
-                date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
-                'public'
-            );
-
-
-
-
-        $ptest = PersonalTest::create([
-            'customer_id' => Customer::where('personal_id', $request->personal_id)->first()->id,
-            'distance' => $request->distance,
-            'right_eye_degree' => $request->right_eye_degree,
-            'left_eye_degree' => $request->left_eye_degree,
-            'date' => $request->date,
-            'report' => $reportPath,
-            'cost' => $request->cost,
-            'attach' => $attachPath,
-            'test_id' => $request->test_id,
-        ]);
-
-        return redirect()-> route('admin.ptest')->with('success', 'تم اضافة فحص جديد');
-
-
-
-    }}
+    }
 
 
 
@@ -102,23 +116,28 @@ class PersonalTestController extends Controller
 
     public function update(Request $request, $id)
     {
-        try{
+        try {
             $request->validate([
-                'personal_id'=>'required|exists:customers,personal_id',
-                'distance'=>'required|string',
-                'right_eye_degree'=>'required|string',
-                'left_eye_degree'=>'required|string',
-                'date'=>'required|date',
+                'customer_id' => 'required|exists:customers,personal_id',
+                'distance' => 'required|string',
+                'right_eye_without_corr' => 'required|string',
+                'left_eye_without_corr' => 'required|string',
+                'right_eye_with_corr' => 'required|string',
+                'left_eye_with_corr' => 'required|string',
+                'vision_act_test' => 'required|string',
+                'date' => 'required|date',
+                'addedBy' => 'required|string',
+                'correctedBy' => 'required|string',
                 // 'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
-                'cost'=>'required|integer',
+                'cost' => 'required|integer',
                 // 'attach'=>'required_without:aid|file||mimes:csv,txt,xlx,xls,pdf|max:2048',
-                'test_id'=>'required|exists:tests,id',
+                'test_id' => 'required|exists:tests,id',
             ]);
             $reportPath = null;
-            if($request->hasFile('report')) {
+            if ($request->hasFile('report')) {
                 $reportPath = $request->file('report')->storeAs(
                     'reports',
-                    date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('report')->getClientOriginalExtension(),
+                    date_format(Carbon::now(), 'Ymd') . '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('report')->getClientOriginalExtension(),
                     'public'
                 );
             }
@@ -126,10 +145,10 @@ class PersonalTestController extends Controller
             //     'report' => $request->report,
             // ]);
             $attachPath = null;
-            if($request->hasFile('attach')) {
+            if ($request->hasFile('attach')) {
                 $attachPath = $request->file('attach')->storeAs(
                     'attachs',
-                    date_format(Carbon::now(),'Ymd'). '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
+                    date_format(Carbon::now(), 'Ymd') . '_' . $request->personal_id . '_' . $request->test_id . '.' . $request->file('attach')->getClientOriginalExtension(),
                     'public'
                 );
             }
@@ -137,30 +156,34 @@ class PersonalTestController extends Controller
             $ptest->update([
                 'customer_id' => $ptest->customer->id,
                 'distance' => $request->distance,
-                'right_eye_degree' => $request->right_eye_degree,
-                'left_eye_degree' => $request->left_eye_degree,
+                'right_eye_without_corr' => $request->right_eye_without_corr,
+                'left_eye_without_corr' => $request->left_eye_without_corr,
+                'right_eye_with_corr' => $request->left_eye_with_corr,
+                'left_eye_with_corr' => $request->left_eye_without_corr,
                 'date' => $request->date,
+                'vision_act_test' => $request->vision_act_test,
                 'report' => $reportPath,
                 'cost' => $request->cost,
                 'attach' => $attachPath,
+                'addedBy' => $request->addedBy,
+                'correctedBy' => $request->correctedBy,
                 'test_id' => $ptest->test_id,
-                ]);
+            ]);
 
-                // $ptest->update([
-                //     'attach'=>   $request->attach,
-                // ]);
+            // $ptest->update([
+            //     'attach'=>   $request->attach,
+            // ]);
 
             return redirect()->route('admin.ptest')->with(['success' => 'تم ألتحديث بنجاح']);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
             return redirect()->route('admin.ptest')->with(['error' => 'هذا الموعد غير موجود ']);
         }
     }
 
     public function destroy($id)
     {
-        $ptest=PersonalTest::findOrFail($id);
+        $ptest = PersonalTest::findOrFail($id);
         $ptest->delete();
-        return redirect()->route('admin.ptest')->with('message','تم الحذف بنجاح');
+        return redirect()->route('admin.ptest')->with('message', 'تم الحذف بنجاح');
     }
-
 }

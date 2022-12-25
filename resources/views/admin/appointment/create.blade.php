@@ -11,7 +11,6 @@
     لوحة التحكم
 @endsection
 @section('content')
-
     <div class="app-content ">
         <div class="content text-right">
             <div class="content-header row text-center">
@@ -26,7 +25,7 @@
                         <div class="col-md-12  ">
                             <div class="card ">
                                 <div class="card-header text-center">
-                                    <h4 class="card-title text-center" id="basic-layout-form"> إضافة مريض </h4>
+                                    <h4 class="card-title text-center" id="basic-layout-form"> إضافة موعد </h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -52,71 +51,110 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="" id="personal_id"
-                                                                class="form-control"
-                                                                name="personal_id">
-                                                            @error('personal_id')
+                                                            <input type="text" value="" id="customer_id"
+                                                                class="form-control" name="customer_id">
+                                                            @error('customer_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">الاسم </label>
+                                                            <input type="text" value="" id="date"
+                                                                class="form-control" name="name">
+                                                            @error('name')
+                                                                <span class="text-danger">{{ $message }} </span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
 
+                                                </div>
+
+                                                <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">التاريخ </label>
                                                             <input type="date" value="" id="date"
-                                                                class="form-control"
-                                                                name="date">
+                                                                class="form-control" name="date">
                                                             @error('date')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">الساعة </label>
+                                                            <input type="time" value="" id=""
+                                                                class="form-control" name="hour">
+                                                            @error('hour')
+                                                                <span class="text-danger">{{ $message }} </span>
+                                                            @enderror
+                                                        </div>
 
 
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">ملاحظات </label>
-                                                        <input type="text" value="" id="note"
-                                                            class="form-control"
-                                                            name="note">
-                                                        @error('note')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
+
+
+
+
+
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">العيادة </label>
+                                                            <input type="text" value="" id=""
+                                                                class="form-control" name="clinic">
+                                                            @error('clinic')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">المعالج </label>
+                                                            <input type="text" value="" id=""
+                                                            class="form-control" name="physician">
+                                                            @error('physician')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">ملاحظات </label>
+                                                            <textarea type="text" value="" id="note" class="form-control" name="note"></textarea>
+                                                            @error('note')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
                                                     </div>
                                                 </div>
-
-
                                             </div>
+
+
 
                                     </div>
 
 
+                                    <div class="form-actions">
 
-
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="la la-check-square-o"></i> حفظ
+                                        </button>
+                                        <a href="{{ route('admin.appointment') }}"> <button type="button"
+                                                class="btn btn-warning ">
+                                                المواعيد
+                                            </button></a>
+                                    </div>
+                                    </form>
                                 </div>
-
-
-                                <div class="form-actions">
-
-                                    <button type="submit" class="btn btn-primary">
-                                        <i class="la la-check-square-o"></i> حفظ
-                                    </button>
-                                    <a href="{{route('admin.appointment')}}"> <button type="button" class="btn btn-warning " >
-                                        المواعيد
-                                        </button></a>
-                                </div>
-                                </form>
                             </div>
                         </div>
                     </div>
             </div>
+            </section>
+            <!-- // Basic form layout section end -->
         </div>
-        </section>
-        <!-- // Basic form layout section end -->
-    </div>
     </div>
     </div>
 @endsection

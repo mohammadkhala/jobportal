@@ -8,6 +8,7 @@ use App\Models\Test;
 use App\Models\Finance;
 use Illuminate\Http\Request;
 use App\Models\Customer;
+use Carbon\Carbon;
 
 class FinanceController extends Controller
 {
@@ -46,12 +47,13 @@ class FinanceController extends Controller
         $finances = Finance::create([
             'customer_id' => Customer::where('personal_id', $request->customer_id)->first()->id,
             'test_id' => $request->test_id,
-            'date' => $request->date,
+            'date' => Carbon::now(),
             'amount' => $request->amount,
             'remaining' =>  $request->amount,
             'note' => $request->note ,
 
         ]);
+        return redirect()->route('admin.finance')->with('success', 'تم تحديث معلومات مالية جديدة');
 
     }
 

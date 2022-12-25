@@ -19,11 +19,15 @@ return new class extends Migration
             $table->foreign('customer_id')->references('id')->on('customers')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('distance');
-            $table->string('right_eye_degree');
-            $table->string('left_eye_degree');
+            $table->string('right_eye_without_corr');
+            $table->string('left_eye_without_corr');
+            $table->string('right_eye_with_corr');
+             $table->string('left_eye_with_corr');
             $table->date('date');
             // $table->integer('month');
-            // $table->integer('day');
+            $table->text('vision_act_test');
+            $table->text('correctedBy')->nullable();
+             $table->text('addedBy');
             $table->text('report')->nullable();
             $table->integer('cost');
             $table->string('attach')->nullable();

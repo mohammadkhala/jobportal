@@ -38,15 +38,15 @@
                     <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-               <li class="nav-item">
-                <a href="{{ route('home') }}" class="nav-link">
-                    <i class="ion ion-home"></i>
-                    <p>
-                        الرئيسية
+                    <li class="nav-item">
+                        <a href="{{ route('home') }}" class="nav-link">
+                            <i class="ion ion-home"></i>
+                            <p>
+                                الرئيسية
 
-                    </p>
-                </a>
-            </li>
+                            </p>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="{{ route('admin.customer') }}" class="nav-link">
                             <i class="ion ion-person"></i>
@@ -70,7 +70,8 @@
 
                     <li class="nav-item">
                         <a href="{{ route('admin.test') }}" class="nav-link">
-                            <i class="fa fa-file-invoice"></i>                            <p>
+                            <i class="fa fa-file-invoice"></i>
+                            <p>
                                 الفحص الاساسي
                                 <span class="right badge badge-danger">{{ App\Models\Test::count() }}</span>
                             </p>
@@ -103,7 +104,7 @@
                     <li class="nav-item">
                         <a href="{{ route('admin.transaction') }}" class="nav-link">
                             <i class="fa fa-file-invoice-dollar"></i>
-                            <p>   الدفعات المالية
+                            <p> الدفعات المالية
                                 <span class="right badge badge-danger">{{ App\Models\Transaction::count() }}</span>
 
                             </p>
@@ -120,19 +121,27 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('calendar') }}" class="nav-link">
+                            <i class="ion ion-calendar"></i>
+                            <p>
+                                التقويم
+
+                            </p>
+                        </a>
+                    </li>
                     {{-- @include('layouts.navigation') --}}
                     <a href="{{ url('/logout') }}">
-                        <i class="ion ion-leave"></i>                        تسجيل الخروج </a>
+                      <button type="button" class="btn btn-secondary ">تسجيل الخروج</button> </a>
 
                     <!-- /.sidebar-menu -->
     </div>
 
     <!-- /.sidebar -->
 </aside>
-@elseif (auth()->user()->is_admin==0)
+@elseif (auth()->user()->is_admin == 0)
 <nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-        data-accordion="false">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
    with font-awesome or any other icon font library -->
 
@@ -212,15 +221,24 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a href="{{ route('calendar') }}" class="nav-link">
+                <i class="ion ion-calendar"></i>
+                <p>
+                    التقويم
 
+
+                </p>
+            </a>
+        </li>
         <a href="{{ url('/logout') }}">
-            <i class="fa-sharp fa-solid fa-house-person-leave"></i>              تسجيل الخروج
+            <i class="fa-sharp fa-solid fa-house-person-leave"></i> تسجيل الخروج
 
         </a>
 
         <!-- /.sidebar-menu -->
-</div>
-<!-- /.sidebar -->
-</aside>
-@endif
-<!-- Sidebar Menu -->
+        </div>
+        <!-- /.sidebar -->
+        </aside>
+        @endif
+        <!-- Sidebar Menu -->

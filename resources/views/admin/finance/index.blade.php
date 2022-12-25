@@ -30,6 +30,44 @@
 
 @endsection
 @section('content')
+@if (auth()->user()->is_admin == 1)
+   <div class="row">
+      <div class="col-sm-4 col-6">
+        <div class="description-block border-right">
+          <span class="description-percentage text-success"><i class="fas fa-caret-up">شيكل</i> </span>
+          <h5 class="description-header">{{ App\Models\Finance::sum('amount') }}</h5>
+
+          <span class="description-text">مجموع الدخل</span>
+        </div>
+        <!-- /.description-block -->
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-4 col-6">
+        <div class="description-block border-right">
+          <span class="description-percentage text-warning"><i class="fas fa-caret-left"></i>شيكل </span>
+          <h5 class="description-header">{{ App\Models\Transaction::sum('payment') }}</h5>
+
+          <span class="description-text">مجموع الدفعات</span>
+        </div>
+        <!-- /.description-block -->
+      </div>
+      <!-- /.col -->
+      <div class="col-sm-4 col-6">
+        <div class="description-block border-right">
+          <span class="description-percentage text-success"><i class="fas fa-caret-up"></i> شيكل</span>
+          <h5 class="description-header">{{ App\Models\Finance::sum('remaining') }}</h5>
+          <span class="description-text">مجموع الدفعات غير المكتملة</span>
+        </div>
+        <!-- /.description-block -->
+      </div>
+      <!-- /.col -->
+
+    </div><div class="card-footer">
+
+    <!-- /.row -->
+  </div>
+@endif
+
     <div class="card-body">
 
         <table id="example1" class="table table-bordered table-striped" dir="rtl">

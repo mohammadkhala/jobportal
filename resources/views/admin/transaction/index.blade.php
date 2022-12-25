@@ -46,7 +46,7 @@
                     <td>
                         <a href="{{ route('admin.transaction.edit', $transaction->id) }}" class="btn btn-primary btn-sm"
                             id="edit"><i class="fa fa-edit"></i></a>
-                     <a href="" class="btn btn-danger btn-sm"
+                     <a href="{{ route('admin.transaction.delete', $transaction->id) }}" class="btn btn-danger btn-sm"
                         id="delete"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>

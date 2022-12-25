@@ -13,6 +13,7 @@ use App\Http\Controllers\emp\EmpFinanceController;
 use App\Http\Controllers\emp\EmpTransactionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\EmployeeController;
 
 Auth::routes();
@@ -30,6 +31,8 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 require __DIR__.'/auth.php';
  Route::get('/empfinance', [EmpFinanceController::class, 'index'])->name('emp.finance');
     Route::get('/emptransaction', [EmpTransactionController::class, 'index'])->name('emp.transaction');
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
+
 Route::group(['isAdminMiddleware' => ['is_admin']],function (){
     Route::get('/admin', function () {
 

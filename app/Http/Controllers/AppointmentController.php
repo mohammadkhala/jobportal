@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Exception;
 
 use App\Models\Appointment;
@@ -40,19 +41,27 @@ class AppointmentController extends Controller
     {
         // $customer_id = Customer::where('personal_id', $request->personal_id)->first()->id;
 
-        try{
+        try {
             $request->validate([
-                'personal_id'=>'required|exists:customers,personal_id',
-                'date'=>'required|date'
+                'customer_id' => 'required|exists:customers,personal_id',
+                'date' => 'required|date',
+                'hour' => 'required',
+                'clinic' => 'required|string',
+                'physician' => 'required|string',
+                'name' => 'required|string',
             ]);
             $appointment = Appointment::create([
-                'customer_id'=>Customer::where('personal_id', $request->personal_id)->first()->id,
-                'date'=>$request->date,
-                'note'=>$request->note
+                'customer_id' => Customer::where('personal_id', $request->customer_id)->first()->id,
+                'date' => $request->date,
+                'note' => $request->note,
+                'hour' => $request->hour,
+                'clinic' => $request->clinic,
+                'physician' => $request->physician,
+                'name' => $request->name
             ]);
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
-                
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
+            return $ex;
             return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
         }
     }
@@ -77,7 +86,7 @@ class AppointmentController extends Controller
     public function edit($id)
     {
         $appoin = Appointment::find($id);
-        
+
         // return $appoin;
         return view('admin.appointment.edit', compact('appoin'));
     }
@@ -91,23 +100,34 @@ class AppointmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-        try{
+        $appointment = Appointment::findOrFail($id);
+        try {
             $request->validate([
-                'personal_id'=>'required|exists:customers,personal_id',
-                'date'=>'required|date'
+                'customer_id' => 'required|exists:customers,personal_id',
+                'date' => 'required|date',
+                'clinic' => 'required|string',
+                'physician' => 'required|string',
+                'name' => 'required|string',
+                'hour'=>'required',
+
             ]);
-            $appointment = Appointment::findOrFail($id);
+
             $appointment->update([
-                    'customer_id'=>$appointment->customer->id,
-                    'date'=>$request->date,
-                    'note'=>$request->note
-                ]);
+                'customer_id' => Customer::where('personal_id', $request->customer_id)->first()->id,
+
+                'date' => $request->date,
+                'note' => $request->note,
+                'clinic' => $request->clinic,
+                'physician' => $request->physician,
+                'name' => $request->name,
+                'hour' => $request->hour,
+
+            ]);
             return redirect()->route('admin.appointment')->with(['success' => 'تم ألتحديث بنجاح']);
-        }catch(Exception $ex){
+        } catch (Exception $ex) {
+
             return redirect()->route('admin.appointment')->with(['error' => 'هذا الموعد غير موجود ']);
         }
-
     }
 
     /**
@@ -118,8 +138,8 @@ class AppointmentController extends Controller
      */
     public function destroy($id)
     {
-        $appointment=Appointment::findOrFail($id);
+        $appointment = Appointment::findOrFail($id);
         $appointment->delete();
-        return redirect()->route('admin.appointment')->with('message','تم الحذف بنجاح');
+        return redirect()->route('admin.appointment')->with('message', 'تم الحذف بنجاح');
     }
 }

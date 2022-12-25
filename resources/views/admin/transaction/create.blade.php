@@ -84,10 +84,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">ملاحظات </label>
-                                                            <input type="text" value="" id="text"
+                                                            <textarea type="text" value="" id="text"
                                                                 class="form-control"
-                                                                name="text">
-                                                            @error('text')
+                                                                name="note"></textarea>
+                                                            @error('note')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
                                                         </div>
