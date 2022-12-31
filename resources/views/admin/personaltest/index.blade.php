@@ -28,16 +28,18 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم الهوية</th>
-                    <th>رقم الفحص </th>
-                    <th>المسافة</th>
-                    <th>درجة العين اليمنى </th>
-                    <th>درجة العين اليسرى</th>
-                    <th>التاريخ</th>
-                    <th>تقرير </th>
-                    <th>التكلفة </th>
-                     <th>مرفقات </th>
-                    <th>تعديل\حذف</th>
+                    <th>national id </th>
+                    <th> test id </th>
+                    <th>distance</th>
+                    <th> right_eye_without_corr </th>
+                    <th>left_eye_without_corr</th>
+                    <th> right_eye_with_corr </th>
+                    <th>left_eye_with_corr</th>
+                    <th>date</th>
+                    <th>report </th>
+                    <th>cost </th>
+                     <th>attach </th>
+                    <th>actions</th>
 
                 </tr>
             </thead>
@@ -48,8 +50,10 @@
                     <td>{{ $ptest->customer->personal_id }}</td>
                     <td> {{ $ptest->test_id }}</td>
                     <td> {{ $ptest->distance }}</td>
-                    <td>{{ $ptest->right_eye_degree  }} </td>
-                    <td>{{ $ptest->left_eye_degree  }}</td>
+                    <td>{{ $ptest->right_eye_without_corr  }} </td>
+                    <td>{{ $ptest->left_eye_without_corr  }}</td>
+                    <td>{{ $ptest->right_eye_with_corr  }} </td>
+                    <td>{{ $ptest->left_eye_with_corr  }}</td>
                     <td>{{ $ptest->date }}</td>
                     <td>{{ $ptest->report }}</td>
                      <td>{{ $ptest->cost }}</td>

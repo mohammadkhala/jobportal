@@ -27,11 +27,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم الفحص</th>
-                    <th>رقم الهوية</th>
-                    <th> الوصف </th>
-                    <th>معلومات طبية</th>
-                    <th>تعديل\حذف</th>
+                    <th>test id </th>
+                    <th>national id </th>
+                    <th> description </th>
+                    <th>medical informations </th>
+                    <th>actions</th>
 
                 </tr>
             </thead>

@@ -26,11 +26,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم المالية</th>
-                    <th>الدفعة المالية </th>
-                    <th>التاريخ  </th>
-                    <th>ملاحظات</th>
-                    <th>تعديل\حذف</th>
+                    <th>finance id </th>
+                    <th>payment  </th>
+                    <th>date  </th>
+                    <th>notes</th>
+                    <th>actions</th>
 
                 </tr>
             </thead>

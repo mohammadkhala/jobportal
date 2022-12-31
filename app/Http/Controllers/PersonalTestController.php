@@ -41,12 +41,12 @@ class PersonalTestController extends Controller
         try {
             $this->validate($request, [
                 'customer_id' => 'required|exists:customers,personal_id',
-                'distance' => 'required|string',
-                'right_eye_without_corr' => 'required|string',
-                'left_eye_without_corr' => 'required|string',
-                'right_eye_with_corr' => 'required|string',
-                'left_eye_with_corr' => 'required|string',
-                'vision_act_test' => 'required|string',
+                'distance' => 'required',
+                'right_eye_without_corr' => 'required',
+                'left_eye_without_corr' => 'required',
+                'right_eye_with_corr' => 'required',
+                'left_eye_with_corr' => 'required',
+                'vision_act_test' => 'required',
                 'date' => 'required|date',
                 // 'report' =>  'required_without:rid|file|mimes:csv,txt,xlx,xls,pdf|max:2048',
                 'cost' => 'required|integer',
@@ -79,7 +79,7 @@ class PersonalTestController extends Controller
                 // dd($request->all());
 
                 $ptest = PersonalTest::create([
-                    'customer_id' => Customer::where('personal_id', $request->customer_id)->first(),
+                    'customer_id' => Customer::where('personal_id', $request->customer_id)->first()->id,
                     'distance' => $request->distance,
                     'right_eye_without_corr' => $request->right_eye_without_corr,
                     'left_eye_without_corr' => $request->left_eye_without_corr,
@@ -95,11 +95,10 @@ class PersonalTestController extends Controller
                     'attach' => $attachPath,
                     'test_id' => $request->test_id,
                 ]);
-            dd($request);
                 return redirect()->route('admin.ptest')->with('success', 'تم اضافة فحص جديد');
 
         } catch (Exception $ex) {
-            return $ex;
+
             return redirect()->route('admin.ptest')->with('error', '   حدث خطأ');
         }
     }

@@ -75,15 +75,15 @@
             <thead>
 
                 <tr>
-                    <th>رقم المالية</th>
-                    <th>رقم الهوية</th>
-                    <th>رقم الفحص</th>
-                    <th>التاريخ  </th>
-                    <th>المبلغ الكلي</th>
-                    <th>المتبقي</th>
+                    <th>finance id </th>
+                    <th>national id </th>
+                    <th>test id </th>
+                    <th>date  </th>
+                    <th>total ammount </th>
+                    <th>remaining</th>
 
-                    <th>ملاحظات</th>
-                    <th>تعديل\حذف</th>
+                    <th>notes</th>
+                    <th>actions</th>
 
                 </tr>
             </thead>

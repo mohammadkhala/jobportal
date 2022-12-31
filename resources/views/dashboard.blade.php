@@ -234,7 +234,18 @@
         <!-- title row -->
 
         <!--/. container-fluid -->
+
+        <!-- Content Header (Page header) -->
+
+
+           <!-- /.container-fluid -->
+          </section>
+
+        <!-- /.container-fluid -->
     </section>
+    <!-- /.content -->
+    </div>
+
 
     <style>
         .column {
@@ -377,5 +388,4 @@
 
 
 @section('scripts')
-
 @endsection

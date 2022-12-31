@@ -27,11 +27,11 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>رقم الهوية</th>
-                    <th>تاريخ الموعد </th>
-                    <th>الساعة</th>
-                    <th>ملاحظات</th>
-                    <th>تعديل\حذف</th>
+                    <th>national id </th>
+                    <th>date  </th>
+                    <th>hour</th>
+                    <th>notes</th>
+                    <th>actions</th>
 
                 </tr>
             </thead>

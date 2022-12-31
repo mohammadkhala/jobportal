@@ -27,16 +27,16 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>الاسم</th>
-                    <th>رقم الهوية</th>
-                    <th>العيادة </th>
+                    <th>name</th>
+                    <th>national id </th>
+                    <th>clinic </th>
 
-                    <th>تاريخ بدء التعامل</th>
-                    <th>الهاتف</th>
-                    <th>العنوان</th>
-                    <th>الجنس</th>
-                    <th>ملاحظات</th>
-                    <th>تعديل\حذف</th>
+                    <th> start date </th>
+                    <th>mobile</th>
+                    <th>address</th>
+                    <th>gender</th>
+                    <th>notes</th>
+                    <th>actions</th>
                 </tr>
             </thead>
             <tbody>

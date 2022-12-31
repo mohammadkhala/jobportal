@@ -110,7 +110,14 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('report') }}" class="nav-link">
+                            <i class="fa fa-file-invoice-dollar"></i>
+                            <p>  طباعة تقرير
 
+                            </p>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="{{ route('admin.employee') }}" class="nav-link">
@@ -121,15 +128,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('calendar') }}" class="nav-link">
-                            <i class="ion ion-calendar"></i>
-                            <p>
-                                التقويم
 
-                            </p>
-                        </a>
-                    </li>
                     {{-- @include('layouts.navigation') --}}
                     <a href="{{ url('/logout') }}">
                       <button type="button" class="btn btn-secondary ">تسجيل الخروج</button> </a>
@@ -222,11 +221,9 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ route('calendar') }}" class="nav-link">
-                <i class="ion ion-calendar"></i>
-                <p>
-                    التقويم
-
+            <a href="{{ route('report') }}" class="nav-link">
+                <i class="fa fa-file-invoice-dollar"></i>
+                <p>  طباعة تقرير
 
                 </p>
             </a>
