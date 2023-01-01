@@ -122,9 +122,9 @@
             <!-- Main row -->
             <div class="row">
                 <!-- Left col -->
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <!-- MAP & BOX PANE -->
-                    <div class="card" dir="rtl">
+                    <div class="card " dir="rtl">
                         <div class="card-header ">
 
 
@@ -228,24 +228,14 @@
 
 
             </div>
+
             <!-- /.row -->
         </div>
 
         <!-- title row -->
 
         <!--/. container-fluid -->
-
-        <!-- Content Header (Page header) -->
-
-
-           <!-- /.container-fluid -->
-          </section>
-
-        <!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-    </div>
-
 
     <style>
         .column {
