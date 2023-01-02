@@ -30,6 +30,8 @@
                     <th>national id </th>
                     <th>date  </th>
                     <th>hour</th>
+                    <th>clinic</th>
+                    <th>physician</th>
                     <th>notes</th>
                     <th>actions</th>
 
@@ -42,6 +44,8 @@
                     <td> {{ $appointment->customer->personal_id }}</td>
                     <td>{{ $appointment->date }} </td>
                     <td>{{ $appointment->hour }}</td>
+                    <td>{{ $appointment->clinic }}</td>
+                    <td>{{ $appointment->physician }}</td>
                     <td>{{ $appointment->note }}</td>
                     <td>
                         <a href="{{ route('admin.appointment.edit', ['id' => $appointment->id]) }}" class="btn btn-primary btn-sm"

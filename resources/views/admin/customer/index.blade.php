@@ -57,6 +57,8 @@
                             id="edit"><i class="fa fa-edit"></i></a>
                      <a href="{{ route('admin.customer.delete', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm"
                         id="delete"><i class="fa fa-trash"></i></a>
+                        <a href="{{ route('admin.customer.profile', ['id' => $customer->id]) }}" class="btn btn-danger btn-sm"
+                            id="delete"><i class="fa fa-eye"></i></a>
                     </td>
                 </tr>
                 @endforeach

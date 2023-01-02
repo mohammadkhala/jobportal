@@ -194,11 +194,11 @@
 </tr>
 <tr style="height: 31px;">
 <td style="width: 13.3523%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
-<td style="width: 11.6477%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+<td style="width: 11.6477%; height: 31px;">&nbsp;<input size="15px" type="date" /></td>
 <td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px" type="text" /></td>
 <td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px"  type="text" /></td>
 <td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px" type="text" /></td>
-<td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="date" /></td>
 <td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
 <td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
 </tr>
