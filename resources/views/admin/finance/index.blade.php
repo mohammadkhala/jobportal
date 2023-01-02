@@ -81,7 +81,6 @@
                     <th>date  </th>
                     <th>total ammount </th>
                     <th>remaining</th>
-
                     <th>notes</th>
                     <th>actions</th>
 
@@ -100,7 +99,7 @@
                     <td>{{ $finance->test_id }} </td>
                     <td>{{ $finance->date }} </td>
                     <td>{{ $finance->amount }} </td>
-                    <td>{{ $finance->amount}} </td>
+                    <td>{{ $finance->remaining}} </td>
                     <td>{{ $finance->note }} </td>
 
                     <td>
