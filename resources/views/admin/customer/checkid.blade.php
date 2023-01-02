@@ -19,6 +19,9 @@
                 <label for="exampleInputEmail1">enter national id</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" name="personal_id" placeholder="Enter id"
                     fdprocessedid="f3s7fb">
+                    @error('personal_id')
+                    <span class="text-danger">{{ $message }} </span>
+                @enderror
             </div>
         </div>
 

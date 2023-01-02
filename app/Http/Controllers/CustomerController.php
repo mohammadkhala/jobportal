@@ -48,7 +48,7 @@ class CustomerController extends Controller
 
         if ($customer->count() > 0) {
 
-            return redirect()->back()->with(['error', 'patient already exist']);
+            return redirect()->back()->with('error', 'patient already exists');
 
         } else {
 
