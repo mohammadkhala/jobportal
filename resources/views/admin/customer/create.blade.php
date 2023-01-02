@@ -63,10 +63,10 @@
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="" id="name"
+                                                            <label for="projectinput1">رقم الهوية</label>
+                                                            <input type="text" id="name"
                                                                 class="form-control" placeholder="ادخل رقم الهوية  "
-                                                                name="personal_id">
+                                                                name="personal_id" value="{{ $personal_id }}">
                                                             @error('personal_id')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror

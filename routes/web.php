@@ -52,6 +52,10 @@ Route::get('/customer', [CustomerController::class, 'index'])->name('admin.custo
 Route::get('/customer/create', [CustomerController::class, 'create'])->name('admin.customer.create');
 Route::post('/customer/store', [CustomerController::class, 'store'])->name('admin.customer.store');
 Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
+Route::get('/customer/show/{id}', [CustomerController::class, 'show'])->name('admin.customer.profile');
+Route::get('/customer/checkid', [CustomerController::class, 'checkId'])->name('admin.customer.checkId');
+Route::post('/customer/checkidAction', [CustomerController::class, 'checkidAction'])->name('admin.customer.checkidAction');
+
 Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
 Route::get('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('admin.customer.delete');
 //////
@@ -60,6 +64,7 @@ Route::get('/appointment', [AppointmentController::class, 'index'])->name('admin
 Route::get('/appointment/create', [AppointmentController::class, 'create'])->name('admin.appointment.create');
 Route::post('/appointment/store', [AppointmentController::class, 'store'])->name('admin.appointment.store');
 Route::get('/appointment/edit/{id}', [AppointmentController::class, 'edit'])->name('admin.appointment.edit');
+
 Route::put('/appointment/update/{id}', [AppointmentController::class, 'update'])->name('admin.appointment.update');
 Route::get('/appointment/delete/{id}', [AppointmentController::class, 'destroy'])->name('admin.appointment.delete');
 //// test routes
