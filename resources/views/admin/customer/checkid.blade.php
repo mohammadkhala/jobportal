@@ -20,7 +20,7 @@
         </div>
         <!-- /.card-header -->
         <!-- form start -->
-        <form action="{{ route('admin.customer.checkidAction') }}" method="POST" >
+        <form action="{{ route('admin.customer.checkidAction') }}"   method="head">
             @csrf
           <div class="card-body">
             <div class="form-group">

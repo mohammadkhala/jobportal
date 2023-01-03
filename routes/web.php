@@ -52,7 +52,7 @@ Route::group(['isAdminMiddleware' => ['is_admin']], function () {
     Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('admin.customer.edit');
     Route::get('/customer/show/{id}', [CustomerController::class, 'show'])->name('admin.customer.profile');
     Route::get('/customer/checkid', [CustomerController::class, 'checkId'])->name('admin.customer.checkId');
-    Route::post('/customer/checkidAction', [CustomerController::class, 'checkidAction'])->name('admin.customer.checkidAction');
+    Route::get('/customer/checkidAction', [CustomerController::class, 'checkidAction'])->name('admin.customer.checkidAction');
     Route::put('/customer/update/{id}', [CustomerController::class, 'update'])->name('admin.customer.update');
     Route::get('/customer/delete/{id}', [CustomerController::class, 'destroy'])->name('admin.customer.delete');
     //////

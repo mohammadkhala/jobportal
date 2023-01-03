@@ -53,7 +53,7 @@ class FinanceController extends Controller
             'note' => $request->note ,
 
         ]);
-        return redirect()->route('admin.finance')->with('success', 'تم تحديث معلومات مالية جديدة');
+        return redirect()->route('admin.finance')->with('success', 'تم اضافة معلومات مالية جديدة');
 
     }
 

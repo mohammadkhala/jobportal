@@ -68,7 +68,7 @@
                                                             <label for="projectinput1">رقم الهوية</label>
                                                             <input type="text" id="" class="form-control"
                                                                 placeholder="ادخل رقم الهوية  " name="personal_id"
-                                                                value="">
+                                                                value="{{$personal_id}}">
                                                             @error('personal_id')
                                                                 <span class="text-danger">{{ $message }} </span>
                                                             @enderror
@@ -255,4 +255,5 @@
             return localStorage.getItem(v);
         }
     </script>
+
 @endsection

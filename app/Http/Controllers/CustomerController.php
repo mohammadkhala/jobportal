@@ -52,7 +52,7 @@ class CustomerController extends Controller
         }
     }
 
-    public function store(CustomerRequest $request)
+    public function store(Request $request)
     {
         try {
             $request->validate([
@@ -75,7 +75,7 @@ class CustomerController extends Controller
             ]);
             return redirect()->back()->with('success', 'تم اضافة مريض جديد');
         } catch (\Throwable $th) {
-
+           // return $th;
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
         }
     }

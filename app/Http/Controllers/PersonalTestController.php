@@ -93,13 +93,13 @@ class PersonalTestController extends Controller
                     'addedBy' => $request->addedBy,
                     'correctedBy' => $request->correctedBy,
                     'attach' => $attachPath,
-                    'test_id' => $request->test_id,
+                    'test_id'   => Test::where('id', $request->test_id)->first()->id,
                 ]);
                 return redirect()->route('admin.ptest')->with('success', 'تم اضافة فحص جديد');
 
         } catch (Exception $ex) {
-
-            return redirect()->route('admin.ptest')->with('error', '   حدث خطأ');
+            return $ex;
+            return redirect()->route('admin.ptest.create')->with('error', ' test id not exists');
         }
     }
 

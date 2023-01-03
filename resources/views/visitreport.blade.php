@@ -6,7 +6,7 @@
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
         &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</strong>
         <img style="float: right;"
-        src=" {{ asset('assets/img/alqadilogo.jpg') }}"  alt="" width="120" height="120" />
+        src=" {{ asset('assets/img/alqadilogo.jpg') }}"  alt="" width="150" height="150" />
       </p>
 <p style="text-align: justify;">&nbsp;</p>
 <p style="text-align: justify;">&nbsp;</p>
