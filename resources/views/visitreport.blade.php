@@ -56,7 +56,7 @@
 </tbody>
 </table>
 <p>Eye Vision :</p>
-<table style="border-collapse: collapse; width: 99.9997%; height: 67px;" border="1">
+<table style="border-collapse: collapse; width: 83.8422%; height: 67px;" border="1" >
 <tbody>
 <tr style="height: 16px;">
 <td style="width: 10%; height: 16px; text-align: center;">
@@ -164,9 +164,68 @@
 <td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text" /></td>
 </tr>
 <tr style="height: 18px;">
-<td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text"></td>
-<td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text"></td>
-<td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text"></td>
+<td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text" /></td>
+<td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text" /></td>
+<td style="width: 33.3333%; height: 18px;">&nbsp;<input type="text" /></td>
+</tr>
+<tr>
+    <td style="width: 33.3333%;">&nbsp;<input type="text" /></td>
+    <td style="width: 33.3333%;">&nbsp;<input type="text" /></td>
+    <td style="width: 33.3333%;">&nbsp;<input type="text" /></td>
+    </tr>
+</tbody>
+</table>
+<input type="submit" class="button" value="Add another line" id="printbtn" onclick="addField('tbl');" />
+
+
+
+<p><br /><br /></p>
+<p>Patient Dilated :</p>
+<table style="border-collapse: collapse; width: 100%; height: 67px;" border="1">
+<tbody>
+<tr style="height: 36px;">
+<td style="width: 13.3523%; height: 36px; text-align: center;">R.Eye Dilate</td>
+<td style="width: 11.6477%; height: 36px; text-align: center;">R.Eye Date</td>
+<td style="width: 12.5%; height: 36px; text-align: center;">R.Eye Dilate By</td>
+<td style="width: 12.5%; height: 36px; text-align: center;">R.Eye Created By</td>
+<td style="width: 12.5%; height: 36px; text-align: center;">L.Eye Dilate</td>
+<td style="width: 12.5%; height: 36px; text-align: center;">L.Eye Date</td>
+<td style="width: 12.5%; height: 36px; text-align: center;">L.Eye Dilate By</td>
+<td style="width: 12.5%; height: 36px; text-align: center;">L.Eye Created By</td>
+</tr>
+<tr style="height: 31px;">
+<td style="width: 13.3523%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+<td style="width: 11.6477%; height: 31px;">&nbsp;<input size="15px" type="date" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px" type="text" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px"  type="text" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px" type="text" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="date" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+<td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+</tr>
+<tr style="height: 31px;">
+    <td style="width: 13.3523%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+    <td style="width: 11.6477%; height: 31px;">&nbsp;<input size="15px" type="date" /></td>
+    <td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px" type="text" /></td>
+    <td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px"  type="text" /></td>
+    <td style="width: 12.5%; height: 31px;">&nbsp;<input size="12px" type="text" /></td>
+    <td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="date" /></td>
+    <td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+    <td style="width: 12.5%; height: 31px;">&nbsp;<input size="15px" type="text" /></td>
+    </tr>
+</tbody>
+</table>
+<br><br><br><br><br>
+<p>Diagnosis :</p>
+<table style="border-collapse: collapse; width: 100%; height: 36px;" border="1">
+<tbody>
+<tr style="height: 18px;">
+<td style="width: 22.3011%; height: 18px; text-align: center;">Type</td>
+<td style="width: 77.6989%; height: 18px; text-align: center;">Description</td>
+</tr>
+<tr>
+<td style="width: 22.3011%;">&nbsp;<input type="text" /></td>
+<td style="width: 57.339%;">&nbsp;<textarea id="" cols="10" name="" rows="2"></textarea></td>
 </tr>
 <tr style="height: 18px;">
 <td style="width: 22.3011%; height: 18px;">&nbsp;<input type="text" /></td>
@@ -324,53 +383,18 @@
 </tr>
 </tbody>
 </table>
-<br>
-<br>
- <button onclick="printpage();" id="printpagebutton" style="background-color: #C2FBD7;
- border-radius: 50px;
- border-width: 0;
- box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
- color: #008000;
- cursor: pointer;
- display: inline-block;
- font-family: Arial, sans-serif;
- font-size: 1em;
- height: 50px;
- padding: 0 25px;
- transition: all 200ms;
-
- :hover
- background-color: #AFE6C3;
- transform: scale(1.05);"> print </button>
-
-</style>
-<script>
-    function addField( table ){
-
-var tableRef = document.getElementById(table);
-var newRow   = tableRef.insertRow(-1);
-
-var newCell  = newRow.insertCell(0);
-var newElem = document.createElement( 'input' );
-newElem.setAttribute("name", "links");
-newElem.setAttribute("type", "text");
-newCell.appendChild(newElem);
-
-newCell = newRow.insertCell(1);
-newElem = document.createElement( 'input' );
-newElem.setAttribute("name", "keywords");
-newElem.setAttribute("type", "text");
-newCell.appendChild(newElem);
-
-newCell = newRow.insertCell(2);
-newElem = document.createElement( 'input' );
-newElem.setAttribute("name", "violationtype");
-newElem.setAttribute("type", "text");
-newCell.appendChild(newElem);
+<p>Signature:</p><button onclick="  window.print();" id="printbtn" class="print-button" type="button"> <span class="print-icon"> </button>
 
 
-}
-</script>
+
+
+<style type="text/css">
+    @media print {
+        #printbtn {
+            display :  none;
+        }
+    }
+    </style>
 <style>
     button.print-button {
   width: 100px;
@@ -459,3 +483,31 @@ button.print-button:hover .print-icon::after {
 }
 
 </style>
+<script>
+    function addField( table ){
+
+var tableRef = document.getElementById(table);
+var newRow   = tableRef.insertRow(-1);
+
+var newCell  = newRow.insertCell(0);
+var newElem = document.createElement( 'input' );
+newElem.setAttribute("name", "links");
+newElem.setAttribute("type", "text");
+newCell.appendChild(newElem);
+
+newCell = newRow.insertCell(1);
+newElem = document.createElement( 'input' );
+newElem.setAttribute("name", "keywords");
+newElem.setAttribute("type", "text");
+newCell.appendChild(newElem);
+
+newCell = newRow.insertCell(2);
+newElem = document.createElement( 'input' );
+newElem.setAttribute("name", "violationtype");
+newElem.setAttribute("type", "text");
+newCell.appendChild(newElem);
+
+
+}
+</script>
+
