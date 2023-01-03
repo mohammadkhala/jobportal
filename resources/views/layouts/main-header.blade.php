@@ -54,7 +54,7 @@
                 </button>
             </a>
         </li>
-            <a href="{{ route('admin.customer.create') }}">
+            <a href="{{ route('admin.customer.checkId') }}">
                 <button type="button" class="btn btn-info"> اضافة مريض
                     </button>
             </a>

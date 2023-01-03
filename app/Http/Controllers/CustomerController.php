@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
-use App\Models\Transaction;
 use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
 
 class CustomerController extends Controller
 {
@@ -30,6 +27,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
+
         return view('admin.customer.create');
     }
 
@@ -39,6 +37,25 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    public function checkId()
+    {
+        return view('admin.customer.checkid');
+    }
+
+    public function checkidAction(Request $request){
+        $customer = Customer::where('personal_id', $request->personal_id)->select('personal_id')-> get();
+
+        if ($customer->count() > 0) {
+
+            return redirect()->back()->with('error', 'patient already exists');
+
+        } else {
+
+            return view('admin.customer.create',['personal_id'=> $request->personal_id]);
+        }
+    }
+
     public function store(CustomerRequest $request)
     {
         try {
@@ -47,7 +64,7 @@ class CustomerController extends Controller
                 'name' => 'required',
                 'start_date' => 'required|date',
                 'gender' => 'required',
-                'clinic' => 'required|string'
+                'clinic' => 'required|string',
 
             ]);
             $customer = Customer::create([
@@ -61,7 +78,7 @@ class CustomerController extends Controller
                 'gender' => $request->gender,
             ]);
             return redirect()->back()->with('success', 'تم اضافة مريض جديد');
-        } catch (\Throwable $th) {
+        } catch (\Throwable$th) {
             return $th;
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
         }
@@ -73,18 +90,17 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function show(Customer $customers,$id)
+    public function show(Customer $customers, $id)
     {
-        try{
+        try {
 
-
-        $customers = Customer::find($id);
-        $customers->load('appointments', 'finance', 'personalTests', 'test')->findOrFail($id);
-        //dd($customer);
-        return view('admin.customer.profile', compact('customers'));
-     }catch(Exception $ex){
-     return $ex;
-     }
+            $customers = Customer::find($id);
+            $customers->load('appointments', 'finance', 'personalTests', 'test')->findOrFail($id);
+            //dd($customer);
+            return view('admin.customer.profile', compact('customers'));
+        } catch (Exception $ex) {
+            return $ex;
+        }
     }
 
     /**
