@@ -1,11 +1,11 @@
 @extends('layouts.master')
 @section('title')
-    اضافة فحص مريض
+    تعديل فحص مريض
 @endsection
 @section('css')
 @endsection
 @section('title_page1')
-    اضافة فحص مريض
+    تعديل فحص مريض
 @endsection
 @section('title_page2')
     لوحة التحكم
@@ -25,7 +25,7 @@
                         <div class="col-md-12  ">
                             <div class="card ">
                                 <div class="card-header text-center">
-                                    <h4 class="card-title text-center" id="basic-layout-form"> إضافة فحص مريض </h4>
+                                    <h4 class="card-title text-center" id="basic-layout-form"> تعديل فحص مريض </h4>
                                     <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
                                         <ul class="list-inline mb-0">
@@ -38,21 +38,19 @@
                                 </div>
                                 <div class="card-content collapse show">
                                     <div class="card-body">
-                                        <form class="form" action="{{ route('admin.ptest.update',['id'=>$ptest->id]) }}" method="POST"
+                                        <form class="form" action="{{ route('admin.ptest.update',['id'=>$ptest->id]) }}" method="post"
                                             enctype="multipart/form-data">
                                             @csrf
-                                            @method('PUT')
-
                                             <div class="form-body">
                                                 <h4 class="form-section"><i class="ft-home"></i> بيانات الفحص </h4>
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">رقم الهوية  </label>
-                                                            <input type="text" value="{{$ptest->customer->personal_id}}" id="personal_id"
+                                                            <label for="projectinput1">national id   </label>
+                                                            <input type="text" value="{{$ptest->customer_id}}" id="customer_id"
                                                                 class="form-control"
-                                                                name="personal_id">
-                                                            @error('personal_id')
+                                                                name="customer_id">
+                                                            @error('customer_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
@@ -60,7 +58,7 @@
 
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">رقم الفحص</label>
+                                                            <label for="projectinput1">test id </label>
                                                             <input type="text" value="{{$ptest->test_id}}" id="test_id"
                                                                 class="form-control"
                                                                 name="test_id">
@@ -71,9 +69,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">المسافة </label>
+                                                            <label for="projectinput1">distance </label>
                                                             <input type="text" value="{{$ptest->distance}}" id="distance"
                                                                 class="form-control"
                                                                 name="distance">
@@ -82,34 +80,69 @@
                                                             @enderror
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-2">
                                                         <div class="form-group">
-                                                            <label for="projectinput1">درجة العين اليمنى</label>
-                                                            <input type="text" value="{{$ptest->right_eye_degree}}" id="right_eye_degree"
+                                                            <label for="projectinput1">right eye without corr</label>
+                                                            <input type="text" value="{{$ptest->right_eye_without_corr}}" id="right_eye_without_corr"
                                                                 class="form-control"
-                                                                name="right_eye_degree">
-                                                            @error('right_eye_degree')
+                                                                name="right_eye_without_corr">
+                                                            @error('right_eye_without_corr')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">left eye without corr</label>
+                                                            <input type="text" value="{{$ptest->left_eye_without_corr}}" id="left_eye_without_corr"
+                                                                class="form-control"
+                                                                name="left_eye_without_corr">
+                                                            @error('left_eye_without_corr')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">right eye with corr  </label>
+                                                            <input type="text" value="{{$ptest->right_eye_with_corr}}" id="right_eye_with_corr"
+                                                                class="form-control"
+                                                                name="right_eye_with_corr">
+                                                            @error('right_eye_with_corr')
+                                                                <span class="text-danger">{{ $message }}</span>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <div class="form-group">
+                                                            <label for="projectinput1">left eye with corr  </label>
+                                                            <input type="text" value="{{$ptest->left_eye_with_corr}}" id="left_eye_with_corr"
+                                                                class="form-control"
+                                                                name="left_eye_with_corr">
+                                                            @error('left_eye_with_corr')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">درجة العين اليسرى</label>
-                                                        <input type="text" value="{{$ptest->left_eye_degree}}" id="left_eye_degree"
+                                                        <label for="projectinput1">vision actually test </label>
+                                                        <input type="text" value="{{$ptest->vision_act_test}}" id="date"
                                                             class="form-control"
-                                                            name="left_eye_degree">
-                                                        @error('left_eye_degree')
-                                                            <span class="text-danger">{{ $message }}</span>
+                                                            name="vision_act_test">
+                                                        @error('vision_act_test')
+                                                            <span class="text-danger">{{ $message }} </span>
                                                         @enderror
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="projectinput1">التاريخ </label>
+                                                        <label for="projectinput1">date </label>
                                                         <input type="date" value="{{$ptest->date}}" id="date"
                                                             class="form-control"
                                                             name="date">
@@ -118,23 +151,9 @@
                                                         @enderror
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
-                                                        <label for="report">تقرير </label>
-                                                        <input type="file" value="{{$ptest->report}}" id="report"
-                                                            class="form-control"
-                                                            name="report">
-                                                        @error('report')
-                                                            <span class="text-danger">{{ $message }}</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <div class="form-group">
-                                                        <label for="projectinput1">التكلفة </label>
+                                                        <label for="projectinput1">cost </label>
                                                         <input type="text" value="{{$ptest->cost}}" id="cost"
                                                             class="form-control"
                                                             name="cost">
@@ -143,9 +162,46 @@
                                                         @enderror
                                                     </div>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label for="projectinput1">added By </label>
+                                                        <input type="text" value="{{$ptest->addedBy}}" id="addedBy"
+                                                            class="form-control"
+                                                            name="addedBy">
+                                                        @error('addedBy')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
-                                                        <label for="attach">مرفقات </label>
+                                                        <label for="projectinput1">corrected By </label>
+                                                        <input type="text" value="{{$ptest->correctedBy}}" id="correctedBy"
+                                                            class="form-control"
+                                                            name="correctedBy">
+                                                        @error('correctedBy')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="report">report </label>
+                                                        <input type="file" value="{{$ptest->report}}" id="report"
+                                                            class="form-control"
+                                                            name="report">
+                                                        @error('report')
+                                                            <span class="text-danger">{{ $message }}</span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="attach">attach </label>
                                                         <input type="file" value="{{$ptest->attach}}" id="attach"
                                                             class="form-control"
                                                             name="attach">
@@ -163,7 +219,8 @@
                                             <i class="la la-check-square-o"></i> حفظ
                                         </button>
                                         <a href="{{route('admin.ptest')}}"> <button type="button" class="btn btn-warning " >
-الفحوصات                                            </button></a>
+                                            المرضى
+                                            </button></a>
                                     </div>
                                 </form>
                             </div>

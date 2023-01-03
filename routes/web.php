@@ -76,7 +76,7 @@ Route::group(['isAdminMiddleware' => ['is_admin']], function () {
     Route::get('/ptest/create', [PersonalTestController::class, 'create'])->name('admin.ptest.create');
     Route::post('/ptest/store', [PersonalTestController::class, 'store'])->name('admin.ptest.store');
     Route::get('/ptest/edit/{id}', [PersonalTestController::class, 'edit'])->name('admin.ptest.edit');
-    Route::put('/ptest/update/{id}', [PersonalTestController::class, 'update'])->name('admin.ptest.update');
+    Route::post('/ptest/update/{id}', [PersonalTestController::class, 'update'])->name('admin.ptest.update');
     Route::get('/ptest/delete/{id}', [PersonalTestController::class, 'destroy'])->name('admin.ptest.delete');
     // finance routes
     Route::get('/finance', [FinanceController::class, 'index'])->name('admin.finance');

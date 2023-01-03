@@ -35,7 +35,7 @@
 </html>
 <style>
 main{
-    background-image: url('https://ak2.picdn.net/shutterstock/videos/9057502/thumb/12.jpg');
+    background-image: asset('assets/img/alqadilogo.jpg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;

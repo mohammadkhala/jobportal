@@ -1,13 +1,12 @@
 @extends('layouts.app')
 @section('content')
+<style>
 
+</style>
 <x-guest-layout  >
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
+        <img name="" style="float: right;"
+        src=" {{ asset('assets/img/alqadilogo.jpg') }}"  alt="" width="150" height="150" />
 
         <!-- Session Status -->
         <x-auth-session-status class="mb-4" :status="session('status')" />

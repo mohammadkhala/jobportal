@@ -42,10 +42,10 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية  </label>
-                                                            <input type="text" value="{{$finance->personal_id}}" id="personal_id"
+                                                            <input type="text" value="{{$finance->customer_id}}" id="personal_id"
                                                                 class="form-control"
                                                                 name="personal_id">
-                                                            @error('personal_id')
+                                                            @error('customer_id')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
                                                         </div>

@@ -98,7 +98,7 @@ class PersonalTestController extends Controller
                 return redirect()->route('admin.ptest')->with('success', 'تم اضافة فحص جديد');
 
         } catch (Exception $ex) {
-            return $ex;
+            //return $ex;
             return redirect()->route('admin.ptest.create')->with('error', ' test id not exists');
         }
     }
