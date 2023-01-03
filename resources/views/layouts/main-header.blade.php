@@ -8,7 +8,7 @@
         <li class="nav-item d-none d-sm-inline-block">
             <a href="{{ route('home') }}" class="nav-link">الرئيسية</a>
         </li>
-
+        <link rel="icon" type="image/x-icon" href="{{ asset('assets/img/alqadilogo.jpg') }}">
 
     </ul>
 

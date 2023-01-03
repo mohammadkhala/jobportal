@@ -6,6 +6,7 @@ use App\Http\Requests\CustomerRequest;
 use App\Models\Customer;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CustomerController extends Controller
 {
@@ -31,28 +32,23 @@ class CustomerController extends Controller
         return view('admin.customer.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
 
     public function checkId()
     {
         return view('admin.customer.checkid');
     }
 
-    public function checkidAction(Request $request){
-        $customer = Customer::where('personal_id', $request->personal_id)->select('personal_id')-> get();
+    public function checkidAction(Request $request)
+    {
+        $customer = Customer::where('personal_id', $request->personal_id)->select('personal_id')->get();
 
         if ($customer->count() > 0) {
+            $id = Customer::where('personal_id', $request->personal_id)->select('id')->get()->first();
+            return redirect()->route('admin.customer.profile', ['id' => $id]);
+        } else  {
 
-            return redirect()->back()->with('error', 'patient already exists');
-
-        } else {
-
-            return view('admin.customer.create',['personal_id'=> $request->personal_id]);
+            return view('admin.customer.create', ['personal_id' => $request->personal_id]);
         }
     }
 
@@ -78,8 +74,8 @@ class CustomerController extends Controller
                 'gender' => $request->gender,
             ]);
             return redirect()->back()->with('success', 'تم اضافة مريض جديد');
-        } catch (\Throwable$th) {
-            return $th;
+        } catch (\Throwable $th) {
+
             return redirect()->back()->with('error', 'حدث خطأ يرجى اعادة المحاول');
         }
     }

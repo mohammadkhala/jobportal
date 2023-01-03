@@ -12,29 +12,33 @@
 @endsection
 
 @section('content')
-    <form action="{{ route('admin.customer.checkidAction') }}" method="post">
-        @csrf
-        <div class="card-body">
+
+
+    <div class="card card-primary">
+        <div class="card-header" >
+          <h3 class="card-title">Check Id</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form action="{{ route('admin.customer.checkidAction') }}" method="POST" >
+            @csrf
+          <div class="card-body">
             <div class="form-group">
-                <label for="exampleInputEmail1">enter national id</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" name="personal_id" placeholder="Enter id"
-                    fdprocessedid="f3s7fb">
-                    @error('personal_id')
-                    <span class="text-danger">{{ $message }} </span>
-                @enderror
+              <label for="exampleInputEmail1">Enter National id</label>
+              <input type="text" class="form-control" id="exampleInputEmail1" name="personal_id" placeholder="Enter id"
+              fdprocessedid="f3s7fb">
             </div>
-        </div>
+            @error('personal_id')
+            <span class="text-danger">{{ $message }} </span>
+        @enderror
+          </div>
+          <!-- /.card-body -->
 
-        <div class="card-footer">
-            <div class="form-actions">
-
-                <button type="submit" class="btn btn-primary">
-                    <i class="la la-check-square-o"></i> enter
-                </button>
-
-            </div>
-        </div>
-    </form>
+          <div class="card-footer">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+      </div>
 @endsection
 @section('scripts')
 @endsection

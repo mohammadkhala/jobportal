@@ -61,7 +61,7 @@ class AppointmentController extends Controller
             ]);
             return redirect()->back()->with('success', 'تم اضافة موعد جديد');
         } catch (Exception $ex) {
-            return $ex;
+
             return redirect()->back()->with('error', 'المريض غير موجود يرجى اضافته');
         }
     }

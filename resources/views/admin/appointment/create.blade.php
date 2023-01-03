@@ -51,7 +51,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">رقم الهوية </label>
-                                                            <input type="text" value="" id="customer_id"
+                                                            <input type="text" value="" id="txt_9" onchange='saveValue(this);'
                                                                 class="form-control" name="customer_id">
                                                             @error('customer_id')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -61,7 +61,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الاسم </label>
-                                                            <input type="text" value="" id="date"
+                                                            <input type="text" value="" id="txt_10" onchange='saveValue(this);'
                                                                 class="form-control" name="name">
                                                             @error('name')
                                                                 <span class="text-danger">{{ $message }} </span>
@@ -75,7 +75,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">التاريخ </label>
-                                                            <input type="date" value="" id="date"
+                                                            <input type="date" value="" id="txt_11" onchange='saveValue(this);'
                                                                 class="form-control" name="date">
                                                             @error('date')
                                                                 <span class="text-danger">{{ $message }} </span>
@@ -85,7 +85,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="projectinput1">الساعة </label>
-                                                            <input type="time" value="" id=""
+                                                            <input type="time" value="" id="txt_12" onchange='saveValue(this);'
                                                                 class="form-control" name="hour">
                                                             @error('hour')
                                                                 <span class="text-danger">{{ $message }} </span>
@@ -102,7 +102,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">العيادة </label>
-                                                            <input type="text" value="" id=""
+                                                            <input type="text" value="" id="txt_13" onchange='saveValue(this);'
                                                                 class="form-control" name="clinic">
                                                             @error('clinic')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -112,7 +112,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">المعالج </label>
-                                                            <input type="text" value="" id=""
+                                                            <input type="text" value="" id="txt_14"   onchange='saveValue(this);'
                                                             class="form-control" name="physician">
                                                             @error('physician')
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -122,7 +122,7 @@
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label for="projectinput1">ملاحظات </label>
-                                                            <textarea type="text" value="" id="note" class="form-control" name="note"></textarea>
+                                                            <textarea type="text" value="" id="txt_15" onchange='saveValue(this);' class="form-control" name="note"></textarea>
                                                             @error('note')
                                                                 <span class="text-danger">{{ $message }}</span>
                                                             @enderror
@@ -165,4 +165,35 @@
 
 
 @section('scripts')
+
+<script type="text/javascript">
+    document.getElementById("txt_9").value = getSavedValue("txt_9");    // set the value to this input
+    document.getElementById("txt_10").value = getSavedValue("txt_10");
+    document.getElementById("txt_11").value = getSavedValue("txt_11");    // set the value to this input
+    document.getElementById("txt_12").value = getSavedValue("txt_12");
+    document.getElementById("txt_13").value = getSavedValue("txt_13");
+    document.getElementById("txt_14").value = getSavedValue("txt_14");
+    document.getElementById("txt_15").value = getSavedValue("txt_15");    // set the value to this input
+// set the value to this input
+// set the value to this input
+// set the value to this input
+
+    // set the value to this input
+    /* Here you can add more inputs to set value. if it's saved */
+
+    //Save the value function - save it to localStorage as (ID, VALUE)
+    function saveValue(e){
+        var id = e.id;  // get the sender's id to save it .
+        var val = e.value; // get the value.
+        localStorage.setItem(id, val);// Every time user writing something, the localStorage's value will override .
+    }
+
+    //get the saved value function - return the value of "v" from localStorage.
+    function getSavedValue  (v){
+        if (!localStorage.getItem(v)) {
+            return "";// You can change this to your defualt value.
+        }
+        return localStorage.getItem(v);
+    }
+</script>
 @endsection
