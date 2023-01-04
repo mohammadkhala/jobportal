@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\User;
+use App\Profile;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\Models\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Http\Middleware\isAdminMiddleware;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
+
 class RegisterController extends Controller
 {
     /*
@@ -29,7 +29,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectPath()
+        {
+          if (Auth::user()->role==1) {
+            return ('/userdashboard');
+          } else {
+            return '/jobs';
+          }
+        }
 
     /**
      * Create a new controller instance.
@@ -50,9 +57,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'role' => 'required|string',
         ]);
     }
 
@@ -60,16 +68,15 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\User
      */
     protected function create(array $data)
     {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'is_admin' => $data['is_admin'],
-            'password' => Hash::make($data['password']),
+            'password' => bcrypt($data['password']),
+            'role' => $data['role'],
         ]);
-
     }
 }

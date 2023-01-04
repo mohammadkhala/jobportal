@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -25,8 +25,20 @@ class LoginController extends Controller
      * Where to redirect users after login.
      *
      * @var string
-     */
-    protected $redirectTo = RouteServiceProvider::HOME;
+     */  
+
+    protected function redirectPath()
+    {
+      if (Auth::user()->role==1) {
+        return ('/userdashboard');
+      } else if (Auth::user()->role==2){
+        return '/jobs';
+      } else if (Auth::user()->role==3) {
+         return '/panel/freelancer';
+      } else {
+        return '/login';
+      }
+    }
 
     /**
      * Create a new controller instance.
